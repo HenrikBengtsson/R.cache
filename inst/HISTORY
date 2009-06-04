@@ -1,0 +1,58 @@
+
+Package: R.cache
+===============
+
+Version: 0.1.7 [2008-02-27]
+o Added option to updated the "last-modified" timestamp of cache 
+  files whenever they are loaded via loadCache(). This will help
+  identified what cache files have not been used for a long time.
+  To turn this on, use options("R.cache::touchOnLoad"=TRUE).
+o Now error messages specifies the pathname, if available.
+o BUG FIX: The throw() for invalid identifiers was trying to put 
+  the connection object in the output and not the identifier.
+
+
+Version: 0.1.6 [2007-07-02]
+o Now environments, in addition to lists, may be used as keys
+  for generating cache names.
+o Package passes R CMD check on R v2.6.0 devel.  Minor mods.
+
+
+Version: 0.1.5 [2007-03-11]
+o Added getCacheRootPath() to the help index page.
+o Package passes R CMD check on R v2.5.0.
+
+
+Version: 0.1.4 [2007-03-07]
+o Added getCacheRootPath() and setCacheRootPath() to specify
+  where the root of the file path is located.
+
+
+Version: 0.1.3 [2007-01-24]
+o Now saveCache() and loadCache() takes optional argument 'dirs' for
+  caching data to subdirectories of the root cache directory.
+o Added setCacheRootPath() to set the root cache directory.
+
+
+Version: 0.1.2 [2005-05-25]
+o Added argument 'pathname' to loadCache() in order to load
+  "unknown" cache files for which the key is unknown.
+o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
+  in base::save(), which otherwise includes all of the surrounding 
+  environment if 'sources' is not evaluated/missing.  For more details 
+  see code and my email to r-devel on 2006-05-25.  Thanks to Brian Ripley
+  for explaining what was going on.
+
+
+Version: 0.1.1 [2005-05-22]
+o Added header comment for file format > v0.1.
+o Added detection of file format version.
+o Added readCacheHeader().
+
+
+Version: 0.1.0 [2005-12-16]
+o Using a special binary file format now.  It allows you to
+  check if cache is up-to-date to a source file.  If not,
+  the rest of the cache binary file is not loaded.
+o Added loadCache() and saveCache() methods.
+o Created.
