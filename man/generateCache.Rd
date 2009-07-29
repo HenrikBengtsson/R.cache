@@ -31,9 +31,6 @@
   Returns the path as a \code{\link[base]{character}} string.
 }
 
-\details{
-}
-
 \author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
 
 

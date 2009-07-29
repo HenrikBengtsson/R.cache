@@ -15,7 +15,7 @@
 
 
 \description{
-  Methods for caching arbitrary R objects on persistent media.  Objects can be loaded and saved stratified on a set of hashing objects.
+  Methods for memoization, that is, caching arbitrary R objects in persistent memory.  Objects can be loaded and saved stratified on a set of hashing objects.
 
   \emph{Warning}:
   The Application Programming Interface (API) of the classes and methods

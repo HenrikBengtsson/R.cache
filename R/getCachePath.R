@@ -20,9 +20,6 @@
 #   Returns the path as a @character string.
 # }
 #
-# \details{
-# }
-#
 # @author
 #
 # \seealso{

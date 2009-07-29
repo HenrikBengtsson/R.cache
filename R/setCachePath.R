@@ -21,9 +21,6 @@
 #   Returns nothing.
 # }
 #
-# \details{
-# }
-#
 # @author
 #
 # \seealso{
