@@ -57,7 +57,7 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'file':
   if (inherits(file, "connection")) {
-    pathname <- NULL;
+    pathname <- sprintf("'%s' [description of the opened connection]", summary(file)$description);
   } else {
     pathname <- as.character(file);
     if (!isFile(pathname))
@@ -126,6 +126,10 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
 ############################################################################
 # HISTORY:
+# 2009-08-11
+# o Now readCacheHeader() reports the "pathname" in error/warnings messages,
+#   if argument 'file' refers to a file and the "description" if it refers
+#   to a connection.
 # 2009-07-29
 # o ROBUSTNESS: Added sanity check to readCacheHeader() testing that the
 #   read header identifier is non-empty.

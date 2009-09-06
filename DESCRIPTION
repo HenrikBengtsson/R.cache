@@ -1,6 +1,6 @@
 Package: R.cache
 Version: 0.1.8
-Date: 2009-07-29
+Date: 2009-08-11
 Title: Fast and light-weight caching of objects
 Author: Henrik Bengtsson <henrikb@braju.com>
 Maintainer: Henrik Bengtsson <henrikb@braju.com>

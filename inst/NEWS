@@ -2,10 +2,13 @@
 Package: R.cache
 ===============
 
-Version: 0.1.8 [2009-07-29]
+Version: 0.1.8 [2009-08-11]
 o ROBUSTNESS: Added sanity check to readCacheHeader() testing 
   that the read header identifier is non-empty.  This results
   in a clearer error message that before.
+o Now readCacheHeader() reports the "pathname" in error/warnings
+  messages, if argument 'file' refers to a file and the 
+  "description" if it refers to a connection.
 o CLEAN UP: Renamed the HISTORY file to NEWS.
 
 
