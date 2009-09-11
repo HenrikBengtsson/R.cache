@@ -27,6 +27,8 @@
 #   \item{dirs}{A @character @vector constituting the path to the
 #      cache subdirectory to be used. If @NULL, the root path is used.}
 #   \item{...}{Additional argument passed to @see "base::load".}
+#   \item{onError}{A @character string specifying what the action is
+#      if an exception is thrown.}
 # }
 #
 # \value{
@@ -57,7 +59,7 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ...) {
+setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error")) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Load functions
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -75,6 +77,10 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
       .Internal(loadFromConn(con, envir));
     }
   }
+
+
+  # Argument 'onError':
+  onError <- match.arg(onError);
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find cached file
@@ -147,7 +153,13 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     # 6. Return cached object
     return(object);
   }, error = function(ex) {
-     print(ex);
+     if (onError == "print") {
+       print(ex);
+     } else if (onError == "warning") {
+       warning(ex);
+     } else if (onError == "error") {
+       stop(ex);
+     }
   })
 
   NULL;
@@ -156,6 +168,13 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
 ############################################################################
 # HISTORY:
+# 2009-09-11
+# o Added argument 'onError' to loadCache(), to specify the action when 
+#   an error occurs.  The default used to be to print the error message
+#   (onError="print"), but now the default is to generate a warning
+#   ("warning").  The other alternatives are do silently ignore it, or
+#   to throw the error ("error").  Except for onError="error", loadCache()
+#   always returns NULL if an error occurs.
 # 2008-02-27
 # o Added option to updated the "last-modified" timestamp of cache files
 #   whenever they are loaded via loadCache().

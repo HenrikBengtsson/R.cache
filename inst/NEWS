@@ -2,6 +2,15 @@
 Package: R.cache
 ===============
 
+Version: 0.1.9 [2009-09-11]
+o Added argument 'onError' to loadCache(), to specify the action when 
+  an error occurs.  The default used to be to print the error message
+  (onError="print"), but now the default is to generate a warning
+  ("warning").  The other alternatives are do silently ignore it, or
+  to throw the error ("error").  Except for onError="error", loadCache()
+  always returns NULL if an error occurs.
+
+
 Version: 0.1.8 [2009-08-11]
 o ROBUSTNESS: Added sanity check to readCacheHeader() testing 
   that the read header identifier is non-empty.  This results

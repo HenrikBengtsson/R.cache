@@ -16,7 +16,7 @@
  Loads data from file cache, which is unique for an optional key object.
 }
 
-\usage{\method{loadCache}{default}(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ...)}
+\usage{\method{loadCache}{default}(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error"))}
 
 \arguments{
   \item{key}{An optional object from which a hexadecimal hash
@@ -36,6 +36,8 @@
   \item{dirs}{A \code{\link[base]{character}} \code{\link[base]{vector}} constituting the path to the
      cache subdirectory to be used. If \code{\link[base]{NULL}}, the root path is used.}
   \item{...}{Additional argument passed to \code{\link[base]{load}}().}
+  \item{onError}{A \code{\link[base]{character}} string specifying what the action is
+     if an exception is thrown.}
 }
 
 \value{
