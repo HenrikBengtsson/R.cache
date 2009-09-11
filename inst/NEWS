@@ -44,7 +44,7 @@ o Now saveCache() and loadCache() takes optional argument 'dirs' for
 o Added setCacheRootPath() to set the root cache directory.
 
 
-Version: 0.1.2 [2005-05-25]
+Version: 0.1.2 [2006-05-25]
 o Added argument 'pathname' to loadCache() in order to load
   "unknown" cache files for which the key is unknown.
 o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
@@ -54,7 +54,7 @@ o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
   for explaining what was going on.
 
 
-Version: 0.1.1 [2005-05-22]
+Version: 0.1.1 [2006-05-22]
 o Added header comment for file format > v0.1.
 o Added detection of file format version.
 o Added readCacheHeader().
