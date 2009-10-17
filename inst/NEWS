@@ -2,6 +2,11 @@
 Package: R.cache
 ===============
 
+Version: 0.2.0 [2009-10-16]
+o BUG FIX: In R v2.10.0 and newer, we would get an error reporting that
+  internal function loadFromConn() does not exists.
+
+
 Version: 0.1.9 [2009-09-11]
 o Added argument 'onError' to loadCache(), to specify the action when 
   an error occurs.  The default used to be to print the error message

@@ -61,26 +61,11 @@
 #*/#########################################################################
 setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error")) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Load functions
+  # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Same a base::load(), but it does not open a gzcon() connection, which
-  # cause problem because that reset file connections to position zero.
-  baseLoad <- function(con, envir=parent.frame()) {
-    magic <- readChar(con, 5);
-    if (regexpr("RD[AX]2\n", magic) == -1) {
-      if (regexpr("RD[ABX][12]\r", magic) == 1) {
-        stop("input has been corrupted, with LF replaced by CR");
-      } else {
-        stop("the input does not start with a magic number compatible with loading from a connection");
-      }
-    } else {
-      .Internal(loadFromConn(con, envir));
-    }
-  }
-
-
   # Argument 'onError':
   onError <- match.arg(onError);
+
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find cached file
@@ -137,7 +122,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
     # 4. Load cached object:
     object <- NULL;  # To please 'codetools' in R v2.6.0
-    vars <- baseLoad(con=fh, ...);  # 'vars' holds names of loaded objects
+    vars <- .baseLoad(con=fh, ...);  # 'vars' holds names of loaded objects
     if (!identical(vars, "object")) {
       throw("Rcache file format error ('", pathname, 
             "'). Expected 'object' object: ", paste(vars, collapse=", "));
@@ -168,6 +153,8 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
 ############################################################################
 # HISTORY:
+# 2009-10-16
+# o Now calling an internal .baseLoad() function of the package.
 # 2009-09-11
 # o Added argument 'onError' to loadCache(), to specify the action when 
 #   an error occurs.  The default used to be to print the error message

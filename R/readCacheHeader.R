@@ -35,24 +35,6 @@
 #*/######################################################################### 
 setMethodS3("readCacheHeader", "default", function(file, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Load functions
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Same a base::load(), but it does not open a gzcon() connection, which
-  # cause problem because that reset file connections to position zero.
-  baseLoad <- function(con, envir=parent.frame()) {
-    magic <- readChar(con, 5);
-    if (regexpr("RD[AX]2\n", magic) == -1) {
-      if (regexpr("RD[ABX][12]\r", magic) == 1) {
-        stop("input has been corrupted, with LF replaced by CR");
-      } else {
-        stop("the input does not start with a magic number compatible with loading from a connection");
-      }
-    } else {
-      .Internal(loadFromConn(con, envir));
-    }
-  }
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'file':
@@ -105,7 +87,7 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
   # 3. Load sources:
   sources <- NULL;  # To please 'codetools' in R v2.6.0
-  vars <- baseLoad(con=file, ...);
+  vars <- .baseLoad(con=file, ...);
   if (!identical(vars, "sources")) {
     throw("Rcache file format error ('", pathname, 
           "'). Expected 'sources' object: ", paste(vars, collapse=", "));
@@ -113,7 +95,7 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
   header$sources <- sources;
 
   # 4. Load timestamp:
-  vars <- baseLoad(con=file, ...);
+  vars <- .baseLoad(con=file, ...);
   if (!identical(vars, "timestamp")) {
     throw("Rcache file format error ('", pathname, 
           "'). Expected 'timestamp' object: ", paste(vars, collapse=", "));
@@ -126,6 +108,8 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
 ############################################################################
 # HISTORY:
+# 2009-10-16
+# o Now calling an internal .baseLoad() function of the package.
 # 2009-08-11
 # o Now readCacheHeader() reports the "pathname" in error/warnings messages,
 #   if argument 'file' refers to a file and the "description" if it refers
