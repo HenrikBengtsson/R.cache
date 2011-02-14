@@ -2,6 +2,10 @@
 Package: R.cache
 ===============
 
+Version: 0.4.0 [2011-02-14]
+o Added trial versions of memoizedCall() and addMemoization().
+
+
 Version: 0.3.0 [2010-03-13]
 o Added a NAMESPACE.
 
