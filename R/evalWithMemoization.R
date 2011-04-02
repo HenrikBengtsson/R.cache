@@ -58,8 +58,12 @@ evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force
   env <- new.env(parent=envir);
   res <- eval(expr, envir=env);
 
-  # Attach all objects memoized during the evaluation
-  attachLocally(env, envir=envir);
+  # NOTE: For some unknown reason does attachLocally() set 
+  # the fields inside 'env' to NULL.  /HB 2011-04-02
+  fields <- ls(envir=env, all.names=TRUE);
+  for (field in fields) {
+    assign(field, get(field, envir=env), envir=envir);
+  }
 
   # Cache results
   resList <- list(envir=env, results=res);

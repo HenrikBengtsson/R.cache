@@ -2,11 +2,15 @@
 Package: R.cache
 ===============
 
-Version: 0.4.1 [2011-04-01]
+Version: 0.4.1 [2011-04-02]
 o Now generateCache() utilizes a generic function getChecksum()
   to obtain the checksum.  This makes it possible to customize
   how checksums are calculated for different classes of objects.
+o Added a default getChecksum() which utilizes digest::digest().
+o Added getChecksum() for the Object, which first clears the
+  cache of the object and the calls the default ditto.
 o Added trial version of evalWithMemoization().
+o BUG FIX: clearCache() would also report on subdirectories.
 
 
 Version: 0.4.0 [2011-02-14]

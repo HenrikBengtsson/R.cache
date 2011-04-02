@@ -14,7 +14,7 @@
 # @synopsis
 #
 # \arguments{
-#   \item{key}{The object for which a checksum should be calculated.}
+#   \item{object}{The object for which a checksum should be calculated.}
 #   \item{...}{Not used.}
 # }
 #
@@ -46,11 +46,9 @@
 # @keyword "IO"
 # @keyword "internal"
 #*/######################################################################### 
-setMethodS3("getChecksum", "default", function(key, ...) {
-  # Using key object requires the CRAN package 'digest'.
+setMethodS3("getChecksum", "default", function(object, ...) {
   require(digest) || throw("Package not loaded: digest");
-
-  digest::digest(key);
+  digest::digest(object);
 })
 
 

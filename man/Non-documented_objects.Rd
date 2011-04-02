@@ -15,6 +15,9 @@
 \alias{clearCache}
 \alias{clearCache.default}
 
+% Class Object
+\alias{getChecksum.Object}
+
 \description{
   This page contains aliases for all "non-documented" objects that
   \code{R CMD check} detects in this package.

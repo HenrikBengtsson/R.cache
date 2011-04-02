@@ -20,10 +20,10 @@
  have the same checksum.
 }
 
-\usage{\method{getChecksum}{default}(key, ...)}
+\usage{\method{getChecksum}{default}(object, ...)}
 
 \arguments{
-  \item{key}{The object for which a checksum should be calculated.}
+  \item{object}{The object for which a checksum should be calculated.}
   \item{...}{Not used.}
 }
 
