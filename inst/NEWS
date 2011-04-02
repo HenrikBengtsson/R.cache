@@ -3,6 +3,9 @@ Package: R.cache
 ===============
 
 Version: 0.4.1 [2011-04-01]
+o Now generateCache() utilizes a generic function getChecksum()
+  to obtain the checksum.  This makes it possible to customize
+  how checksums are calculated for different classes of objects.
 o Added trial version of evalWithMemoization().
 
 
