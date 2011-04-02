@@ -2,6 +2,10 @@
 Package: R.cache
 ===============
 
+Version: 0.4.1 [2011-04-01]
+o Added trial version of evalWithMemoization().
+
+
 Version: 0.4.0 [2011-02-14]
 o Added trial versions of memoizedCall() and addMemoization().
 
