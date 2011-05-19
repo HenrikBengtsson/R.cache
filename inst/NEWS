@@ -2,6 +2,12 @@
 Package: R.cache
 ===============
 
+Version: 0.4.2 [2011-05-19]
+o Added a help page to clearCache().
+o Now argument 'prompt' for clearCache() defaults to TRUE
+  iff interactive() is TRUE, otherwise FALSE.
+
+
 Version: 0.4.1 [2011-04-02]
 o Now generateCache() utilizes a generic function getChecksum()
   to obtain the checksum.  This makes it possible to customize

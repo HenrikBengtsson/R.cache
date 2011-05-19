@@ -46,6 +46,12 @@ for (kk in 1:5) {
     b
   })
   print(res)
+
+  # Sanity checks
+  stopifnot(a == 1 && b == 2 && c == 4)
+
+  # Clean up
+  rm(a, b, c)
 } # for (kk ...)
 
 
@@ -80,6 +86,12 @@ for (ii in 1:2) {
       a
     }, key=list(kk=kk))
     print(res)
+
+    # Sanity checks
+    stopifnot(a == kk)
+
+    # Clean up
+    rm(a)
   } # for (kk ...)
 } # for (ii ...)
 

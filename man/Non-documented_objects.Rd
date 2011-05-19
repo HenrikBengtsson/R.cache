@@ -12,8 +12,6 @@
 
 
 % File cache
-\alias{clearCache}
-\alias{clearCache.default}
 
 % Class Object
 \alias{getChecksum.Object}
