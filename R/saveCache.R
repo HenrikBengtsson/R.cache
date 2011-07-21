@@ -20,7 +20,9 @@
 #   \item{comment}{An optional @character string written in ASCII at the
 #     beginning of the file.}
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory to be used. If @NULL, the root path is used.}
+#      cache subdirectory (of the \emph{cache root directory} 
+#      as returned by @see "getCacheRootPath") to be used. 
+#      If @NULL, the path will be the cache root path.}
 #   \item{...}{Additional argument passed to @see "base::save".}
 # }
 #

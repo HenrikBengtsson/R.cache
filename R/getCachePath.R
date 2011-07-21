@@ -11,8 +11,9 @@
 #
 # \arguments{
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory to be used.  If @NULL, the root path
-#      is used.}
+#      cache subdirectory (of the \emph{cache root directory} 
+#      as returned by @see "getCacheRootPath") to be used. 
+#      If @NULL, the path will be the cache root path.}
 #   \item{...}{Not used.}
 # }
 #
@@ -36,7 +37,7 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
   name <- paste("R.cache:cachePath", subname, sep=":");
   path <- getOption(name);
 
-  # If not, use root path
+  # If not, use cache root path
   if (is.null(path)) {
     rootPath <- getCacheRootPath();
     path <- paste(c(rootPath, dirs), collapse=.Platform$file.sep);

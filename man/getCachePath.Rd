@@ -20,8 +20,9 @@
 
 \arguments{
   \item{dirs}{A \code{\link[base]{character}} \code{\link[base]{vector}} constituting the path to the
-     cache subdirectory to be used.  If \code{\link[base]{NULL}}, the root path
-     is used.}
+     cache subdirectory (of the \emph{cache root directory}
+     as returned by \code{\link{getCacheRootPath}}()) to be used.
+     If \code{\link[base]{NULL}}, the path will be the cache root path.}
   \item{...}{Not used.}
 }
 

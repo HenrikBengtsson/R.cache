@@ -25,7 +25,9 @@
 #     the key is unknown, for instance, in order to investigate
 #     an unknown cache file.}
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory to be used. If @NULL, the root path is used.}
+#      cache subdirectory (of the \emph{cache root directory} 
+#      as returned by @see "getCacheRootPath") to be used. 
+#      If @NULL, the path will be the cache root path.}
 #   \item{...}{Additional argument passed to @see "base::load".}
 #   \item{onError}{A @character string specifying what the action is
 #      if an exception is thrown.}

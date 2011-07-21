@@ -2,6 +2,11 @@
 Package: R.cache
 ===============
 
+Version: 0.4.3 [2011-07-21]
+o DOCUMENTATION: Clarified how argument 'dirs' (in methods using it)
+  specifies the subdirectory of the cache root directory.
+
+
 Version: 0.4.2 [2011-05-19]
 o Added a help page to clearCache().
 o Now argument 'prompt' for clearCache() defaults to TRUE
