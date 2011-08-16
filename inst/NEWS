@@ -6,6 +6,7 @@ Version: 0.5.0 [2011-08-16]
 o Added support for saving and loaded compressed cache files.
 o ROBUSTNESS: Now findCache() asserts that any identified cache 
   file is really a file.
+o CLEANUP: Now package uses packageStartupMessage() instead of cat().
 
 
 Version: 0.4.3 [2011-07-21]
