@@ -83,7 +83,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
   if (!isFile(pathname))
     return(NULL);
 
-  fh <- file(pathname, open="rb");
+  fh <- gzfile(pathname, open="rb");
   on.exit({
     if (!is.null(fh))
       close(fh);
@@ -155,6 +155,8 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
 ############################################################################
 # HISTORY:
+# 2011-08-16
+# o Added support for loading gzip compressed cache files.
 # 2009-10-16
 # o Now calling an internal .baseLoad() function of the package.
 # 2009-09-11

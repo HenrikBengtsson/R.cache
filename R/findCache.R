@@ -37,15 +37,25 @@ setMethodS3("findCache", "default", function(key=NULL, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   pathname <- generateCache(key=key, ...);
 
-  if (!file.exists(pathname))
-    return(NULL);
+  if (file.exists(pathname) && !file.info(pathname)$isdir) {
+    return(pathname);
+  }
 
-  return(pathname);
+  pathnameT <- sprintf("%s.gz", pathname);
+  if (file.exists(pathnameT) && !file.info(pathnameT)$isdir) {
+    return(pathnameT);
+  }
+
+  return(NULL);
 })
 
 
 ############################################################################
 # HISTORY:
+# 2011-08-16
+# o ROBUSTNESS: Now findCache() asserts that any identified cache 
+#   file is really a file.
+# o Now findCache() detects also *.gz files.
 # 2007-01-24
 # o Added Rdoc comments.
 # o Removed non-used argument 'commentPattern'.

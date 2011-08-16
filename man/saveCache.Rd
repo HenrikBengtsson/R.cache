@@ -16,7 +16,7 @@
  Saves data to file cache, which is unique for an optional key object.
 }
 
-\usage{\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, ...)}
+\usage{\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...)}
 
 \arguments{
   \item{object}{The object to be saved to file.}
@@ -32,6 +32,8 @@
      cache subdirectory (of the \emph{cache root directory}
      as returned by \code{\link{getCacheRootPath}}()) to be used.
      If \code{\link[base]{NULL}}, the path will be the cache root path.}
+  \item{compress}{If \code{\link[base:logical]{TRUE}}, the cache file will be saved using
+     gzip compression, otherwise not.}
   \item{...}{Additional argument passed to \code{\link[base]{save}}().}
 }
 
@@ -43,6 +45,13 @@
  To make use of the \code{key} argument, the \emph{digest} package
  (available on CRAN) must be installed, otherwise an error is generated.
  That package is not required when \code{key==NULL}.
+}
+
+\section{Compression}{
+ The \code{saveCache()} method saves a compressed cache file
+ (with filename extension *.gz) if argument \code{compress} is \code{\link[base:logical]{TRUE}}.
+ The \code{\link{loadCache}}() method locates (via \code{\link{findCache}}()) and
+ loads such cache files as well.
 }
 
 \author{Henrik Bengtsson (\url{http://www.braju.com/R/})}

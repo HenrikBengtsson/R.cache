@@ -23,6 +23,8 @@
 #      cache subdirectory (of the \emph{cache root directory} 
 #      as returned by @see "getCacheRootPath") to be used. 
 #      If @NULL, the path will be the cache root path.}
+#   \item{compress}{If @TRUE, the cache file will be saved using
+#      gzip compression, otherwise not.}
 #   \item{...}{Additional argument passed to @see "base::save".}
 # }
 #
@@ -36,6 +38,13 @@
 #  That package is not required when \code{key==NULL}.
 # }
 #
+# \section{Compression}{
+#  The \code{saveCache()} method saves a compressed cache file
+#  (with filename extension *.gz) if argument \code{compress} is @TRUE.
+#  The @see "loadCache" method locates (via @see "findCache") and 
+#  loads such cache files as well.
+# }
+#
 # @author
 #
 # \examples{\dontrun{For an example, see ?loadCache}}
@@ -47,19 +56,25 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/######################################################################### 
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, ...) {
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...) {
+  # Argument 'compress':
+  if (is.null(compress)) compress <- FALSE;
+
+ 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Generate cache name from basename and hash object.
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   pathname <- generateCache(key=key, suffix=suffix, dirs=dirs);
 
-  # Compression is not possible!  See loadCache().
-  compress <- FALSE;
-
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Save to file connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  fh <- file(pathname, open="wb");
+  if (compress) {
+    pathname <- sprintf("%s.gz", pathname);
+    fh <- gzfile(pathname, open="wb");
+  } else {
+    fh <- file(pathname, open="wb");
+  }
   on.exit(close(fh));
 
   # Save 'identifier'
@@ -92,8 +107,11 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   invisible(pathname);
 })
 
+
 ############################################################################
 # HISTORY:
+# 2011-08-16
+# o Added support for gzip compressed cache files.
 # 2007-01-24
 # o Now saveCache() returns the pathname to the cache file.
 # 2006-05-25

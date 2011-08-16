@@ -45,7 +45,7 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
     if (!isFile(pathname))
       throw("Argument 'file' is not an existing file: ", pathname);
 
-    file <- file(pathname, open="rb");
+    file <- gzfile(pathname, open="rb");
     on.exit({
       if (!is.null(file))
         close(file);
@@ -108,6 +108,8 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
 ############################################################################
 # HISTORY:
+# 2011-08-16
+# o Added support for reading gzip compressed cache files.
 # 2009-10-16
 # o Now calling an internal .baseLoad() function of the package.
 # 2009-08-11
