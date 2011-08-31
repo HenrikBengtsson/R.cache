@@ -2,18 +2,26 @@
 # position zero.  This occurs in base::load() because a gzcon() 
 # connection is opened and that automatically resets the position.
 .baseLoad <- function(con, envir=parent.frame()) {
-  magic <- readChar(con, 5, useBytes=TRUE);
-  if (regexpr("RD[AX]2\n", magic) == -1) {
-    if (regexpr("RD[ABX][12]\r", magic) == 1) {
-      stop("input has been corrupted, with LF replaced by CR");
-    } else {
-      stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", basename(file), gsub("[\n\r]*", "", magic)));
+  # After adding support to R.cache for compressed files, all connection
+  # are now 'gzfile' connections.  However, in R v2.12.x and before, 
+  # seek() is not supported for 'gzfile' connection, which is needed
+  # for the below validation.  Because of this, we skip the validation
+  # in R v2.12.2 and before and rely on the internal loadFromConn2()
+  # to do the same validation, but with a less informative error message.
+  if (compareVersion(as.character(getRversion()), "2.13.0") >= 0) {
+    magic <- readChar(con, 5, useBytes=TRUE);
+    if (regexpr("RD[AX]2\n", magic) == -1) {
+      if (regexpr("RD[ABX][12]\r", magic) == 1) {
+        stop("input has been corrupted, with LF replaced by CR");
+      } else {
+        stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", basename(file), gsub("[\n\r]*", "", magic)));
+      }
     }
+  
+    # Move back 5 bytes, because loadFromConn2() will validate the
+    # magic string once more.
+    seek(con, origin="current", where=-5);
   }
-
-  # Move back 5 bytes, because loadFromConn2() will validate the
-  # magic string once more.
-  seek(con, origin="current", where=-5);
 
   .Internal(loadFromConn2(con, envir));
 } # .baseLoad()
@@ -21,6 +29,12 @@
 
 ############################################################################
 # HISTORY:
+# 2011-08-31
+# o BUG FIX (for R v2.12.2 and before): After adding support for 
+#   compressed files in R.cache v0.5.0, we would get the 'Error in
+#   seek.connection(con, origin = "current", where = -5) : whence = "end"
+#   is not implemented for gzfile connections' in readCacheHeader()
+#   iff running R v2.12.2 or before.
 # 2009-10-16
 # o BUG FIX: In R v2.10.0 and newer, we would get an error reporting that
 #   internal function loadFromConn() does not exists.  That function was

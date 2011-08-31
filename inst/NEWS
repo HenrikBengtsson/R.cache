@@ -2,6 +2,15 @@
 Package: R.cache
 ===============
 
+Version: 0.5.1 [2011-08-31]
+o BUG FIX (for R v2.12.2 and before): After adding support for 
+  compressed files in R.cache v0.5.0, we would get the 'Error in
+  seek.connection(con, origin = "current", where = -5) : whence = "end"
+  is not implemented for gzfile connections' in readCacheHeader()
+  iff running R v2.12.2 or before.  Thanks to Uwe Ligges (R core)
+  for reporting on this.
+
+
 Version: 0.5.0 [2011-08-16]
 o Added support for saving and loaded compressed cache files.
 o ROBUSTNESS: Now findCache() asserts that any identified cache 
