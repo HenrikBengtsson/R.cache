@@ -8,7 +8,7 @@
   # for the below validation.  Because of this, we skip the validation
   # in R v2.13.0 and before and rely on the internal loadFromConn2()
   # to do the same validation, but with a less informative error message.
-  if (compareVersion(as.character(getRversion()), "2.13.1") >= 0) {
+  if (getRversion() >= "2.13.1") {
     magic <- readChar(con, 5, useBytes=TRUE);
     if (regexpr("RD[AX]2\n", magic) == -1) {
       if (regexpr("RD[ABX][12]\r", magic) == 1) {
