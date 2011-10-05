@@ -2,6 +2,11 @@
 Package: R.cache
 ===============
 
+Version: 0.5.2 [2011-10-05]
+o BUG FIX (for R v2.13.0 only): Applying the same fix that was done
+  for R v2.12.2 and before in R.cache v0.5.1.
+
+
 Version: 0.5.1 [2011-08-31]
 o BUG FIX (for R v2.12.2 and before): After adding support for 
   compressed files in R.cache v0.5.0, we would get the 'Error in

@@ -3,12 +3,12 @@
 # connection is opened and that automatically resets the position.
 .baseLoad <- function(con, envir=parent.frame()) {
   # After adding support to R.cache for compressed files, all connection
-  # are now 'gzfile' connections.  However, in R v2.12.x and before, 
+  # are now 'gzfile' connections.  However, in R v2.13.0 and before, 
   # seek() is not supported for 'gzfile' connection, which is needed
   # for the below validation.  Because of this, we skip the validation
-  # in R v2.12.2 and before and rely on the internal loadFromConn2()
+  # in R v2.13.0 and before and rely on the internal loadFromConn2()
   # to do the same validation, but with a less informative error message.
-  if (compareVersion(as.character(getRversion()), "2.13.0") >= 0) {
+  if (compareVersion(as.character(getRversion()), "2.13.1") >= 0) {
     magic <- readChar(con, 5, useBytes=TRUE);
     if (regexpr("RD[AX]2\n", magic) == -1) {
       if (regexpr("RD[ABX][12]\r", magic) == 1) {
@@ -29,6 +29,8 @@
 
 ############################################################################
 # HISTORY:
+# 2011-10-05
+# o BUG FIX: Same bug fix as on 2011-08-31 but now also for R v2.13.0.
 # 2011-08-31
 # o BUG FIX (for R v2.12.2 and before): After adding support for 
 #   compressed files in R.cache v0.5.0, we would get the 'Error in
