@@ -5,6 +5,7 @@
 #
 # \description{
 #  @get "title".
+#  By default, this function will set it to \code{~/.Rcache/}.
 # }
 #
 # @synopsis
