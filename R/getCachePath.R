@@ -49,18 +49,31 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
   # Create missing directory?
   if (!isDirectory(path)) {
     mkdirs(path);
-    if (!isDirectory(path))
+    if (!isDirectory(path)) {
       throw("Could not create cache directory: ", path);
+    }
+
+    # Add a README.txt to cache root (expaining what the directory is)
+    filename <- "README.txt";
+    pathnameD <- file.path(rootPath, filename);
+    if (!isFile(pathnameD)) {
+      pathnameS <- system.file(".Rcache", filename, package="R.cache");
+      file.copy(pathnameS, pathnameD);
+    }
   }
 
   path;
-})
+}) # getCachePath()
 
 
 
 
 ############################################################################
 # HISTORY:
+# 2011-12-29
+# o Now getCachePath() adds a README.txt file to the root path, iff
+#   missing. It explains why the directory structure exists and what
+#   created it.
 # 2007-01-24
 # o Created.
 ############################################################################

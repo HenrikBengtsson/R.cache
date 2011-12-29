@@ -2,6 +2,12 @@
 Package: R.cache
 ===============
 
+Version: 0.5.3 [2011-12-29]
+o Now getCachePath() and setCacheRootPath() add a README.txt file to
+  the root path, iff missing. It explains why the directory structure
+  exists, what created it, and that it is safe to delete.
+
+
 Version: 0.5.2 [2011-10-05]
 o BUG FIX (for R v2.13.0 only): Applying the same fix that was done
   for R v2.12.2 and before in R.cache v0.5.1.
