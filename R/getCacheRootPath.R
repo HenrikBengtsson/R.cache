@@ -19,6 +19,10 @@
 #   Returns the path as a @character string.
 # }
 #
+# \examples{
+#   print(getCacheRootPath())
+# }
+#
 # @author
 #
 # \seealso{
@@ -63,6 +67,8 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
 
 ############################################################################
 # HISTORY:
+# 2011-12-30
+# o Add example(getCacheRootPath).
 # 2007-03-07
 # o Made the root path settings internal.  Use setCacheRootPath() instead.
 # 2007-01-24

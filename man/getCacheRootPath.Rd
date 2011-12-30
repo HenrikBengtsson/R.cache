@@ -28,6 +28,10 @@
   Returns the path as a \code{\link[base]{character}} string.
 }
 
+\examples{
+  print(getCacheRootPath())
+}
+
 \author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
 
 \seealso{

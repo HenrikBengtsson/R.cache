@@ -1,5 +1,5 @@
 Package: R.cache
-Version: 0.5.4
+Version: 0.6.0
 Date: 2011-12-30
 Title: Fast and light-weight caching (memoization) of objects
 Author: Henrik Bengtsson <henrikb@braju.com>

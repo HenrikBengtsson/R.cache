@@ -2,7 +2,7 @@
 Package: R.cache
 ===============
 
-Version: 0.5.4 [2011-12-30]
+Version: 0.6.0 [2011-12-30]
 o As before, the cache root path defaults to ~/.Rcache/. However,
   if it does not exists, then it is created when the package is loaded,
   after approval from the user (via a textual prompt). If not, or not 
