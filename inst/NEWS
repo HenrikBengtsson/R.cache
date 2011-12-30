@@ -5,9 +5,9 @@ Package: R.cache
 Version: 0.6.0 [2011-12-30]
 o As before, the cache root path defaults to ~/.Rcache/. However,
   if it does not exists, then it is created when the package is loaded,
-  after approval from the user (via a textual prompt). If not, or not 
-  not possible to prompt the user, then a session-specific temporary
-  directory is used.
+  but only after approval by the user (via a textual prompt). If not
+  approved, or it is not possible to prompt the user, then a 
+  session-specific temporary directory is used.
 
 
 Version: 0.5.3 [2011-12-29]
