@@ -39,19 +39,23 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
       path <- getOption("R.cache.path");
   
     # Check for system environment settings
-    if (is.null(path))
+    if (is.null(path)) {
       path <- Sys.getenv("R_CACHE_PATH");
+    }
 
-    if (nchar(path) == 0)
+    if (nchar(path) == 0) {
       path <- NULL;
+    }
 
-    if (!is.null(path))
+    if (!is.null(path)) {
       warning("Use setCacheRootPath() to set the cache path in R.cache.");
+    }
   }
 
   # Otherwise, use argument 'path'.
-  if (is.null(path))
+  if (is.null(path)) {
     path <- defaultPath;
+  }
 
   path;
 })

@@ -11,6 +11,9 @@
   packageStartupMessage(getName(pkg), " v", getVersion(pkg), 
       " (", getDate(pkg), ")", " successfully loaded. See ?", 
       pkgname, " for help.\n", sep="");
+
+  # Setup the cache root path, possibly by prompting the user.
+  setupCacheRootPath();
 }
 
 

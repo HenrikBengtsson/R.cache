@@ -16,6 +16,9 @@
 % Class Object
 \alias{getChecksum.Object}
 
+% Misc.
+\alias{.textPrompt}
+
 \description{
   This page contains aliases for all "non-documented" objects that
   \code{R CMD check} detects in this package.
