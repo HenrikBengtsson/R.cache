@@ -30,7 +30,7 @@
 
 \details{
   If the cache root path is already set, it is used and nothing is done.
-  If the "default" root path (\code{defaultPath} exists, it is used,
+  If the "default" root path (\code{defaultPath}) exists, it is used,
   otherwise, if running interactively, the user is asked to approve
   the usage (and creation) of the default root path.
   In all other cases, the cache root path is set to a session-specific
