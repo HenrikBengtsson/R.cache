@@ -1,6 +1,6 @@
 
 Package: R.cache
-===============
+================
 
 Version: 0.6.1 [2012-01-22]
 o Updated the README that is copied to the .Rcache directory.
