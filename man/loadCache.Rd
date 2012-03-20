@@ -91,7 +91,6 @@ file.remove(findCache(key=list(2.3,3.5)))
 
 \seealso{
  \code{\link{saveCache}}().
- The \code{\link[Biobase]{cache}} method in Bioconductor.
 }
 
 

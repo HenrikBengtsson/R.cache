@@ -55,7 +55,6 @@
 #
 # \seealso{
 #  @see "saveCache".
-#  The @see "Biobase::cache" method in Bioconductor.
 # }
 #
 # @keyword "programming"

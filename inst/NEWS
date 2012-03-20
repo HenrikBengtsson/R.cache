@@ -2,6 +2,10 @@
 Package: R.cache
 ================
 
+Version: 0.6.2 [2012-03-20]
+o CRAN POLICY: Dropped an explicit call to an .Internal() function.
+
+
 Version: 0.6.1 [2012-01-22]
 o Updated the README that is copied to the .Rcache directory.
 o Updated package dependencies.
