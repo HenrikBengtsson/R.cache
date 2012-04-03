@@ -41,7 +41,7 @@
   connection to \code{\link[base]{load}}() it gets coerced via \code{\link[base]{gzcon}}(),
   which is the function that resets the file position.
 
-  The workaround is to creat a local copy of \code{base::stop()} and
+  The workaround is to creat a local copy of \code{base::load()} and
   modify it by dropping the \code{gzcon()} coersion.  This is possible
   because this function, that is \code{.baseLoad()}, is always called
   with a \code{gzfile()} \code{\link[base:connections]{connection}}.
