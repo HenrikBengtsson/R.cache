@@ -21,8 +21,6 @@
   The Application Programming Interface (API) of the classes and methods
   in this package may change.  Classes and methods are considered either
   to be stable, or to be in beta or alpha (pre-beta) stage.
-
-  For package history, see \code{showHistory(R.cache)}.
 }
 
 \section{Requirements}{
