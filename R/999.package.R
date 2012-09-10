@@ -3,11 +3,6 @@
 #
 # \description{
 #   @eval "getDescription(R.cache)"
-#
-#   \emph{Warning}: 
-#   The Application Programming Interface (API) of the classes and methods
-#   in this package may change.  Classes and methods are considered either 
-#   to be stable, or to be in beta or alpha (pre-beta) stage.
 # }
 #
 # \section{Requirements}{
@@ -17,7 +12,8 @@
 # } 
 #
 # \section{Installation and updates}{
-#   To install this package, see \url{http://www.braju.com/R/}.
+#   To install this package, do:
+#   \code{install.packages("R.cache", dependencies=TRUE)}
 # } 
 #
 # \section{To get started}{

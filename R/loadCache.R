@@ -28,7 +28,7 @@
 #      cache subdirectory (of the \emph{cache root directory} 
 #      as returned by @see "getCacheRootPath") to be used. 
 #      If @NULL, the path will be the cache root path.}
-#   \item{...}{Additional argument passed to @see "base::load".}
+#   \item{...}{Not used.}
 #   \item{onError}{A @character string specifying what the action is
 #      if an exception is thrown.}
 # }
@@ -122,12 +122,9 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     }
 
     # 4. Load cached object:
-    object <- NULL;  # To please 'codetools' in R v2.6.0
-    vars <- .baseLoad(con=fh, ...);  # 'vars' holds names of loaded objects
-    if (!identical(vars, "object")) {
-      throw("Rcache file format error ('", pathname, 
-            "'). Expected 'object' object: ", paste(vars, collapse=", "));
-    }
+    res <- .baseLoad(con=fh, ...);
+    object <- res$object;
+    rm(res);
 
     # 5. Update the "last-modified" timestamp of the cache file?
     touch <- getOption("R.cache::touchOnLoad");
@@ -154,6 +151,8 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
 ############################################################################
 # HISTORY:
+# 2012-09-10
+# o Updated readCacheHeader() to utilize updated .baseLoad().
 # 2011-08-16
 # o Added support for loading gzip compressed cache files.
 # 2009-10-16

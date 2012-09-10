@@ -87,20 +87,12 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
   # 3. Load sources:
   sources <- NULL;  # To please 'codetools' in R v2.6.0
-  vars <- .baseLoad(con=file, ...);
-  if (!identical(vars, "sources")) {
-    throw("Rcache file format error ('", pathname, 
-          "'). Expected 'sources' object: ", paste(vars, collapse=", "));
-  }
-  header$sources <- sources;
+  res <- .baseLoad(con=file, ...);
+  header$sources <- res$sources;
 
   # 4. Load timestamp:
-  vars <- .baseLoad(con=file, ...);
-  if (!identical(vars, "timestamp")) {
-    throw("Rcache file format error ('", pathname, 
-          "'). Expected 'timestamp' object: ", paste(vars, collapse=", "));
-  }
-  header$timestamp <- timestamp;
+  res <- .baseLoad(con=file, ...);
+  header$timestamp <- res$timestamp;
 
   header;
 })
@@ -108,6 +100,8 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
 ############################################################################
 # HISTORY:
+# 2012-09-10
+# o Updated readCacheHeader() to utilize updated .baseLoad().
 # 2011-08-16
 # o Added support for reading gzip compressed cache files.
 # 2009-10-16

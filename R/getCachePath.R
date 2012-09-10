@@ -57,7 +57,7 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
     filename <- "README.txt";
     pathnameD <- file.path(rootPath, filename);
     if (!isFile(pathnameD)) {
-      pathnameS <- system.file(".Rcache", filename, package="R.cache");
+      pathnameS <- system.file("_Rcache", filename, package="R.cache");
       file.copy(pathnameS, pathnameD);
     }
   }
@@ -70,6 +70,9 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
 
 ############################################################################
 # HISTORY:
+# 2012-09-10
+# o Renamed the installed .Rcache/ directory to _Rcache/ to avoid
+#   R CMD check NOTEs.
 # 2011-12-29
 # o Now getCachePath() adds a README.txt file to the root path, iff
 #   missing. It explains why the directory structure exists and what

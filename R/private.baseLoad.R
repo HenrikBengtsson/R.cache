@@ -46,50 +46,31 @@
 #*/###########################################################################
 .baseLoad <- function(con, envir=parent.frame()) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Local functions
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  body <- deparse(base::load);
-  pattern <- "gzcon\\((.*)\\)";
-  idx <- grep(pattern, body, fixed=FALSE);
-  if (length(idx) != 1) {
-    throw("INTERNAL ERROR of .baseLoad(): Please contact the maintainer of R.cache.");
-  }
-  body[idx] <- gsub(pattern, "\\1", body[idx]);
-  modLoad <- eval(parse(text=body));
-
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Assert correctness of connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # After adding support to R.cache for compressed files, all connection
-  # are now 'gzfile' connections.  However, in R v2.13.0 and before, 
-  # seek() is not supported for 'gzfile' connection, which is needed
-  # for the below validation.  Because of this, we skip the validation
-  # in R v2.13.0 and before and rely on the internal loadFromConn2()
-  # to do the same validation, but with a less informative error message.
-  if (getRversion() >= "2.13.1") {
-    magic <- readChar(con, nchars=5, useBytes=TRUE);
-    if (regexpr("RD[AX]2\n", magic) == -1) {
-      if (regexpr("RD[ABX][12]\r", magic) == 1) {
-        stop("input has been corrupted, with LF replaced by CR");
-      } else {
-        stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", summary(file)$description, gsub("[\n\r]*", "", magic)));
-      }
+  magic <- readChar(con, nchars=5, useBytes=TRUE);
+  if (regexpr("RD[AX]2\n", magic) == -1) {
+    if (regexpr("RD[ABX][12]\r", magic) == 1) {
+      stop("input has been corrupted, with LF replaced by CR");
+    } else {
+      stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", summary(file)$description, gsub("[\n\r]*", "", magic)));
     }
-  
-    # Move back 5 bytes, because loadFromConn2() will validate the
-    # magic string once more.
-    seek(con, origin="current", where=-5);
   }
-
+  
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Load object from connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  modLoad(con, envir=envir);
+  res <- readRDS(con);
 } # .baseLoad()
+
 
 
 ############################################################################
 # HISTORY:
+# 2012-09-10
+# o CRAN POLICY: Updated internal .baseLoad() to utilize readRDS() instead
+#   of .Internal(loadFromConn2(...)) such that it still reads the same
+#   file format.
 # 2012-03-20
 # o Added an Rdoc comment explaining the .baseLoad() function.
 # o CRAN POLICY: Previously .baseLoad() called .Internal(loadFromConn2(...))

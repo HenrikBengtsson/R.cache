@@ -37,7 +37,7 @@
      cache subdirectory (of the \emph{cache root directory}
      as returned by \code{\link{getCacheRootPath}}()) to be used.
      If \code{\link[base]{NULL}}, the path will be the cache root path.}
-  \item{...}{Additional argument passed to \code{\link[base]{load}}().}
+  \item{...}{Not used.}
   \item{onError}{A \code{\link[base]{character}} string specifying what the action is
      if an exception is thrown.}
 }
