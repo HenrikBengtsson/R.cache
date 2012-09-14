@@ -2,7 +2,7 @@
 Package: R.cache
 ================
 
-Version: 0.6.3 [2012-09-10]
+Version: 0.6.3 [2012-09-12]
 o Renamed the installed .Rcache/ directory to _Rcache/ to avoid
   R CMD check NOTEs.
 o CRAN POLICY: Removed one last call to .Internal() for loading
