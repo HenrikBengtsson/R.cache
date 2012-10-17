@@ -1,3 +1,6 @@
+import("R.methodsS3")
+import("R.oo")
+
 # Export all public methods, that is, those without a preceeding dot
 # in their names.
 exportPattern("^[^\\.]")
