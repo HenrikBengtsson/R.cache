@@ -47,13 +47,15 @@
 # @keyword "internal"
 #*/######################################################################### 
 setMethodS3("getChecksum", "default", function(object, ...) {
-  require("digest") || throw("Package not loaded: digest");
   digest::digest(object);
 })
 
 
 ############################################################################
 # HISTORY:
+# 2012-11-17
+# o CLEANUP: Removed a require("digest") to avoid loaded the package,
+#   and instead call digest::digest().
 # 2011-04-01
 # o Created.
 ############################################################################

@@ -1,6 +1,4 @@
 .assertDigest <- function(onDiff=c("error", "warning", "message"), ...) {
-  require("digest") || throw("Package not loaded: digest");
-
   # Argument 'onDiff':
   onDiff <- match.arg(onDiff);
 
