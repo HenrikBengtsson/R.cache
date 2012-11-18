@@ -47,7 +47,7 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
       path <- Sys.getenv("R_CACHE_PATH");
     }
 
-    if (nchar(path) == 0) {
+    if (nchar(path) == 0L) {
       path <- NULL;
     }
 

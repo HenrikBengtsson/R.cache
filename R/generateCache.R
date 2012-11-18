@@ -41,7 +41,7 @@ setMethodS3("generateCache", "default", function(key=NULL, suffix=".Rcache", ...
   if (!is.null(key)) {
     if (!is.list(key) && !is.environment(key)) {
       throw("Argument 'key' must be a list, an environment or NULL: ", 
-                                                            class(key)[1]);
+                                                           class(key)[1L]);
     }
   }
 

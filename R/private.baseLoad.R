@@ -49,8 +49,8 @@
   # Assert correctness of connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   magic <- readChar(con, nchars=5, useBytes=TRUE);
-  if (regexpr("RD[AX]2\n", magic) == -1) {
-    if (regexpr("RD[ABX][12]\r", magic) == 1) {
+  if (regexpr("RD[AX]2\n", magic) == -1L) {
+    if (regexpr("RD[ABX][12]\r", magic) == 1L) {
       stop("input has been corrupted, with LF replaced by CR");
     } else {
       stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", summary(file)$description, gsub("[\n\r]*", "", magic)));

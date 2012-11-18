@@ -58,13 +58,13 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
   header <- list();
 
   # 1a. Load identifier:
-  id <- readChar(con=file, nchars=64);
-  if (length(id) == 0) {
+  id <- readChar(con=file, nchars=64L);
+  if (length(id) == 0L) {
     throw("Rcache file format error. Read empty header identifier: ", 
                                                                  pathname);
   }
   pattern <- "^Rcache v([0-9][0-9]*[.][0-9][0-9]*([.][0-9][0-9]*)*).*";
-  if (regexpr(pattern, id) == -1) {
+  if (regexpr(pattern, id) == -1L) {
     throw("Rcache file format error ('", pathname, 
                                            "'). Invalid identifier: ", id);
   }
@@ -77,13 +77,13 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
   dummy <- readBin(con=file, what=integer(), size=1, n=1);
 
   # 2a. Load comment
-  if (compareVersion(header$version, "0.1") > 0) {
-    nchars <- readBin(con=file, what=integer(), size=4, n=1);
+  if (compareVersion(header$version, "0.1") > 0L) {
+    nchars <- readBin(con=file, what=integer(), size=4L, n=1L);
     header$comment <- readChar(con=file, nchars=nchars);
   }
 
   # 2b. Read trailing '\0'.
-  dummy <- readBin(con=file, what=integer(), size=1, n=1);
+  dummy <- readBin(con=file, what=integer(), size=1L, n=1L);
 
   # 3. Load sources:
   sources <- NULL;  # To please 'codetools' in R v2.6.0

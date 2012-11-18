@@ -54,11 +54,11 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   files <- list.files(path=path, all.files=TRUE, full.names=TRUE);
   files <- files[-grep("[/]*[.][.]*$", files)];
-  if (length(files) > 0) {
+  if (length(files) > 0L) {
     files <- files[!file.info(files)$isdir];
   }
   nbrOfFiles <- length(files);
-  if (nbrOfFiles == 0) {
+  if (nbrOfFiles == 0L) {
     if (prompt)
       cat("Nothing to clear. Cache directory is empty: ", path, "\n", sep="");
     return(invisible(NULL));
@@ -92,7 +92,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (prompt) {
     cat("Cache cleared. ", sum(removed), " files removed.", sep="");
-    if (sum(!removed) > 0) {
+    if (sum(!removed) > 0L) {
       cat(" Failed to remove ", sum(!removed), " files.", sep="");
     }
     cat("\n", sep="");

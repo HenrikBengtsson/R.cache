@@ -9,7 +9,7 @@
   type <- match.arg(type);
 
   # Check if standard output is redirected.
-  hasSink <- (sink.number(type=type) > 0);
+  hasSink <- (sink.number(type=type) > 0L);
   if (hasSink) {
     if (onSink == "error") {
       throw("Cannot prompt user via the standard ", type, ", because it is currently redirected and (most likely) not visible to the user.");
