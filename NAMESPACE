@@ -1,27 +1,15 @@
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# IMPORTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 importFrom("R.methodsS3", "setMethodS3")
 importFrom("R.methodsS3", "throw")
 import("R.oo")
-
 import("R.utils")
 
-# Declare S3 methods
-S3method("addMemoization", "default")
-S3method("memoizedCall", "default")
-S3method("getCacheRootPath", "default")
-S3method("setCacheRootPath", "default")
-S3method("setupCacheRootPath", "default")
-S3method("getCachePath", "default")
-S3method("setCachePath", "default")
-S3method("getChecksum", "default")
-S3method("getChecksum", "Object")
-S3method("clearCache", "default")
-S3method("findCache", "default")
-S3method("generateCache", "default")
-S3method("loadCache", "default")
-S3method("saveCache", "default")
-S3method("readCacheHeader", "default")
 
-
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# EXPORTS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Export all public methods, that is, those without a preceeding dot
 # in their names.
 export("evalWithMemoization")
@@ -38,3 +26,23 @@ export("getChecksum")
 
 # To remove in R.cache (> 0.7.0)
 export("generateCache")
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# DECLARATIONS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+S3method("addMemoization", "default")
+S3method("memoizedCall", "default")
+S3method("getCacheRootPath", "default")
+S3method("setCacheRootPath", "default")
+S3method("setupCacheRootPath", "default")
+S3method("getCachePath", "default")
+S3method("setCachePath", "default")
+S3method("getChecksum", "default")
+S3method("getChecksum", "Object")
+S3method("clearCache", "default")
+S3method("findCache", "default")
+S3method("generateCache", "default")
+S3method("loadCache", "default")
+S3method("saveCache", "default")
+S3method("readCacheHeader", "default")
