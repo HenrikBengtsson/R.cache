@@ -24,7 +24,7 @@
     of the cache filename.}
   \item{suffix}{A \code{\link[base]{character}} string to be appended to the end of the
     filename.}
-  \item{...}{Arguments passed to \code{\link{getCachePath}}.}
+  \item{...}{Arguments passed to \code{\link{getCachePath}}().}
 }
 
 \value{
@@ -34,7 +34,7 @@
 \author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
 
 \seealso{
-  Internally, the generic function \code{\link{getChecksum}} is used to
+  Internally, the generic function \code{\link{getChecksum}}() is used to
   calculate the checksum of argument \code{key}.
 }
 

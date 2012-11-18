@@ -62,7 +62,7 @@ setMethodS3("generateCache", "default", function(key=NULL, suffix=".Rcache", ...
 
 
   cacheName;
-})
+}, export=FALSE)
 
 
 ############################################################################

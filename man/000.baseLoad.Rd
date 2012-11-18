@@ -48,7 +48,7 @@
  }
 
  \seealso{
-   This function is used by \code{\link{loadCache}}() and \code{\link{readCacheHeader}}.
+   This function is used by \code{\link{loadCache}}() and \code{\link{readCacheHeader}}().
  }
 
 

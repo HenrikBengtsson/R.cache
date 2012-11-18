@@ -101,7 +101,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
 
 
   invisible(files);
-})
+}, export=FALSE)
 
 
 ############################################################################
