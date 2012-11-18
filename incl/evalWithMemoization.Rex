@@ -1,5 +1,5 @@
 for (kk in 1:5) {
-  printf("Iteration #%d:\n", kk)
+  cat(sprintf("Iteration #%d:\n", kk))
   res <- evalWithMemoization({
     cat("Evaluating expression...")
     a <- 1
@@ -41,7 +41,7 @@ for (kk in 1:5) {
 # explicitly as "key" objects.
 for (ii in 1:2) {
   for (kk in 1:3) {
-    printf("Iteration #%d:\n", kk)
+    cat(sprintf("Iteration #%d:\n", kk))
     res <- evalWithMemoization({
       cat("Evaluating expression...")
       a <- kk

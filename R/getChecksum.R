@@ -47,7 +47,7 @@
 # @keyword "internal"
 #*/######################################################################### 
 setMethodS3("getChecksum", "default", function(object, ...) {
-  require(digest) || throw("Package not loaded: digest");
+  require("digest") || throw("Package not loaded: digest");
   digest::digest(object);
 })
 

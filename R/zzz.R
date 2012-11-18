@@ -8,6 +8,9 @@
   pkg <- Package(pkgname);
   assign(pkgname, pkg, pos=getPosition(pkg));
 
+  # This will make sure print(R.cache) gives the proper output, iff called.
+  autoload("print.Object", package="R.oo")
+
   packageStartupMessage(getName(pkg), " v", getVersion(pkg), 
       " (", getDate(pkg), ")", " successfully loaded. See ?", 
       pkgname, " for help.\n", sep="");
