@@ -1,5 +1,7 @@
-import("R.methodsS3")
+importFrom("R.methodsS3", "setMethodS3")
+importFrom("R.methodsS3", "throw")
 import("R.oo")
+
 import("R.utils")
 
 # Declare S3 methods
@@ -33,3 +35,6 @@ export("readCacheHeader")
 export("loadCache")
 export("saveCache")
 export("getChecksum")
+
+# To remove in R.cache (> 0.7.0)
+export("generateCache")
