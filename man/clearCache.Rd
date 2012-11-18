@@ -20,9 +20,9 @@
 
 \arguments{
   \item{path}{A \code{\link[base]{character}} string specifying the directory to be cleared.
-    By default, the path is what is returned by \code{\link{getCachePath}}()
+    By default, the path is what is returned by \code{\link{getCachePath}}
     which arguments \code{...} are also passed.}
-  \item{...}{Arguments passed to \code{\link{getCachePath}}(), especially
+  \item{...}{Arguments passed to \code{\link{getCachePath}}, especially
     argument \code{dirs} to specify subdirectories.}
   \item{prompt}{If \code{\link[base:logical]{TRUE}}, the user will be prompted to confirm that
     the directory will cleared before files are removed.}
@@ -43,5 +43,7 @@
 
 
 
+
 \keyword{programming}
 \keyword{IO}
+\keyword{internal}

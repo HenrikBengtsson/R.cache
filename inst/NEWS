@@ -3,9 +3,11 @@ Package: R.cache
 ================
 
 Version: 0.7.0 [2012-11-17]
-o Added internal .assertDigest(), which originates from aroma.core.
+o ROBUSTNESS: Now package declares S3 methods in the namespace.
+o CLEANUP: Now package exports a smaller set of the methods.  
 o CLEANUP: Package is now only imports other packages, no long
   depends (loads) them.
+o Added internal .assertDigest(), which originates from aroma.core.
 
 
 Version: 0.6.4 [2012-10-16]

@@ -46,12 +46,14 @@ file.remove(findCache(key=key))
 }
 
 \seealso{
- \code{\link{findCache}}().
+ \code{\link{findCache}}.
  \code{\link{loadCache}}().
  \code{\link{saveCache}}().
 }
 
 
 
+
 \keyword{programming}
 \keyword{IO}
+\keyword{internal}

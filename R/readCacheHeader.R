@@ -32,6 +32,7 @@
 #
 # @keyword "programming"
 # @keyword "IO"
+# @keyword "internal"
 #*/######################################################################### 
 setMethodS3("readCacheHeader", "default", function(file, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

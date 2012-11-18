@@ -33,7 +33,7 @@
 \author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
 
 \seealso{
-  \code{\link{setCachePath}}().
+  \code{\link{setCachePath}}.
 }
 
 

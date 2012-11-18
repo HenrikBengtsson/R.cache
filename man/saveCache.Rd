@@ -50,7 +50,7 @@
 \section{Compression}{
  The \code{saveCache()} method saves a compressed cache file
  (with filename extension *.gz) if argument \code{compress} is \code{\link[base:logical]{TRUE}}.
- The \code{\link{loadCache}}() method locates (via \code{\link{findCache}}()) and
+ The \code{\link{loadCache}}() method locates (via \code{\link{findCache}}) and
  loads such cache files as well.
 }
 

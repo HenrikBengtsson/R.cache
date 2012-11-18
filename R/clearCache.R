@@ -34,6 +34,7 @@
 #
 # @keyword "programming"
 # @keyword "IO"
+# @keyword "internal"
 #*/#########################################################################  
 setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., prompt=TRUE & interactive()) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
