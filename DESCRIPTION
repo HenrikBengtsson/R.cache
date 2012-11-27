@@ -1,5 +1,5 @@
 Package: R.cache
-Version: 0.6.5
+Version: 0.6.6
 Depends: R (>= 2.5.0), R.utils (>= 1.18.0)
 Imports: R.methodsS3 (>= 1.4.2), R.oo (>= 1.10.1), R.utils (>= 1.18.0)
 Suggests: digest (>= 0.5.2)

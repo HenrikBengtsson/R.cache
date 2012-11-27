@@ -43,9 +43,6 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
   # Argument 'path':
   path <- Arguments$getReadablePath(path, mustExist=TRUE);
 
-  # Argument 'dirs':
-  dirs <- Arguments$getCharacters(dirs);
-
   # Argument 'prompt':
   prompt <- Arguments$getLogical(prompt);
 
@@ -106,6 +103,8 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
 
 ############################################################################
 # HISTORY:
+# 2012-11-27
+# o BUG FIX: clearCache() would give error "object 'dirs' not found".
 # 2011-05-19
 # o Added Rdoc comments.
 # 2011-04-02
