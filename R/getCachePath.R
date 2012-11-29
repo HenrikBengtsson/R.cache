@@ -53,13 +53,8 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
       throw("Could not create cache directory: ", path);
     }
 
-    # Add a README.txt to cache root (expaining what the directory is)
-    filename <- "README.txt";
-    pathnameD <- file.path(rootPath, filename);
-    if (!isFile(pathnameD)) {
-      pathnameS <- system.file("_Rcache", filename, package="R.cache");
-      file.copy(pathnameS, pathnameD);
-    }
+    # Add a README.txt file, if missing.
+    .addREADME(to=rootPath);
   }
 
   path;

@@ -15,6 +15,8 @@
 #     which arguments \code{...} are also passed.}
 #   \item{...}{Arguments passed to @see "getCachePath", especially
 #     argument \code{dirs} to specify subdirectories.}
+#   \item{recursive}{If @TRUE, subdirectories are also removed, otherwise
+#     just the files in the specified directory.}
 #   \item{prompt}{If @TRUE, the user will be prompted to confirm that
 #     the directory will cleared before files are removed.}
 # }
@@ -28,18 +30,19 @@
 #
 # \details{
 #   If the specified directory does not exists, an exception is thrown.
-#   Currently, recursive clearing of subdirectories is 
-#   \emph{not} supported.
 # }
 #
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
 #*/#########################################################################  
-setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., prompt=TRUE & interactive()) {
+setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive()) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # Argument 'recursive':
+  recursive <- Arguments$getLogical(recursive);
+
   # Argument 'path':
   path <- Arguments$getReadablePath(path, mustExist=TRUE);
 
@@ -50,18 +53,32 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find files to be removed
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  files <- list.files(path=path, all.files=TRUE, full.names=TRUE);
-  files <- files[-grep("[/]*[.][.]*$", files)];
-  if (length(files) > 0L) {
-    files <- files[!file.info(files)$isdir];
-  }
-  nbrOfFiles <- length(files);
+  allFiles <- listDirectory(path, allNames=TRUE, fullNames=TRUE, recursive=recursive);
+
+  # Exclude '.' and '..' (just in case; listDirectory() shouldn't return them)
+  excl <- grep("[.][.]*$", allFiles);
+  if (length(excl) > 0L) allFiles <- allFiles[-excl];
+
+  # Exclude 'README.txt'
+  excl <- grep("README.txt$", allFiles);
+  if (length(excl) > 0L) allFiles <- allFiles[-excl];
+
+  nbrOfFiles <- length(allFiles);
   if (nbrOfFiles == 0L) {
-    if (prompt)
+    if (prompt) {
       cat("Nothing to clear. Cache directory is empty: ", path, "\n", sep="");
+    }
     return(invisible(NULL));
   }
 
+  # Identify files and directories
+  isdir <- file.info(allFiles)$isdir;
+  dirs <- allFiles[isdir];
+  files <- allFiles[!isdir];
+
+  # Remove subdirectories before parent ones.
+  o <- order(nchar(dirs), decreasing=TRUE);
+  dirs <- dirs[o];
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Prompt user?
@@ -69,40 +86,67 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., promp
   if (prompt) {
     answer <- ".";
     while (!(answer %in% c("y", "n", ""))) {
-      cat("Are you really sure you want to delete the ", nbrOfFiles, 
-          " files in '", path, "'? [y/N]: ", sep="");
+      cat(sprintf("Are you really sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path));
       answer <- tolower(readline());
     }
-    if (answer != "y")
+    if (answer != "y") {
       return(invisible(NULL));
+    }
   }
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Remove files
+  # Remove files and directories
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # (a) Remove files
   removed <- file.remove(files);
-  files <- files[removed];
+  filesR <- files[!removed];
+
+  # (b) Remove subdirectories
+  # Here we could use unlink(..., recursive=TRUE), but it is 
+  # SUPER-DUPER DANGEROUS to do that, because it may spawn off a
+  # recursive deletion in a different place (in case there is a
+  # bug or an inconsistency in list.files() etc), but also if we
+  # forget to drop '.' and '..' from list.files(). /HB 2012-11-28
+  removed <- sapply(dirs, FUN=function(dir) {
+    filesT <- list.files(path=dir, all.files=TRUE);
+    filesT <- setdiff(filesT, c(".", ".."));
+    # Remove only empty directories
+    if (length(filesT) > 0L) return(FALSE);
+    removeDirectory(dir);
+  });
+  dirsR <- dirs[!removed];
+
+
+  # Files and directories removed
+  files <- sort(setdiff(files, filesR));
+  dirs <- sort(setdiff(dirs, dirsR));
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Report results?
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (prompt) {
-    cat("Cache cleared. ", sum(removed), " files removed.", sep="");
-    if (sum(!removed) > 0L) {
-      cat(" Failed to remove ", sum(!removed), " files.", sep="");
+    msg <- sprintf("Cache cleared. Removed %d files and %d directories", length(files), length(dirs));
+    if (length(filesR) + length(dirsR) > 0L) {
+      msg <- sprintf("%s, but failed to remove another %d files and another %d directories", msg, length(filesR), length(dirsR));
     }
-    cat("\n", sep="");
+    cat(sprintf("%s.\n", msg));
   }
 
+  # Add a README.txt file, if missing.
+  .addREADME();
 
-  invisible(files);
+  invisible(c(dirs, files));
 }, export=FALSE)
 
 
 ############################################################################
 # HISTORY:
+# 2012-11-28
+# o GENERALIZATION: Now clearCache(..., recursive=TRUE) removes all
+#   cache files in subdirectories too.  The actual subdirectories are
+#   not removed.
 # 2012-11-27
 # o BUG FIX: clearCache() would give error "object 'dirs' not found".
 # 2011-05-19

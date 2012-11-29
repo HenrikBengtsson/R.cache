@@ -38,13 +38,8 @@ setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
     }
   }
 
-  # Add a README.txt to cache root (expaining what the directory is)
-  filename <- "README.txt";
-  pathnameD <- file.path(path, filename);
-  if (!isFile(pathnameD)) {
-    pathnameS <- system.file("_Rcache", filename, package="R.cache");
-    file.copy(pathnameS, pathnameD);
-  }
+  # Add a README.txt file, if missing.
+  .addREADME(to=path);
 
   ovalue <- options("R.cache::rootPath"=path);
 

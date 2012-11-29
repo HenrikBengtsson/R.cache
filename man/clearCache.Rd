@@ -16,7 +16,7 @@
  Removes all files in a cache file directory.
 }
 
-\usage{\method{clearCache}{default}(path=getCachePath(...), ..., prompt=TRUE & interactive())}
+\usage{\method{clearCache}{default}(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive())}
 
 \arguments{
   \item{path}{A \code{\link[base]{character}} string specifying the directory to be cleared.
@@ -24,6 +24,8 @@
     which arguments \code{...} are also passed.}
   \item{...}{Arguments passed to \code{\link{getCachePath}}(), especially
     argument \code{dirs} to specify subdirectories.}
+  \item{recursive}{If \code{\link[base:logical]{TRUE}}, subdirectories are also removed, otherwise
+    just the files in the specified directory.}
   \item{prompt}{If \code{\link[base:logical]{TRUE}}, the user will be prompted to confirm that
     the directory will cleared before files are removed.}
 }
@@ -37,8 +39,6 @@
 
 \details{
   If the specified directory does not exists, an exception is thrown.
-  Currently, recursive clearing of subdirectories is
-  \emph{not} supported.
 }
 
 

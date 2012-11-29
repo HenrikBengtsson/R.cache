@@ -2,6 +2,10 @@
 Package: R.cache
 ================
 
+Version: 0.6.7 [2012-11-28]
+o Added support for clearCache(..., recursive=TRUE).
+
+
 Version: 0.6.6 [2012-11-27]
 o BUG FIX: clearCache() would give error "object 'dirs' not found".
 
