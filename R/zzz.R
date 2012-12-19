@@ -11,9 +11,7 @@
   # This will make sure print(R.cache) gives the proper output, iff called.
   autoload("print.Object", package="R.oo")
 
-  packageStartupMessage(getName(pkg), " v", getVersion(pkg), 
-      " (", getDate(pkg), ")", " successfully loaded. See ?", 
-      pkgname, " for help.\n", sep="");
+  startupMessage(pkg);
 
   # Setup the cache root path, possibly by prompting the user.
   setupCacheRootPath();
