@@ -5,6 +5,7 @@ Imports: R.methodsS3 (>= 1.4.2), R.oo (>= 1.11.4), R.utils (>= 1.18.0)
 Suggests: digest (>= 0.6.0)
 Date: 2012-12-19
 Title: Fast and light-weight caching (memoization) of objects
+Authors@R: c(person("Henrik", "Bengtsson", email = "henrikb@braju.com", role = c("aut", "cre", "cph")))
 Author: Henrik Bengtsson <henrikb@braju.com>
 Maintainer: Henrik Bengtsson <henrikb@braju.com>
 Description: Methods for memoization, that is, caching arbitrary R objects in persistent memory.  Objects can be loaded and saved stratified on a set of hashing objects.
