@@ -16,7 +16,9 @@
  Loads data from file cache, which is unique for an optional key object.
 }
 
-\usage{\method{readCacheHeader}{default}(file, ...)}
+\usage{
+\method{readCacheHeader}{default}(file, ...)
+}
 
 \arguments{
   \item{file}{A filename or a \code{\link[base:connections]{connection}}.}
@@ -29,7 +31,7 @@
   and \code{timestamp}.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \examples{
 

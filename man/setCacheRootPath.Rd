@@ -17,7 +17,9 @@
  By default, this function will set it to \code{~/.Rcache/}.
 }
 
-\usage{\method{setCacheRootPath}{default}(path="~/.Rcache", ...)}
+\usage{
+\method{setCacheRootPath}{default}(path="~/.Rcache", ...)
+}
 
 \arguments{
   \item{path}{The path.}
@@ -28,7 +30,7 @@
   Returns (invisibly) the old root path.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  \code{\link{getCacheRootPath}}().

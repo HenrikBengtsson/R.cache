@@ -16,7 +16,9 @@
  Generates a cache pathname from a key object.
 }
 
-\usage{\method{generateCache}{default}(key=NULL, suffix=".Rcache", ...)}
+\usage{
+\method{generateCache}{default}(key=NULL, suffix=".Rcache", ...)
+}
 
 \arguments{
   \item{key}{A \code{\link[base]{list}} or an \code{\link[base]{environment}} from which a \code{\link[base]{character}} string
@@ -31,7 +33,7 @@
   Returns the path as a \code{\link[base]{character}} string.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
   Internally, the generic function \code{\link{getChecksum}}() is used to

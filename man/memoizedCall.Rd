@@ -17,7 +17,10 @@
  the function is called again with the exact same arguments.
 }
 
-\usage{\method{memoizedCall}{default}(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL, verbose=FALSE)}
+\usage{
+\method{memoizedCall}{default}(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL,
+  verbose=FALSE)
+}
 
 \arguments{
   \item{what}{The \code{\link[base]{function}} to be called, or a \code{\link[base]{character}} string
@@ -35,7 +38,7 @@
   Returns the result of the function call.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  Internally, \code{\link{loadCache}}() is used to load memoized results,

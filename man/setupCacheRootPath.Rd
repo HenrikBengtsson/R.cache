@@ -16,7 +16,9 @@
  Interactively offers the user to set up the default root path.
 }
 
-\usage{\method{setupCacheRootPath}{default}(defaultPath="~/.Rcache/", ...)}
+\usage{
+\method{setupCacheRootPath}{default}(defaultPath="~/.Rcache/", ...)
+}
 
 \arguments{
   \item{defaultPath}{Default root path to set.}
@@ -37,7 +39,7 @@
   temporary directory.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  Internally, \code{\link{setCacheRootPath}}() is used to set the cache root path.

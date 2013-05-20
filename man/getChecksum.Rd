@@ -20,7 +20,9 @@
  have the same checksum.
 }
 
-\usage{\method{getChecksum}{default}(object, ...)}
+\usage{
+\method{getChecksum}{default}(object, ...)
+}
 
 \arguments{
   \item{object}{The object for which a checksum should be calculated.}
@@ -44,7 +46,7 @@
   \code{getChecksum()} function.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
   By default, the \code{\link[digest]{digest}} method is used to calculate

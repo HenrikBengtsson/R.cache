@@ -16,7 +16,9 @@
  Sets the path to the file cache directory.
 }
 
-\usage{\method{setCachePath}{default}(dirs=NULL, path=NULL, ...)}
+\usage{
+\method{setCachePath}{default}(dirs=NULL, path=NULL, ...)
+}
 
 \arguments{
   \item{dirs}{A \code{\link[base]{character}} \code{\link[base]{vector}} constituting the path to the
@@ -30,7 +32,7 @@
   Returns nothing.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
   \code{\link{getCachePath}}().

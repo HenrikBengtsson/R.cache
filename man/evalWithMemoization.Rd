@@ -17,7 +17,9 @@
  current environment and the same result is returned, if any.
 }
 
-\usage{evalWithMemoization(expr, key=NULL, ..., envir=parent.frame(), force=FALSE)}
+\usage{
+evalWithMemoization(expr, key=NULL, ..., envir=parent.frame(), force=FALSE)
+}
 
 \arguments{
   \item{expr}{The \code{\link[base]{expression}} to be evaluated.}
@@ -113,7 +115,7 @@ for (ii in 1:2) {
 ## [1] 3
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  Internally, \code{\link[base]{eval}}() is used to evaluate the expression.

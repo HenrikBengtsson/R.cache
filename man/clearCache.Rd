@@ -16,7 +16,9 @@
  Removes all files in a cache file directory.
 }
 
-\usage{\method{clearCache}{default}(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive())}
+\usage{
+\method{clearCache}{default}(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive())
+}
 
 \arguments{
   \item{path}{A \code{\link[base]{character}} string specifying the directory to be cleared.
@@ -35,7 +37,7 @@
   files removed.  If no files were removed, \code{\link[base]{NULL}} is returned.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \details{
   If the specified directory does not exists, an exception is thrown.

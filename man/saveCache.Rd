@@ -16,7 +16,10 @@
  Saves data to file cache, which is unique for an optional key object.
 }
 
-\usage{\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...)}
+\usage{
+\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL,
+  compress=getOption("R.cache::compress"), ...)
+}
 
 \arguments{
   \item{object}{The object to be saved to file.}
@@ -54,7 +57,7 @@
  loads such cache files as well.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \examples{\dontrun{For an example, see ?loadCache}}
 

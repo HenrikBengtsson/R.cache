@@ -21,7 +21,9 @@
    called by anything but the internal code of the \pkg{R.cache} package.}
  }
 
- \usage{.baseLoad(con, envir=parent.frame())}
+ \usage{
+.baseLoad(con, envir=parent.frame())
+}
 
  \arguments{
    \item{con}{A \code{\link[base:connections]{connection}}.}

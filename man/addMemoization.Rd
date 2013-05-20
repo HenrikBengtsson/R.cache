@@ -16,7 +16,9 @@
  Creates a copy of an existing function such that its results are memoized.
 }
 
-\usage{\method{addMemoization}{default}(fcn, ...)}
+\usage{
+\method{addMemoization}{default}(fcn, ...)
+}
 
 \arguments{
   \item{fcn}{A \code{\link[base]{function}} (or the name of a function) that should be
@@ -35,7 +37,7 @@
  in the environment of the caller (the parent frame of the function).
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  The returned function utilized \code{\link{memoizedCall}}() internally.

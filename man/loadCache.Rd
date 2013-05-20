@@ -16,7 +16,10 @@
  Loads data from file cache, which is unique for an optional key object.
 }
 
-\usage{\method{loadCache}{default}(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error"))}
+\usage{
+\method{loadCache}{default}(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL,
+  dirs=NULL, ..., onError=c("warning", "print", "quiet", "error"))
+}
 
 \arguments{
   \item{key}{An optional object from which a hexadecimal hash
@@ -58,7 +61,7 @@
  That package is not required when \code{key==NULL}.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \examples{
 simulate <- function(mean, sd) {

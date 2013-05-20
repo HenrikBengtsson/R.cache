@@ -16,7 +16,9 @@
  Locates a cache file from a key object.
 }
 
-\usage{\method{findCache}{default}(key=NULL, ...)}
+\usage{
+\method{findCache}{default}(key=NULL, ...)
+}
 
 \arguments{
   \item{key}{An optional object from which a hexadecimal hash
@@ -29,7 +31,7 @@
   data exists.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  \code{\link{generateCache}}().

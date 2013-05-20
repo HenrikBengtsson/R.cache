@@ -16,7 +16,9 @@
  Gets the root path to the file cache directory.
 }
 
-\usage{\method{getCacheRootPath}{default}(defaultPath="~/.Rcache", ...)}
+\usage{
+\method{getCacheRootPath}{default}(defaultPath="~/.Rcache", ...)
+}
 
 \arguments{
   \item{defaultPath}{The default path, if no user-specified directory
@@ -32,7 +34,7 @@
   print(getCacheRootPath())
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \seealso{
  Too set the directory where cache files are stored,

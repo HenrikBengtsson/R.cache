@@ -80,7 +80,7 @@
  in the \pkg{Biobase} package of Bioconductor.
 }
 
-\author{Henrik Bengtsson (\url{http://www.braju.com/R/})}
+\author{Henrik Bengtsson}
 
 \section{License}{
   The releases of this package is licensed under
