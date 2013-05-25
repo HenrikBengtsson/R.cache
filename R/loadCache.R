@@ -12,8 +12,8 @@
 # \arguments{
 #   \item{key}{An optional object from which a hexadecimal hash
 #     code will be generated and appended to the filename.}
-#   \item{sources}{Optional source objects.  If the cache object has a 
-#     timestamp older than one of the source objects, it will be ignored 
+#   \item{sources}{Optional source objects.  If the cache object has a
+#     timestamp older than one of the source objects, it will be ignored
 #     and removed.}
 #   \item{suffix}{A @character string to be appended to the end of the
 #     filename.}
@@ -25,8 +25,8 @@
 #     the key is unknown, for instance, in order to investigate
 #     an unknown cache file.}
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory (of the \emph{cache root directory} 
-#      as returned by @see "getCacheRootPath") to be used. 
+#      cache subdirectory (of the \emph{cache root directory}
+#      as returned by @see "getCacheRootPath") to be used.
 #      If @NULL, the path will be the cache root path.}
 #   \item{...}{Not used.}
 #   \item{onError}{A @character string specifying what the action is
@@ -38,13 +38,13 @@
 # }
 #
 # \details{
-#   The hash code calculated from the \code{key} object is a 
+#   The hash code calculated from the \code{key} object is a
 #   32 characters long hexadecimal MD5 hash code.  For more details,
 #   see the \emph{digest} package.
 # }
 #
 # \section{Requirements}{
-#  To make use of the \code{key} argument, the \emph{digest} package 
+#  To make use of the \code{key} argument, the \emph{digest} package
 #  (available on CRAN) must be installed, otherwise an error is generated.
 #  That package is not required when \code{key==NULL}.
 # }
@@ -124,7 +124,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     # 4. Load cached object:
     res <- .baseLoad(con=fh, ...);
     object <- res$object;
-    rm(res);
+    res <- NULL; # Not needed anymore
 
     # 5. Update the "last-modified" timestamp of the cache file?
     touch <- getOption("R.cache::touchOnLoad");
@@ -158,7 +158,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 # 2009-10-16
 # o Now calling an internal .baseLoad() function of the package.
 # 2009-09-11
-# o Added argument 'onError' to loadCache(), to specify the action when 
+# o Added argument 'onError' to loadCache(), to specify the action when
 #   an error occurs.  The default used to be to print the error message
 #   (onError="print"), but now the default is to generate a warning
 #   ("warning").  The other alternatives are do silently ignore it, or
