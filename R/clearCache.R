@@ -22,7 +22,7 @@
 # }
 #
 # \value{
-#   Returns (invisibly) a @character @vector of pathnames of the 
+#   Returns (invisibly) a @character @vector of pathnames of the
 #   files removed.  If no files were removed, @NULL is returned.
 # }
 #
@@ -35,8 +35,8 @@
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
-#*/#########################################################################  
-setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive()) {
+#*/#########################################################################
+setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE && interactive()) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -49,7 +49,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   # Argument 'prompt':
   prompt <- Arguments$getLogical(prompt);
 
-  
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find files to be removed
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -103,7 +103,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   filesR <- files[!removed];
 
   # (b) Remove subdirectories
-  # Here we could use unlink(..., recursive=TRUE), but it is 
+  # Here we could use unlink(..., recursive=TRUE), but it is
   # SUPER-DUPER DANGEROUS to do that, because it may spawn off a
   # recursive deletion in a different place (in case there is a
   # bug or an inconsistency in list.files() etc), but also if we

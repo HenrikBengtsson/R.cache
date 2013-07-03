@@ -2,6 +2,11 @@
 Package: R.cache
 ================
 
+Version: 0.7.0 [2013-07-03]
+o Now getChecksum() passes '...' to digest(), e.g. argument 'algo'.
+o Bumped package dependencies.
+
+
 Version: 0.6.10 [2013-05-25]
 o Minor speedup of loadCache() - replaced an rm() call with NULL assignment.
 
@@ -25,7 +30,7 @@ o BUG FIX: clearCache() would give error "object 'dirs' not found".
 
 Version: 0.6.5 [2012-11-18]
 o ROBUSTNESS: Now package declares S3 methods in the namespace.
-o CLEANUP: Now package exports a smaller set of the methods.  
+o CLEANUP: Now package exports a smaller set of the methods.
 o CLEANUP: Package now only imports R.methodsS3 and R.oo, no long
   depends (loads) them.  It still needs to load R.utils.
 o Added internal .assertDigest(), which originates from aroma.core.
@@ -33,7 +38,7 @@ o Added internal .assertDigest(), which originates from aroma.core.
 
 Version: 0.6.4 [2012-10-16]
 o ROBUSTNESS/BUG FIX: No longer passing '...' to NextMethod(), cf.
-  R-devel thread 'Do *not* pass '...' to NextMethod() - it'll do it 
+  R-devel thread 'Do *not* pass '...' to NextMethod() - it'll do it
   for you; missing documentation, a bug or just me?' on Oct 16, 2012.
 o Package now imports R.methodsS3 and R.oo.
 
@@ -59,7 +64,7 @@ Version: 0.6.0 [2011-12-30]
 o As before, the cache root path defaults to ~/.Rcache/. However,
   if it does not exists, then it is created when the package is loaded,
   but only after approval by the user (via a textual prompt). If not
-  approved, or it is not possible to prompt the user (e.g. in a 
+  approved, or it is not possible to prompt the user (e.g. in a
   non-interactive session), then a session-specific temporary directory
   is used.
 
@@ -76,7 +81,7 @@ o BUG FIX (for R v2.13.0 only): Applying the same fix that was done
 
 
 Version: 0.5.1 [2011-08-31]
-o BUG FIX (for R v2.12.2 and before): After adding support for 
+o BUG FIX (for R v2.12.2 and before): After adding support for
   compressed files in R.cache v0.5.0, we would get the 'Error in
   seek.connection(con, origin = "current", where = -5) : whence = "end"
   is not implemented for gzfile connections' in readCacheHeader()
@@ -86,7 +91,7 @@ o BUG FIX (for R v2.12.2 and before): After adding support for
 
 Version: 0.5.0 [2011-08-16]
 o Added support for saving and loading compressed cache files.
-o ROBUSTNESS: Now findCache() asserts that any identified cache 
+o ROBUSTNESS: Now findCache() asserts that any identified cache
   file is really a file.
 o CLEANUP: Now package uses packageStartupMessage() instead of cat().
 
@@ -127,7 +132,7 @@ o BUG FIX: In R v2.10.0 and newer, we would get an error reporting that
 
 
 Version: 0.1.9 [2009-09-11]
-o Added argument 'onError' to loadCache(), to specify the action when 
+o Added argument 'onError' to loadCache(), to specify the action when
   an error occurs.  The default used to be to print the error message
   (onError="print"), but now the default is to generate a warning
   ("warning").  The other alternatives are do silently ignore it, or
@@ -136,22 +141,22 @@ o Added argument 'onError' to loadCache(), to specify the action when
 
 
 Version: 0.1.8 [2009-08-11]
-o ROBUSTNESS: Added sanity check to readCacheHeader() testing 
+o ROBUSTNESS: Added sanity check to readCacheHeader() testing
   that the read header identifier is non-empty.  This results
   in a clearer error message that before.
 o Now readCacheHeader() reports the "pathname" in error/warnings
-  messages, if argument 'file' refers to a file and the 
+  messages, if argument 'file' refers to a file and the
   "description" if it refers to a connection.
 o CLEAN UP: Renamed the HISTORY file to NEWS.
 
 
 Version: 0.1.7 [2008-02-27]
-o Added option to updated the "last-modified" timestamp of cache 
+o Added option to updated the "last-modified" timestamp of cache
   files whenever they are loaded via loadCache(). This will help
   identified what cache files have not been used for a long time.
   To turn this on, use options("R.cache::touchOnLoad"=TRUE).
 o Now error messages specifies the pathname, if available.
-o BUG FIX: The throw() for invalid identifiers was trying to put 
+o BUG FIX: The throw() for invalid identifiers was trying to put
   the connection object in the output and not the identifier.
 
 
@@ -181,8 +186,8 @@ Version: 0.1.2 [2006-05-25]
 o Added argument 'pathname' to loadCache() in order to load
   "unknown" cache files for which the key is unknown.
 o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
-  in base::save(), which otherwise includes all of the surrounding 
-  environment if 'sources' is not evaluated/missing.  For more details 
+  in base::save(), which otherwise includes all of the surrounding
+  environment if 'sources' is not evaluated/missing.  For more details
   see code and my email to r-devel on 2006-05-25.  Thanks to Brian Ripley
   for explaining what was going on.
 

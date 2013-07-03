@@ -17,7 +17,7 @@
 }
 
 \usage{
-\method{clearCache}{default}(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE & interactive())
+\method{clearCache}{default}(path=getCachePath(...), ..., recursive=FALSE, prompt=TRUE && interactive())
 }
 
 \arguments{
