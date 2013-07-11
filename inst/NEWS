@@ -2,6 +2,10 @@
 Package: R.cache
 ================
 
+Version: 0.7.1 [2013-07-11]
+o Updated the title and the description of the package.
+
+
 Version: 0.7.0 [2013-07-03]
 o Now getChecksum() passes '...' to digest(), e.g. argument 'algo'.
 o Bumped package dependencies.
