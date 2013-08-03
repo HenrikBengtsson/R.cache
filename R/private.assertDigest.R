@@ -4,8 +4,8 @@
 
   # Value to validate against
   d1 <- digest::digest(0);
-  # Get the "truth" 
-  ver <- packageVersion("digest");
+  # Get the "truth"
+  ver <- utils::packageVersion("digest");
   if (ver <= "0.2.3") {
     d0 <- "78a10a7e5929f8c605f71823203c0dc5";
   } else if (ver >= "0.3.0") {
@@ -32,10 +32,13 @@
 
 ############################################################################
 # HISTORY:
+# 2013-08-03
+# o BUG FIX: R.cache:::.assertDigest() called from within another package
+#   would give an error that packageVersion() of 'utils' was not found.
 # 2012-11-17
 # o Moved .assertDigest() from aroma.core to R.cache and tidied it up.
 # 2007-04-04
-# o BUG FIX: The test for version of digest and the assignment of the 
+# o BUG FIX: The test for version of digest and the assignment of the
 #   conditional patch must be done in .First.lib() and not here.  Anything
 #   put there such as if() statements will be evaluated during the build
 #   of the package.

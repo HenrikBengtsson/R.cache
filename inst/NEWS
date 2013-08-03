@@ -2,6 +2,12 @@
 Package: R.cache
 ================
 
+Version: 0.7.2 [2013-08-03]
+o Bumped package dependencies.
+o BUG FIX: R.cache:::.assertDigest() called from within another package
+  would give an error that packageVersion() of 'utils' was not found.
+
+
 Version: 0.7.1 [2013-07-11]
 o Updated the title and the description of the package.
 

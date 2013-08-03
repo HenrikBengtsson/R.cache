@@ -15,7 +15,7 @@
 
 
 \description{
-  Methods for memoization, that is, caching arbitrary R objects in persistent memory.  Objects can be loaded and saved stratified on a set of hashing objects.
+  Memoization can be used to speed up repetitive and computational expensive function calls.  The first time a function is called the results are stored a cache memory.  The next time the function is called with the same set of parameters, the results are momentarily retrieved from the cache avoiding repeating the calculations.  More generally, arbitrary R objects can be cached in persistent memory using a set of hashing objects.
 }
 
 \section{Requirements}{
