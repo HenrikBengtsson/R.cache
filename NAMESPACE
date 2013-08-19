@@ -23,6 +23,7 @@ export("readCacheHeader")
 export("loadCache")
 export("saveCache")
 export("getChecksum")
+export("clearCache")  # Imported from R.oo
 
 # To remove in R.cache (> 0.7.0)
 export("generateCache")
