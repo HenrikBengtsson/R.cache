@@ -5,6 +5,7 @@ importFrom("R.methodsS3", "setMethodS3")
 importFrom("R.methodsS3", "throw")
 import("R.oo")
 import("R.utils")
+importFrom("utils", "packageVersion")
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -24,9 +25,6 @@ export("loadCache")
 export("saveCache")
 export("getChecksum")
 export("clearCache")  # Imported from R.oo
-
-# To remove in R.cache (> 0.7.0)
-export("generateCache")
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

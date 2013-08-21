@@ -5,7 +5,7 @@
   # Value to validate against
   d1 <- digest::digest(0);
   # Get the "truth"
-  ver <- utils::packageVersion("digest");
+  ver <- packageVersion("digest");
   if (ver <= "0.2.3") {
     d0 <- "78a10a7e5929f8c605f71823203c0dc5";
   } else if (ver >= "0.3.0") {
