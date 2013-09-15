@@ -3,6 +3,8 @@ Package: R.cache
 ================
 
 Version: 0.8.1 [2013-09-15]
+o CLEANUP: Now only importing a minimal set of functions needed
+  from the 'R.utils' package.
 o Bumped package dependencies.
 
 

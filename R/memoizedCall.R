@@ -11,13 +11,13 @@
 # @synopsis
 #
 # \arguments{
-#   \item{what}{The @function to be called, or a @character string 
-#     specifying the name of the function to be called, 
+#   \item{what}{The @function to be called, or a @character string
+#     specifying the name of the function to be called,
 #     cf. @see "base::do.call".}
 #   \item{...}{Arguments passed to the function.}
 #   \item{envir}{The @environment in which the function is evaluated.}
 #   \item{force}{If @TRUE, any cached results are ignored, otherwise not.}
-#   \item{sources, dirs}{Optional arguments passed to 
+#   \item{sources, dirs}{Optional arguments passed to
 #     @see "loadCache" and @see "saveCache".}
 #   \item{verbose}{If @TRUE, verbose statements are outputted.}
 # }
@@ -29,22 +29,22 @@
 # @author
 #
 # \seealso{
-#  Internally, @see "loadCache" is used to load memoized results, 
-#  if available.  If not available, then @see "do.call" is used to 
-#  evaluate the function call, 
+#  Internally, @see "loadCache" is used to load memoized results,
+#  if available.  If not available, then @see "do.call" is used to
+#  evaluate the function call,
 #  and @see "saveCache" is used to save the results to cache.
 # }
 #
 # @keyword "programming"
 # @keyword "IO"
-#*/#########################################################################  
+#*/#########################################################################
 setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL, verbose=FALSE) {
   # 1. Look for memoized results
   key <- list(what=what, ...);
   if (!force) {
     res <- loadCache(key=key, dirs=dirs, sources=sources);
     if (!is.null(res)) {
-      if (verbose) printf("Returning cached results!\n");
+      if (verbose) cat("Returning cached results!");
       return(res);
     }
   }

@@ -3,9 +3,19 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 importFrom("R.methodsS3", "setMethodS3")
 importFrom("R.methodsS3", "throw")
-import("R.oo")
-import("R.utils")
+
 importFrom("utils", "packageVersion")
+
+import("R.oo")
+
+importFrom("R.utils", "Arguments")
+importFrom("R.utils", "listDirectory")
+importFrom("R.utils", "isAbsolutePath")
+importFrom("R.utils", "isDirectory")
+importFrom("R.utils", "isFile")
+importFrom("R.utils", "removeDirectory")
+importFrom("R.utils", "mkdirs")
+importFrom("R.utils", "touchFile")
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
