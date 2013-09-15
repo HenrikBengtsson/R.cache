@@ -15,7 +15,7 @@
 
 
 \description{
-  Memoization can be used to speed up repetitive and computational expensive function calls.  The first time a function is called the results are stored in a cache memory.  The next time the function is called with the same set of parameters, the results are momentarily retrieved from the cache avoiding repeating the calculations.  More generally, arbitrary R objects can be cached in persistent memory using a set of hashing objects.
+  Memoization can be used to speed up repetitive and computational expensive function calls.  The first time a function that implements memoization is called the results are stored in a cache memory.  The next time the function is called with the same set of parameters, the results are momentarily retrieved from the cache avoiding repeating the calculations.  With this package, any R object can be cached in a key-value storage where the key can be an arbitrary set of R objects.  The cache memory is persistent (on the file system).
 }
 
 \section{Requirements}{
@@ -44,19 +44,10 @@
 \section{How to cite this package}{
   Whenever using this package, please cite [1] as
 
-  \preformatted{@INPROCEEDINGS{BengtssonH_2003,
- author       = {Henrik Bengtsson},
- title        = {The {R.oo} package - Object-Oriented Programming
-                 with References Using Standard {R} Code},
- booktitle    = {Proceedings of the 3rd International Workshop on
-                 Distributed Statistical Computing (DSC 2003)},
- year         = {2003},
- editor       = {Kurt Hornik and Friedrich Leisch and Achim Zeileis},
- address      = {Vienna, Austria},
- month        = {March},
- issn         = {1609-395X},
- howpublished = {http://www.ci.tuwien.ac.at/Conferences/DSC-2003/},
-}}
+  \preformatted{Bengtsson, H. The R.oo package - Object-Oriented Programming with References Using
+Standard R Code, Proceedings of the 3rd International Workshop on Distributed
+Statistical Computing (DSC 2003), ISSN 1609-395X, Hornik, K.; Leisch, F. & Zeileis,
+A. (ed.), 2003}
 \emph{}
 
 }

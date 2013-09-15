@@ -23,7 +23,7 @@
 \arguments{
   \item{key}{An optional object from which a hexadecimal hash
     code will be generated and appended to the filename.}
-  \item{...}{Additional argument passed to \code{\link{generateCache}}().}
+  \item{...}{Additional argument passed to \code{\link{generateCache}}.}
 }
 
 \value{
@@ -34,7 +34,7 @@
 \author{Henrik Bengtsson}
 
 \seealso{
- \code{\link{generateCache}}().
+ \code{\link{generateCache}}.
  \code{\link{loadCache}}().
 }
 
