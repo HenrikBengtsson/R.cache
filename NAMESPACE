@@ -6,7 +6,11 @@ importFrom("R.methodsS3", "throw")
 
 importFrom("utils", "packageVersion")
 
-import("R.oo")
+importFrom("R.oo", "Package")
+importFrom("R.oo", "startupMessage")
+importFrom("R.oo", "getPosition")
+importFrom("R.oo", "attachLocally")
+importFrom("R.oo", "trim")
 
 importFrom("R.utils", "Arguments")
 importFrom("R.utils", "listDirectory")
