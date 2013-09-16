@@ -11,6 +11,7 @@ importFrom("R.oo", "startupMessage")
 importFrom("R.oo", "getPosition")
 importFrom("R.oo", "attachLocally")
 importFrom("R.oo", "trim")
+importFrom("R.oo", "clearCache")
 
 importFrom("R.utils", "Arguments")
 importFrom("R.utils", "listDirectory")
