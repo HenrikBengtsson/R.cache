@@ -2,16 +2,17 @@
 # conflicts() in [R] base.
 .conflicts.OK <- TRUE
 
-
-## .First.lib <- function(libname, pkgname) {
-.onAttach <- function(libname, pkgname) { 
+.onLoad <- function(libname, pkgname) {
+  ns <- getNamespace(pkgname);
   pkg <- Package(pkgname);
-  assign(pkgname, pkg, pos=getPosition(pkg));
+  assign(pkgname, pkg, envir=ns);
+}
 
+.onAttach <- function(libname, pkgname) {
   # This will make sure print(R.cache) gives the proper output, iff called.
   autoload("print.Object", package="R.oo")
 
-  startupMessage(pkg);
+  startupMessage(get(pkgname, envir=getNamespace(pkgname)));
 
   # Setup the cache root path, possibly by prompting the user.
   setupCacheRootPath();
@@ -19,7 +20,7 @@
 
 
 ############################################################################
-# HISTORY: 
+# HISTORY:
 # 2005-12-09
 # o Created.
 ############################################################################

@@ -2,6 +2,11 @@
 Package: R.cache
 ================
 
+Version: 0.8.2 [2013-09-28]
+o Now the 'R.cache' Package object is also available when the
+  package is only loaded (but not attached).
+
+
 Version: 0.8.1 [2013-09-15]
 o CLEANUP: Now only importing a minimal set of functions needed
   from the 'R.oo' and the 'R.utils' packages.

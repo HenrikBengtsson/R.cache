@@ -8,7 +8,6 @@ importFrom("utils", "packageVersion")
 
 importFrom("R.oo", "Package")
 importFrom("R.oo", "startupMessage")
-importFrom("R.oo", "getPosition")
 importFrom("R.oo", "attachLocally")
 importFrom("R.oo", "trim")
 importFrom("R.oo", "clearCache")
@@ -28,6 +27,7 @@ importFrom("R.utils", "touchFile")
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Export all public methods, that is, those without a preceeding dot
 # in their names.
+export("R.cache")
 export("evalWithMemoization")
 export("addMemoization")
 export("memoizedCall")
@@ -43,20 +43,23 @@ export("clearCache")  # Imported from R.oo
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-# DECLARATIONS
+# S3 METHOD DECLARATIONS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# default
 S3method("addMemoization", "default")
-S3method("memoizedCall", "default")
-S3method("getCacheRootPath", "default")
-S3method("setCacheRootPath", "default")
-S3method("setupCacheRootPath", "default")
-S3method("getCachePath", "default")
-S3method("setCachePath", "default")
-S3method("getChecksum", "default")
-S3method("getChecksum", "Object")
 S3method("clearCache", "default")
 S3method("findCache", "default")
 S3method("generateCache", "default")
+S3method("getCachePath", "default")
+S3method("getCacheRootPath", "default")
+S3method("getChecksum", "default")
 S3method("loadCache", "default")
-S3method("saveCache", "default")
+S3method("memoizedCall", "default")
 S3method("readCacheHeader", "default")
+S3method("saveCache", "default")
+S3method("setCachePath", "default")
+S3method("setCacheRootPath", "default")
+S3method("setupCacheRootPath", "default")
+
+# Object
+S3method("getChecksum", "Object")
