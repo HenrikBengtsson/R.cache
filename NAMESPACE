@@ -4,11 +4,14 @@
 importFrom("R.methodsS3", "setMethodS3")
 importFrom("R.methodsS3", "throw")
 
+## Importing Class:es
+importFrom("R.oo", "Package")
+
 ## Importing generics
 importFrom("R.oo", "clearCache")
 
 ## Importing functions
-importFrom("R.oo", "Package")
+importFrom("R.oo", "attachLocally")
 importFrom("R.oo", "startupMessage")
 importFrom("R.oo", "trim")
 importFrom("R.utils", "cat") ## Multi-sources: R.utils, base
