@@ -39,7 +39,7 @@
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
-#*/######################################################################### 
+#*/#########################################################################
 setMethodS3("setupCacheRootPath", "default", function(defaultPath="~/.Rcache/", ...) {
   rootPath <- getCacheRootPath(NULL);
 
@@ -62,7 +62,7 @@ setMethodS3("setupCacheRootPath", "default", function(defaultPath="~/.Rcache/", 
     }
     prompt <- c(prompt, sprintf("Do you wish to create the '%s' directory? If not, a temporary directory (%s) that is specific to this R session will be used.", defaultPath, rootPath));
     prompt <- paste(prompt, collapse=" ");
-    tryCatch({    
+    tryCatch({
       ans <- .textPrompt(prompt=prompt, options=c("Y"="yes", "n"="no"));
       if (ans == "yes") rootPath <- defaultPath;
     }, condition=function(ex) {});

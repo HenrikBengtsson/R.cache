@@ -26,13 +26,13 @@
 # @author
 #
 # \seealso{
-#  Too set the directory where cache files are stored, 
+#  Too set the directory where cache files are stored,
 #  see @see "setCacheRootPath".
 # }
 #
 # @keyword "programming"
 # @keyword "IO"
-#*/######################################################################### 
+#*/#########################################################################
 setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...) {
   # Check for option settings
   path <- getOption("R.cache::rootPath");
@@ -41,7 +41,7 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
   if (is.null(path)) {
     if (is.null(path))
       path <- getOption("R.cache.path");
-  
+
     # Check for system environment settings
     if (is.null(path)) {
       path <- Sys.getenv("R_CACHE_PATH");

@@ -138,7 +138,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   .addREADME();
 
   invisible(c(dirs, files));
-}, createGeneric=FALSE)
+})
 
 
 ############################################################################
