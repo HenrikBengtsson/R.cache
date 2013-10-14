@@ -2,6 +2,12 @@
 Package: R.cache
 ================
 
+Version: 0.8.4 [2013-10-14]
+o Adjusted package dependencies and NAMESPACE to work with the
+  package versions available on CRAN.
+o Now DESCRIPTION's 'Authors' field matches 'Authors@R'.
+
+
 Version: 0.8.3 [2013-10-03]
 o Bumped package dependencies.
 

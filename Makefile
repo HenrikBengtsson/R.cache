@@ -24,7 +24,7 @@ FILES_DATA := $(wildcard data/*)
 FILES_MAN := $(wildcard man/*.Rd)
 FILES_INCL := $(wildcard incl/*)
 FILES_INST := $(wildcard inst/* inst/*/* inst/*/*/* inst/*/*/*/*)
-FILES_VIGNETTES := $(wildcard vignettes/*)
+FILES_VIGNETTES := $(wildcard vignettes/* vignettes/.install_extras)
 FILES_SRC := $(wildcard src/* src/*/* src/*/*/* src/*/*/*/* src/*/*/*/*/* src/*/*/*/*/*/* src/*/*/*/*/*/*/* src/*/*/*/*/*/*/*/*)
 FILES_TESTS := $(wildcard tests/*.R)
 FILES_NEWS := $(wildcard NEWS inst/NEWS)
@@ -49,6 +49,7 @@ R_OUTDIR := _R-$(R_VERSION_FULL)
 ## R_BUILD_OPTS := $(R_BUILD_OPTS) --no-build-vignettes
 R_CHECK_OUTDIR := $(R_OUTDIR)/$(PKG_NAME).Rcheck
 R_CHECK_CRAN_INCOMING = $(shell $(R_SCRIPT) -e "cat(Sys.getenv('R_CHECK_CRAN_INCOMING', 'TRUE'))")
+_R_CHECK_XREFS_REPOSITORIES_ = $(shell if $(R_CHECK_CRAN_INCOMING) == "TRUE"; then echo ""; else echo "invalidURL"; fi)
 R_CHECK_FULL = $(shell $(R_SCRIPT) -e "cat(Sys.getenv('R_CHECK_FULL', ''))")
 R_CHECK_OPTS = --as-cran --timings
 R_CRAN_OUTDIR := $(R_OUTDIR)/$(PKG_NAME)_$(PKG_VERSION).CRAN
@@ -78,12 +79,18 @@ debug:
 	@echo R_VERSION_FULL=\'$(R_VERSION_FULL)\'
 	@echo R_LIBS_USER_X=\'$(R_LIBS_USER_X)\'
 	@echo R_OUTDIR=\'$(R_OUTDIR)\'
+	@echo
+	@echo "Default packages:" $(shell $(R) --slave -e "cat(paste(getOption('defaultPackages'), collapse=', '))")
+	@echo
+	@echo R_BUILD_OPTS=\'$(R_BUILD_OPTS)\'
+	@echo
 	@echo R_CHECK_OUTDIR=\'$(R_CHECK_OUTDIR)\'
 	@echo R_CHECK_CRAN_INCOMING=\'$(R_CHECK_CRAN_INCOMING)\'
+	@echo _R_CHECK_XREFS_REPOSITORIES_=\'$(_R_CHECK_XREFS_REPOSITORIES_)\'
 	@echo R_CHECK_FULL=\'$(R_CHECK_FULL)\'
 	@echo R_CHECK_OPTS=\'$(R_CHECK_OPTS)\'
+	@echo
 	@echo R_CRAN_OUTDIR=\'$(R_CRAN_OUTDIR)\'
-	@echo "Default packages:" $(shell $(R) --slave -e "cat(paste(getOption('defaultPackages'), collapse=', '))")
 
 
 debug_full: debug
@@ -146,9 +153,10 @@ install_force:
 	$(CD) ../$(R_OUTDIR);\
 	$(RM) -r $(PKG_NAME).Rcheck;\
 	export _R_CHECK_CRAN_INCOMING_=$(R_CHECK_CRAN_INCOMING);\
+	export _R_CHECK_CRAN_INCOMING_USE_ASPELL_=$(HAS_ASPELL);\
+	export _R_CHECK_XREFS_REPOSITORIES_=$(_R_CHECK_XREFS_REPOSITORIES_);\
 	export _R_CHECK_DOT_INTERNAL_=1;\
 	export _R_CHECK_USE_CODETOOLS_=1;\
-	export _R_CHECK_CRAN_INCOMING_USE_ASPELL_=$(HAS_ASPELL);\
 	export _R_CHECK_FORCE_SUGGESTS_=0;\
 	export _R_CHECK_FULL_=$(R_CHECK_FULL);\
 	$(R_CMD) check $(R_CHECK_OPTS) $(PKG_TARBALL);\

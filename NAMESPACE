@@ -29,6 +29,12 @@ importFrom("utils", "packageVersion")
 
 # Manual imports
 importFrom("R.utils", "Arguments")
+if (packageVersion("R.utils") < "1.27.5") {
+  importFrom("R.utils", "getOption.default")
+  importFrom("R.utils", "cat.default")
+  importFrom("R.utils", "inherits.default")
+}
+
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
