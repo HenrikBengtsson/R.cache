@@ -15,8 +15,6 @@ importFrom("R.oo", "attachLocally")
 importFrom("R.oo", "startupMessage")
 importFrom("R.oo", "trim")
 importFrom("R.utils", "cat") ## Multi-sources: R.utils, base
-importFrom("R.utils", "getOption") ## Multi-sources: R.utils, base
-importFrom("R.utils", "inherits") ## Multi-sources: R.utils, base
 importFrom("R.utils", "isAbsolutePath")
 importFrom("R.utils", "isDirectory")
 importFrom("R.utils", "isFile")
@@ -27,12 +25,14 @@ importFrom("R.utils", "touchFile")
 importFrom("utils", "compareVersion")
 importFrom("utils", "packageVersion")
 
-# Manual imports
+## Manually adjusted
+## Cannot import explicitly from 'base';
+## importFrom("base", "getOption") ## Multi-sources: R.utils, base
+
+## Manual imports
 importFrom("R.utils", "Arguments")
 if (packageVersion("R.utils") < "1.27.5") {
-  importFrom("R.utils", "getOption.default")
   importFrom("R.utils", "cat.default")
-  importFrom("R.utils", "inherits.default")
 }
 
 
