@@ -3,7 +3,7 @@ Package: R.cache
 ================
 
 Version: 0.9.0 [2013-10-17]
-o BUG FIX: If the package was only loaded but attached, the cache 
+o BUG FIX: If the package was only loaded but not attached, the cache 
   root path would default to ~/.Rcache/, which in turn could cause
   that path to be create without asking the user.  For instance,
   R.cache::loadCache(list()) would do.  Thanks to Kurt Hornik at
