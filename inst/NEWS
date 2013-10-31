@@ -41,7 +41,7 @@ o Now explicitly importing one function from 'utils' in NAMESPACE.
 
 
 Version: 0.7.3 [2013-08-18]
-o Now clearCache() is exported (rexported from R.oo).
+o Now clearCache() is exported (re-exported from R.oo).
 
 
 Version: 0.7.2 [2013-08-03]
