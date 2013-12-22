@@ -13,15 +13,19 @@
 #   \item{object}{The object to be saved to file.}
 #   \item{key}{An optional object from which a hexadecimal hash
 #     code will be generated and appended to the filename.}
-#   \item{sources}{Source objects used for comparison of timestamps when 
+#   \item{sources}{Source objects used for comparison of timestamps when
 #     cache is loaded later.}
 #   \item{suffix}{A @character string to be appended to the end of the
 #     filename.}
 #   \item{comment}{An optional @character string written in ASCII at the
 #     beginning of the file.}
+#   \item{pathname}{(Advanced) An optional @character string specifying
+#     the pathname to the cache file.  If not specified (default), a unique
+#     one is automatically generated from arguments \code{key} and
+#     \code{suffix} among other things.}
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory (of the \emph{cache root directory} 
-#      as returned by @see "getCacheRootPath") to be used. 
+#      cache subdirectory (of the \emph{cache root directory}
+#      as returned by @see "getCacheRootPath") to be used.
 #      If @NULL, the path will be the cache root path.}
 #   \item{compress}{If @TRUE, the cache file will be saved using
 #      gzip compression, otherwise not.}
@@ -33,7 +37,7 @@
 # }
 #
 # \section{Requirements}{
-#  To make use of the \code{key} argument, the \emph{digest} package 
+#  To make use of the \code{key} argument, the \emph{digest} package
 #  (available on CRAN) must be installed, otherwise an error is generated.
 #  That package is not required when \code{key==NULL}.
 # }
@@ -41,7 +45,7 @@
 # \section{Compression}{
 #  The \code{saveCache()} method saves a compressed cache file
 #  (with filename extension *.gz) if argument \code{compress} is @TRUE.
-#  The @see "loadCache" method locates (via @see "findCache") and 
+#  The @see "loadCache" method locates (via @see "findCache") and
 #  loads such cache files as well.
 # }
 #
@@ -55,16 +59,20 @@
 #
 # @keyword "programming"
 # @keyword "IO"
-#*/######################################################################### 
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...) {
+#*/#########################################################################
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...) {
   # Argument 'compress':
   if (is.null(compress)) compress <- FALSE;
 
- 
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  # Generate cache name from basename and hash object.
+  # Cache file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  pathname <- generateCache(key=key, suffix=suffix, dirs=dirs);
+  if (is.null(pathname)) {
+    # Generate cache name from basename and hash object.
+    pathname <- generateCache(key=key, suffix=suffix, dirs=dirs);
+  }
+
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Save to file connection
@@ -100,7 +108,7 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   # Save 'timestamp'
   timestamp <- Sys.time();
   base::save(file=fh, timestamp, compress=compress, ...);
-  
+
   # Save 'object'
   base::save(file=fh, object, compress=compress, ...);
 
@@ -110,14 +118,16 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
 
 ############################################################################
 # HISTORY:
+# 2013-12-21
+# o Added argument 'pathname' to saveCache().
 # 2011-08-16
 # o Added support for gzip compressed cache files.
 # 2007-01-24
 # o Now saveCache() returns the pathname to the cache file.
 # 2006-05-25
 # o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
-#   in base::save(), which otherwise includes all of the surrounding 
-#   environment if 'sources' is not evaluated/missing.  For more details 
+#   in base::save(), which otherwise includes all of the surrounding
+#   environment if 'sources' is not evaluated/missing.  For more details
 #   see code and my email to r-devel on 2006-05-25.  Thanks to Brian Ripley
 #   for explaining what was going on.
 # 2006-04-04

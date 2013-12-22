@@ -17,8 +17,8 @@
 }
 
 \usage{
-\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, dirs=NULL,
-  compress=getOption("R.cache::compress"), ...)
+\method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL,
+  dirs=NULL, compress=getOption("R.cache::compress"), ...)
 }
 
 \arguments{
@@ -31,6 +31,10 @@
     filename.}
   \item{comment}{An optional \code{\link[base]{character}} string written in ASCII at the
     beginning of the file.}
+  \item{pathname}{(Advanced) An optional \code{\link[base]{character}} string specifying
+    the pathname to the cache file.  If not specified (default), a unique
+    one is automatically generated from arguments \code{key} and
+    \code{suffix} among other things.}
   \item{dirs}{A \code{\link[base]{character}} \code{\link[base]{vector}} constituting the path to the
      cache subdirectory (of the \emph{cache root directory}
      as returned by \code{\link{getCacheRootPath}}()) to be used.

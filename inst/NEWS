@@ -4,6 +4,7 @@ Package: R.cache
 
 Version: 0.9.1 [2013-12-21]
 o Added argument 'path' and 'rootPath' to getCachePath().
+o Added argument 'pathname' to saveCache().
 
 
 Version: 0.9.0 [2013-10-17]
