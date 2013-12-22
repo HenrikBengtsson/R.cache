@@ -14,10 +14,11 @@
 
 \description{
  Gets the path to the file cache directory.
+ If missing, the directory is created.
 }
 
 \usage{
-\method{getCachePath}{default}(dirs=NULL, ...)
+\method{getCachePath}{default}(dirs=NULL, path=NULL, rootPath=getCacheRootPath(), ...)
 }
 
 \arguments{
@@ -25,6 +26,8 @@
      cache subdirectory (of the \emph{cache root directory}
      as returned by \code{\link{getCacheRootPath}}()) to be used.
      If \code{\link[base]{NULL}}, the path will be the cache root path.}
+  \item{path, rootPath}{(Advanced) \code{\link[base]{character}} strings specifying the
+     explicit/default cache path and root cache path.}
   \item{...}{Not used.}
 }
 

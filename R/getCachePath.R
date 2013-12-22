@@ -5,15 +5,18 @@
 #
 # \description{
 #  @get "title".
+#  If missing, the directory is created.
 # }
 #
 # @synopsis
 #
 # \arguments{
 #   \item{dirs}{A @character @vector constituting the path to the
-#      cache subdirectory (of the \emph{cache root directory} 
-#      as returned by @see "getCacheRootPath") to be used. 
+#      cache subdirectory (of the \emph{cache root directory}
+#      as returned by @see "getCacheRootPath") to be used.
 #      If @NULL, the path will be the cache root path.}
+#   \item{path, rootPath}{(Advanced) @character strings specifying the
+#      explicit/default cache path and root cache path.}
 #   \item{...}{Not used.}
 # }
 #
@@ -30,19 +33,20 @@
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
-#*/######################################################################### 
-setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
-  # Get path from options
-  subname <- paste(dirs, collapse="/");
-  name <- paste("R.cache:cachePath", subname, sep=":");
-  path <- getOption(name);
-
-  # If not, use cache root path
+#*/#########################################################################
+setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=getCacheRootPath(), ...) {
+  # Get path where to store cache file
   if (is.null(path)) {
-    rootPath <- getCacheRootPath();
+    # (1) Get/make default path
+    # (a) Get path from options
+    subname <- paste(dirs, collapse="/");
+    name <- paste("R.cache:cachePath", subname, sep=":");
+    path <- getOption(name);
+
+    # (b) If not availble, make on
     path <- paste(c(rootPath, dirs), collapse=.Platform$file.sep);
   } else if (!isAbsolutePath(path)) {
-    rootPath <- getCacheRootPath();
+    # (2) Get/make default path
     path <- file.path(rootPath, path);
   }
 
@@ -65,6 +69,8 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, ...) {
 
 ############################################################################
 # HISTORY:
+# 2013-12-21
+# o Added argument 'path' and 'rootPath' to getCachePath().
 # 2012-09-10
 # o Renamed the installed .Rcache/ directory to _Rcache/ to avoid
 #   R CMD check NOTEs.
