@@ -11,7 +11,7 @@
 #
 # \arguments{
 #   \item{key}{A @list or an @environment from which a @character string
-#     checksum will be calculated and that will constitute the name part 
+#     checksum will be calculated and that will constitute the name part
 #     of the cache filename.}
 #   \item{suffix}{A @character string to be appended to the end of the
 #     filename.}
@@ -19,7 +19,7 @@
 # }
 #
 # \value{
-#   Returns the path as a @character string.
+#   Returns the pathname as a @character string.
 # }
 #
 # @author
@@ -32,26 +32,18 @@
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
-#*/######################################################################### 
-setMethodS3("generateCache", "default", function(key=NULL, suffix=".Rcache", ...) {
+#*/#########################################################################
+setMethodS3("generateCache", "default", function(key, suffix=".Rcache", ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'key':
-  if (!is.null(key)) {
-    if (!is.list(key) && !is.environment(key)) {
-      throw("Argument 'key' must be a list, an environment or NULL: ", 
-                                                           class(key)[1L]);
-    }
+  if (!is.list(key) && !is.environment(key)) {
+    throw("Argument 'key' must be a list, an environment: ", class(key)[1L]);
   }
 
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Generate cache name from hash code of key object
-  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  if (!is.null(key)) {
-    hashCode <- getChecksum(key);
-    cacheName <- hashCode;
-  }
+  cacheName <- getChecksum(key);
 
   # Add cache directory or pathname
   path <- getCachePath(...);
@@ -60,13 +52,15 @@ setMethodS3("generateCache", "default", function(key=NULL, suffix=".Rcache", ...
   # Add suffix
   cacheName <- paste(cacheName, suffix, sep="");
 
-
   cacheName;
 }, export=FALSE)
 
 
 ############################################################################
 # HISTORY:
+# 2014-01-13
+# o BUG FIX: generateCache(key=NULL) would generate "Error in
+#   file.path(path, cacheName) : object 'cacheName' not found".
 # 2011-04-01
 # o Now generateCache() utilizes a generic function getChecksum()
 #   to obtain the checksum.

@@ -17,7 +17,7 @@
 }
 
 \usage{
-\method{generateCache}{default}(key=NULL, suffix=".Rcache", ...)
+\method{generateCache}{default}(key, suffix=".Rcache", ...)
 }
 
 \arguments{
@@ -30,7 +30,7 @@
 }
 
 \value{
-  Returns the path as a \code{\link[base]{character}} string.
+  Returns the pathname as a \code{\link[base]{character}} string.
 }
 
 \author{Henrik Bengtsson}
