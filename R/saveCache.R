@@ -100,17 +100,21 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   writeChar(comment, con=fh, nchars=nchar(comment));
 
   # Save 'sources'
+
+  # Look up base::save() once; '::' is expensive
+  base_save <- base::save;
+
   # If 'sources' is not evaluated, it is a so called promise, which will
   # make all of its calling environments to be save too.
   dummy <- is.null(sources);
-  base::save(file=fh, sources, compress=compress, ...);
+  base_save(file=fh, sources, compress=compress, ...);
 
   # Save 'timestamp'
   timestamp <- Sys.time();
-  base::save(file=fh, timestamp, compress=compress, ...);
+  base_save(file=fh, timestamp, compress=compress, ...);
 
   # Save 'object'
-  base::save(file=fh, object, compress=compress, ...);
+  base_save(file=fh, object, compress=compress, ...);
 
   invisible(pathname);
 })
