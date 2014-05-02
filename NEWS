@@ -2,7 +2,14 @@
 Package: R.cache
 ================
 
-Version: 0.9.4 [2014-04-46]
+Version: 0.9.5 [2014-05-01]
+o ROBUSTNESS: The textual prompt used to ask new R.cache users for
+  approval on creating a persistent cache directory is now using
+  the standard error (stderr) rather than the standard output
+  (stdout).  This lowers the risk for issues with report generators.
+
+
+Version: 0.9.4 [2014-04-26]
 o CLEANUP: Minimize use of '::'.
 
 

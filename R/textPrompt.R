@@ -1,4 +1,4 @@
-.textPrompt <- function(prompt, options=c("Y"="yes", "n"="no"), caseSensitive=FALSE, maxTries=Inf, type=c("output", "error"), onSink=c("error", "ignore"), ...) {
+.textPrompt <- function(prompt, options=c("Y"="yes", "n"="no"), caseSensitive=FALSE, maxTries=Inf, type=c("message", "output"), onSink=c("error", "ignore"), ...) {
   # Argument 'maxTries':
   maxTries <- Arguments$getNumeric(maxTries, range=c(1,Inf));
 
@@ -9,7 +9,10 @@
   type <- match.arg(type);
 
   # Check if standard output is redirected.
-  hasSink <- (sink.number(type=type) > 0L);
+  # (For some unknown reason are there always *2* sinks for type="message"
+  #  active in R. Verified on Windows, OSX, and Linux. /HB 2014-05-01)
+  minSink <- switch(type, message=2L, 0L);
+  hasSink <- (sink.number(type=type) > minSink);
   if (hasSink) {
     if (onSink == "error") {
       throw("Cannot prompt user via the standard ", type, ", because it is currently redirected and (most likely) not visible to the user.");
@@ -27,7 +30,7 @@
   # Where to prompt
   if (type == "output") {
     con <- stdout();
-  } else {    
+  } else {
     con <- stderr();
   }
 
@@ -39,7 +42,7 @@
     count <- count + 1L;
 
     ans <- trim(ans);
-    if (ans == "") { 
+    if (ans == "") {
       idx <- 1L;
     } else {
       if (caseSensitive) {
@@ -65,6 +68,8 @@
 
 ############################################################################
 # HISTORY:
+# 2014-05-01
+# o Now argument 'type' defaults to c("message", "output").
 # 2011-12-30
 # o Added textPrompt().
 ############################################################################
