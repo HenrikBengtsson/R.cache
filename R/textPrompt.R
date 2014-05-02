@@ -9,8 +9,7 @@
   type <- match.arg(type);
 
   # Check if standard output is redirected.
-  # (For some unknown reason are there always *2* sinks for type="message"
-  #  active in R. Verified on Windows, OSX, and Linux. /HB 2014-05-01)
+  # NOTE: There always *2* sinks for type="message", cf. help("sink").
   minSink <- switch(type, message=2L, 0L);
   hasSink <- (sink.number(type=type) > minSink);
   if (hasSink) {
