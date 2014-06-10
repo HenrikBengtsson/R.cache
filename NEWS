@@ -2,6 +2,10 @@
 Package: R.cache
 ================
 
+Version: 0.10.0 [2014-06-10]
+o Bumped package dependencies.
+
+
 Version: 0.9.5 [2014-05-01]
 o ROBUSTNESS: The textual prompt used to ask new R.cache users for
   approval on creating a persistent cache directory is now using
