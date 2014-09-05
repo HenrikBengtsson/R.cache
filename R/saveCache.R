@@ -36,12 +36,6 @@
 #   Returns (invisible) the pathname of the cache file.
 # }
 #
-# \section{Requirements}{
-#  To make use of the \code{key} argument, the \emph{digest} package
-#  (available on CRAN) must be installed, otherwise an error is generated.
-#  That package is not required when \code{key==NULL}.
-# }
-#
 # \section{Compression}{
 #  The \code{saveCache()} method saves a compressed cache file
 #  (with filename extension *.gz) if argument \code{compress} is @TRUE.

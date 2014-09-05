@@ -39,14 +39,8 @@
 #
 # \details{
 #   The hash code calculated from the \code{key} object is a
-#   32 characters long hexadecimal MD5 hash code.  For more details,
-#   see the \emph{digest} package.
-# }
-#
-# \section{Requirements}{
-#  To make use of the \code{key} argument, the \emph{digest} package
-#  (available on CRAN) must be installed, otherwise an error is generated.
-#  That package is not required when \code{key==NULL}.
+#   32 characters long hexadecimal MD5 hash code.
+#   For more details, see @see "getChecksum".
 # }
 #
 # @author

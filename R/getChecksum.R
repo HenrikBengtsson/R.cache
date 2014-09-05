@@ -47,7 +47,7 @@
 # @keyword "internal"
 #*/#########################################################################
 setMethodS3("getChecksum", "default", function(object, ...) {
-  digest::digest(object, ...);
+  digest(object, ...);
 })
 
 

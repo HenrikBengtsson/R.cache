@@ -18,15 +18,9 @@
   Memoization can be used to speed up repetitive and computational expensive function calls.  The first time a function that implements memoization is called the results are stored in a cache memory.  The next time the function is called with the same set of parameters, the results are momentarily retrieved from the cache avoiding repeating the calculations.  With this package, any R object can be cached in a key-value storage where the key can be an arbitrary set of R objects.  The cache memory is persistent (on the file system).
 }
 
-\section{Requirements}{
-  This package requires the \pkg{R.oo} [1] and \pkg{R.utils} packages.
-  For automatic generation of cache filenames, which is the most common
-  usage of this package, the CRAN package \pkg{digest} is also required.
-}
-
 \section{Installation and updates}{
-  To install this package, do:
-  \code{install.packages("R.cache", dependencies=TRUE)}
+  To install this package and all of its dependent packages, do:
+  \code{install.packages("R.cache")}
 }
 
 \section{To get started}{

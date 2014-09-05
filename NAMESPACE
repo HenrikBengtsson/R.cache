@@ -24,6 +24,7 @@ importFrom("R.utils", "removeDirectory")
 importFrom("R.utils", "touchFile")
 importFrom("utils", "compareVersion")
 importFrom("utils", "packageVersion")
+importFrom("digest", "digest")
 
 ## Manually adjusted
 ## Cannot import explicitly from 'base';
