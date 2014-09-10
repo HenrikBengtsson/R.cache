@@ -38,6 +38,11 @@
   Returns the result of the function call.
 }
 
+\details{
+  If the \code{\link[base]{function}} returns \code{\link[base]{NULL}}, that particular function call is
+  \emph{not} memoized.
+}
+
 \author{Henrik Bengtsson}
 
 \seealso{

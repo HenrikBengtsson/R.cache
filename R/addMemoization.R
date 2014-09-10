@@ -24,6 +24,9 @@
 # \details{
 #  The new function is setup such that the the memoized call is done
 #  in the environment of the caller (the parent frame of the function).
+#
+#   If the @function returns @NULL, that particular function call is
+#   \emph{not} memoized.
 # }
 #
 # @author
@@ -34,7 +37,7 @@
 #
 # @keyword "programming"
 # @keyword "IO"
-#*/#########################################################################  
+#*/#########################################################################
 setMethodS3("addMemoization", "default", function(fcn, ...) {
   # Argument 'fcn':
   if (is.character(fcn)) {
@@ -48,20 +51,30 @@ setMethodS3("addMemoization", "default", function(fcn, ...) {
     throw("Argument 'fcn' is not a function: ", mode(fcn));
   }
 
+  # Already memoized?
+  if (inherits(fcn, "MemoizedFunction")) {
+    return(fcn)
+  }
 
   # Record the argument specific to memoizedCall().
   memArgs <- list(...);
 
-  function(..., envir=parent.frame()) {
+  res <- function(..., envir=parent.frame()) {
     args <- list(fcn, ..., envir=envir);
     args <- c(args, memArgs);
     do.call("memoizedCall", args=args);
   }
+  class(res) <- c("MemoizedFunction", class(res))
+
+  res
 }) # addMemoization()
 
 
 #######################################################################
 # HISTORY:
+# 2014-09-10
+# o ROBUSTNESS: addMemoization() will no longer memoize an already
+#   memoized function.
 # 2011-02-14
 # o Added addMemoization().
 #######################################################################

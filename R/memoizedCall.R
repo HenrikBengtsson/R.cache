@@ -26,6 +26,11 @@
 #   Returns the result of the function call.
 # }
 #
+# \details{
+#   If the @function returns @NULL, that particular function call is
+#   \emph{not} memoized.
+# }
+#
 # @author
 #
 # \seealso{

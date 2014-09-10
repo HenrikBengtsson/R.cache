@@ -2,6 +2,15 @@
 Package: R.cache
 ================
 
+Version: 0.11.1 [2014-09-10]
+o ROBUSTNESS:  Added package system tests for memoizeCall()
+  and addMemoization().
+o DOCUMENTATION: Clarified in help that function calls that
+  returns ("has value") NULL will not be cached.
+o BUG FIX: addMemoization() will no longer memoize an already
+  memoized function.
+
+
 Version: 0.11.0 [2014-09-05]
 o Now package imports rather than suggests the 'digest' package.
   This simplifies installation/usage of the package.

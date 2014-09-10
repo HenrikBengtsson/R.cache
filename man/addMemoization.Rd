@@ -35,6 +35,9 @@
 \details{
  The new function is setup such that the the memoized call is done
  in the environment of the caller (the parent frame of the function).
+
+  If the \code{\link[base]{function}} returns \code{\link[base]{NULL}}, that particular function call is
+  \emph{not} memoized.
 }
 
 \author{Henrik Bengtsson}
