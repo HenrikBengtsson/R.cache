@@ -11,7 +11,7 @@ install.packages('R.cache')
   href="https://travis-ci.org/HenrikBengtsson/R.cache"><img
   src="https://travis-ci.org/HenrikBengtsson/R.cache.svg?branch=master"
   alt="Build status"></a>
-* Coverage status: <a
+* Test coverage status: <a
   href='https://coveralls.io/r/HenrikBengtsson/R.cache?branch=develop'><img
   src='https://coveralls.io/repos/HenrikBengtsson/R.cache/badge.png?branch=develop'
   alt='Coverage Status' /></a> 
