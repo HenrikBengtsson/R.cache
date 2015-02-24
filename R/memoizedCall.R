@@ -49,7 +49,7 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
   if (!force) {
     res <- loadCache(key=key, dirs=dirs, sources=sources);
     if (!is.null(res)) {
-      if (verbose) cat("Returning cached results!");
+      if (verbose) message("Returning cached results!");
       return(res);
     }
   }

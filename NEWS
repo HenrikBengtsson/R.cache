@@ -2,6 +2,11 @@
 Package: R.cache
 ================
 
+Version: 0.11.1-9000 [2015-02-24]
+o Now all prompt and verbose messages are send to the standard
+  error (instead of the standard output).
+
+
 Version: 0.11.1 [2014-09-10]
 o ROBUSTNESS:  Added package system tests for memoizeCall()
   and addMemoization().
