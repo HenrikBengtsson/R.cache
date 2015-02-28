@@ -30,7 +30,10 @@ t1 <- system.time({
   res1 <- memoizedCall(sleep, time=1.5, dirs=dirs)
 })[3]
 print(t1)
-print(t1/t0)
+if (t1 >= t0) {
+  warning("Second call to memoizedCall() took longer than the first: ",
+          t1, " >= ", t0)
+}
 
 # Sanity check
 stopifnot(identical(res1, res0))

@@ -2,7 +2,8 @@
 Package: R.cache
 ================
 
-Version: 0.11.1-9000 [2015-02-24]
+Version: 0.11.1-9000 [2015-02-27]
+o SPEEDUP: Now memoizedCall() generates cache pathname only once.
 o Now all prompt and verbose messages are send to the standard
   error (instead of the standard output).
 
