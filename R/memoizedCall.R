@@ -19,7 +19,6 @@
 #   \item{force}{If @TRUE, any cached results are ignored, otherwise not.}
 #   \item{sources, dirs}{Optional arguments passed to
 #     @see "loadCache" and @see "saveCache".}
-#   \item{verbose}{If @TRUE, verbose statements are outputted.}
 # }
 #
 # \value{
@@ -43,7 +42,7 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL, verbose=FALSE) {
+setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL) {
   # 1. Generate cache file
   key <- list(what=what, ...);
   pathnameC <- generateCache(key=key, dirs=dirs);
@@ -52,7 +51,6 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
   if (!force) {
     res <- loadCache(pathname=pathnameC, sources=sources);
     if (!is.null(res)) {
-      if (verbose) message("Returning cached results!");
       return(res);
     }
   }
