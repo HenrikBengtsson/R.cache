@@ -54,9 +54,9 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress"), ...) {
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...) {
   # Argument 'compress':
-  if (is.null(compress)) compress <- FALSE;
+  if (!isTRUE(compress)) compress <- FALSE
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

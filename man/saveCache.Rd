@@ -18,7 +18,7 @@
 
 \usage{
 \method{saveCache}{default}(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL,
-  dirs=NULL, compress=getOption("R.cache::compress"), ...)
+  dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...)
 }
 
 \arguments{
