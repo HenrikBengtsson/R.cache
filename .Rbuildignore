@@ -4,7 +4,8 @@
 ^.svn
 ^.git
 ^.make
-README[.]md
+INSTALL[.]md
+OVERVIEW[.]md
 
 #----------------------------
 # Travis-CI et al.
@@ -14,7 +15,7 @@ README[.]md
 ^pkg-build[.]sh$
 ^appveyor[.]yml$
 ^covr-utils.R$
-^[.]coveralls[.]R$
+^[.]covr[.]R$
 
 #----------------------------
 # R related
@@ -27,6 +28,8 @@ README[.]md
 ^incl
 ^NAMESPACE,.*[.]txt$
 ^nohup.*$
+^[.]R
+^[.]benchmark
 ^[.]devel
 ^[.]test
 ^[.]check
