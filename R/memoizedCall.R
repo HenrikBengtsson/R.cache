@@ -50,9 +50,7 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
   # 1. Look for memoized results
   if (!force) {
     res <- loadCache(pathname=pathnameC, sources=sources);
-    if (!is.null(res)) {
-      return(res);
-    }
+    if (!is.null(res)) return(res)
   }
 
   # 2. Otherwise, call method with arguments
