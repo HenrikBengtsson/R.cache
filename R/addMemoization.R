@@ -12,6 +12,7 @@
 # \arguments{
 #   \item{fcn}{A @function (or the name of a function) that should be
 #     copied and have memoization added.}
+#   \item{envir}{The @environment from where to look for the function.}
 #   \item{...}{Additional arguments for controlling the memoization,
 #     i.e. all arguments of @see "memoizedCall" that are not passed
 #     to @see "base::do.call".}
@@ -38,13 +39,13 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("addMemoization", "default", function(fcn, ...) {
+setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...) {
   # Argument 'fcn':
   if (is.character(fcn)) {
-    if (!exists(fcn, mode="function")) {
+    if (!exists(fcn, mode="function", envir=envir, inherits=TRUE)) {
       throw("Argument 'fcn' is not an existing function: ", fcn);
     }
-    fcn <- get(fcn, mode="function");
+    fcn <- get(fcn, mode="function", envir=envir, inherits=TRUE);
   }
 
   if (!is.function(fcn)) {
