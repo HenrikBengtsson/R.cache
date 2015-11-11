@@ -6,7 +6,7 @@ Version: 0.11.1-9000 [2015-11-10]
 o SPEEDUP: Now memoizedCall() generates cache pathname only once.
 o Now all prompt and verbose messages are send to the standard
   error (instead of the standard output).
-o ROBUSTNESS: Increased test coverage from 64% to 81%.
+o ROBUSTNESS: Increased test coverage from 64% to 86%.
 o CLEANUP: Dropped argument 'verbose' from memoizedCall().
 
 
