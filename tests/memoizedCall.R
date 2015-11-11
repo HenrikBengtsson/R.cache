@@ -37,3 +37,4 @@ if (t1 >= t0) {
 
 # Sanity check
 stopifnot(identical(res1, res0))
+clearCache(recursive=TRUE)
