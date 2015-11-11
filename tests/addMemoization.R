@@ -53,4 +53,3 @@ stopifnot(identical(sleep3, sleep))
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 res <- try(addMemoization("non-existing-function"), silent=TRUE)
 stopifnot(inherits(res, "try-error"))
-
