@@ -8,8 +8,8 @@ Imports:
   R.oo (>= 1.19.0),
   R.utils (>= 2.1.0),
   digest (>= 0.6.8)
-Date: 2015-11-11
-Title: Fast and Light-weight Caching (Memoization) of Objects and Results to Speed Up Computations
+Date: 2015-11-12
+Title: Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))
 Author: Henrik Bengtsson [aut, cre, cph]
