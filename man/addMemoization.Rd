@@ -17,12 +17,13 @@
 }
 
 \usage{
-\method{addMemoization}{default}(fcn, ...)
+\method{addMemoization}{default}(fcn, envir=parent.frame(), ...)
 }
 
 \arguments{
   \item{fcn}{A \code{\link[base]{function}} (or the name of a function) that should be
     copied and have memoization added.}
+  \item{envir}{The \code{\link[base]{environment}} from where to look for the function.}
   \item{...}{Additional arguments for controlling the memoization,
     i.e. all arguments of \code{\link{memoizedCall}}() that are not passed
     to \code{\link[base]{do.call}}().}

@@ -1,3 +1,5 @@
+## covr: skip=all
+
 .onLoad <- function(libname, pkgname) {
   ns <- getNamespace(pkgname);
   pkg <- Package(pkgname);

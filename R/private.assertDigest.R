@@ -24,7 +24,7 @@
     } else if (onDiff == "warning") {
       warning(msg);
     } else {
-      cat(msg);
+      message(msg);
     }
   }
 } # .assertDigest()

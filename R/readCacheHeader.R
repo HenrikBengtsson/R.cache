@@ -33,7 +33,7 @@
 # @keyword "programming"
 # @keyword "IO"
 # @keyword "internal"
-#*/######################################################################### 
+#*/#########################################################################
 setMethodS3("readCacheHeader", "default", function(file, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
@@ -61,13 +61,11 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
   # 1a. Load identifier:
   id <- readChar(con=file, nchars=64L);
   if (length(id) == 0L) {
-    throw("Rcache file format error. Read empty header identifier: ", 
-                                                                 pathname);
+    throw("Rcache file format error. Read empty header identifier: ", pathname);
   }
   pattern <- "^Rcache v([0-9][0-9]*[.][0-9][0-9]*([.][0-9][0-9]*)*).*";
   if (regexpr(pattern, id) == -1L) {
-    throw("Rcache file format error ('", pathname, 
-                                           "'). Invalid identifier: ", id);
+    throw("Rcache file format error ('", pathname, "'). Invalid identifier: ", id);
   }
   header$identifier <- id;
 

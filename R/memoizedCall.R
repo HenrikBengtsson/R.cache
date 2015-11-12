@@ -19,7 +19,6 @@
 #   \item{force}{If @TRUE, any cached results are ignored, otherwise not.}
 #   \item{sources, dirs}{Optional arguments passed to
 #     @see "loadCache" and @see "saveCache".}
-#   \item{verbose}{If @TRUE, verbose statements are outputted.}
 # }
 #
 # \value{
@@ -43,22 +42,22 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL, verbose=FALSE) {
-  # 1. Look for memoized results
+setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL) {
+  # 1. Generate cache file
   key <- list(what=what, ...);
+  pathnameC <- generateCache(key=key, dirs=dirs);
+
+  # 1. Look for memoized results
   if (!force) {
-    res <- loadCache(key=key, dirs=dirs, sources=sources);
-    if (!is.null(res)) {
-      if (verbose) cat("Returning cached results!");
-      return(res);
-    }
+    res <- loadCache(pathname=pathnameC, sources=sources);
+    if (!is.null(res)) return(res)
   }
 
   # 2. Otherwise, call method with arguments
   res <- do.call(what, args=list(...), quote=FALSE, envir=envir);
 
   # 3. Memoize results
-  saveCache(res, key=key, dirs=dirs, sources=sources);
+  saveCache(res, pathname=pathnameC, sources=sources);
 
   # 4. Return results
   res;
@@ -68,6 +67,8 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
 
 #######################################################################
 # HISTORY:
+# 2015-02-27
+# o SPEEDUP: Now memoizedCall() generates cache pathname only once.
 # 2011-02-14
 # o Added argument 'sources' to memoizedCall().
 # 2011-02-13

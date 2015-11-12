@@ -1,9 +1,15 @@
 Package: R.cache
-Version: 0.11.1
-Depends: R (>= 2.5.0)
-Imports: utils, R.methodsS3 (>= 1.6.1), R.oo (>= 1.18.0), R.utils (>= 1.33.0), digest (>= 0.6.4)
-Date: 2014-09-10
-Title: Fast and light-weight caching (memoization) of objects and results to speed up computations
+Version: 0.12.0
+Depends:
+  R (>= 2.5.0)
+Imports:
+  utils,
+  R.methodsS3 (>= 1.7.0),
+  R.oo (>= 1.19.0),
+  R.utils (>= 2.1.0),
+  digest (>= 0.6.8)
+Date: 2015-11-12
+Title: Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))
 Author: Henrik Bengtsson [aut, cre, cph]
@@ -11,3 +17,5 @@ Maintainer: Henrik Bengtsson <henrikb@braju.com>
 Description: Memoization can be used to speed up repetitive and computational expensive function calls.  The first time a function that implements memoization is called the results are stored in a cache memory.  The next time the function is called with the same set of parameters, the results are momentarily retrieved from the cache avoiding repeating the calculations.  With this package, any R object can be cached in a key-value storage where the key can be an arbitrary set of R objects.  The cache memory is persistent (on the file system).
 License: LGPL (>= 2.1)
 LazyLoad: TRUE
+URL: https://github.com/HenrikBengtsson/R.cache
+BugReports: https://github.com/HenrikBengtsson/R.cache/issues

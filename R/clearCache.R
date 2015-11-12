@@ -66,7 +66,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   nbrOfFiles <- length(allFiles);
   if (nbrOfFiles == 0L) {
     if (prompt) {
-      cat("Nothing to clear. Cache directory is empty: ", path, "\n", sep="");
+      message("Nothing to clear. Cache directory is empty: ", path, "\n", sep="");
     }
     return(invisible(NULL));
   }
@@ -86,7 +86,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   if (prompt) {
     answer <- ".";
     while (!(answer %in% c("y", "n", ""))) {
-      cat(sprintf("Are you really sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path));
+      message(sprintf("Are you really sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path));
       answer <- tolower(readline());
     }
     if (answer != "y") {
@@ -131,7 +131,7 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
     if (length(filesR) + length(dirsR) > 0L) {
       msg <- sprintf("%s, but failed to remove another %d files and another %d directories", msg, length(filesR), length(dirsR));
     }
-    cat(sprintf("%s.\n", msg));
+    message(sprintf("%s.\n", msg));
   }
 
   # Add a README.txt file, if missing.

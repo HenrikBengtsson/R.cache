@@ -2,6 +2,14 @@
 Package: R.cache
 ================
 
+Version: 0.12.0 [2015-11-12]
+o SPEEDUP: Now memoizedCall() generates cache pathname only once.
+o Now all prompt and verbose messages are send to the standard
+  error (instead of the standard output).
+o ROBUSTNESS: Increased test coverage from 64% to 86%.
+o CLEANUP: Dropped argument 'verbose' from memoizedCall().
+
+
 Version: 0.11.1 [2014-09-10]
 o ROBUSTNESS:  Added package system tests for memoizeCall()
   and addMemoization().

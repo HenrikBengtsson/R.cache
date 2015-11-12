@@ -43,3 +43,13 @@ stopifnot(identical(res1, res0))
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 sleep2 <- addMemoization(sleep)
 stopifnot(identical(sleep2, sleep))
+
+sleep3 <- addMemoization("sleep")
+stopifnot(identical(sleep3, sleep))
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Exception handling
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+res <- try(addMemoization("non-existing-function"), silent=TRUE)
+stopifnot(inherits(res, "try-error"))
