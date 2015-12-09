@@ -27,16 +27,11 @@
 #
 # @keyword "programming"
 # @keyword "IO"
-#*/######################################################################### 
+#*/#########################################################################
 setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
   path <- as.character(path);
 
-  if (!isDirectory(path)) {
-    mkdirs(path, mustWork=TRUE)
-    if (!isDirectory(path)) {
-      throw("Could not create cache directory: ", path);
-    }
-  }
+  if (!isDirectory(path)) mkdirs(path, mustWork=TRUE)
 
   # Add a README.txt file, if missing.
   .addREADME(to=path);
