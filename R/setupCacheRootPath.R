@@ -40,7 +40,7 @@
 # @keyword "IO"
 # @keyword "internal"
 #*/#########################################################################
-setMethodS3("setupCacheRootPath", "default", function(defaultPath="~/.Rcache/", ...) {
+setMethodS3("setupCacheRootPath", "default", function(defaultPath="~/.Rcache", ...) {
   rootPath <- getCacheRootPath(NULL);
 
   # If already set, nothing to do.
