@@ -32,7 +32,7 @@ setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
   path <- as.character(path);
 
   if (!isDirectory(path)) {
-    mkdirs(path);
+    mkdirs(path, mustWork=TRUE)
     if (!isDirectory(path)) {
       throw("Could not create cache directory: ", path);
     }

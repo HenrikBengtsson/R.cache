@@ -1,5 +1,5 @@
 Package: R.cache
-Version: 0.12.0
+Version: 0.12.0-9000
 Depends:
   R (>= 2.5.0)
 Imports:
@@ -8,7 +8,7 @@ Imports:
   R.oo (>= 1.19.0),
   R.utils (>= 2.1.0),
   digest (>= 0.6.8)
-Date: 2015-11-12
+Date: 2015-12-08
 Title: Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))

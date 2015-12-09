@@ -52,7 +52,7 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=g
 
   # Create missing directory?
   if (!isDirectory(path)) {
-    mkdirs(path);
+    mkdirs(path, mustWork=TRUE)
     if (!isDirectory(path)) {
       throw("Could not create cache directory: ", path);
     }
