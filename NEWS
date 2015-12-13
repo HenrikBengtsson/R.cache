@@ -2,7 +2,7 @@
 Package: R.cache
 ================
 
-Version: 0.12.0-9000 [2015-12-09]
+Version: 0.12.0-9000 [2015-12-13]
 o Now package gives more informative error messages in the
   rare cases it fail to create the cache root directory.
 
