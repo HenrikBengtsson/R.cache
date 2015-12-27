@@ -63,7 +63,7 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
   res <- function(..., envir=parent.frame()) {
     args <- list(fcn, ..., envir=envir);
     args <- c(args, memArgs);
-    do.call("memoizedCall", args=args);
+    do.call(memoizedCall, args=args);
   }
   class(res) <- c("MemoizedFunction", class(res))
 
