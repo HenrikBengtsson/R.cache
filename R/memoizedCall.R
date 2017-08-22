@@ -42,14 +42,18 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL) {
+setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL,
+                                                onError=c("warning", "print", "quiet", "error")) {
+
+  onError <- match.arg(onError);
+
   # 1. Generate cache file
   key <- list(what=what, ...);
   pathnameC <- generateCache(key=key, dirs=dirs);
 
   # 1. Look for memoized results
   if (!force) {
-    res <- loadCache(pathname=pathnameC, sources=sources);
+    res <- loadCache(pathname=pathnameC, sources=sources, onError=onError);
     if (!is.null(res)) return(res)
   }
 
