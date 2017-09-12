@@ -1,5 +1,5 @@
 Package: R.cache
-Version: 0.12.1
+Version: 0.12.2
 Depends:
   R (>= 2.5.0)
 Imports:

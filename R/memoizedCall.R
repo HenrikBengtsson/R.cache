@@ -61,7 +61,7 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
   res <- do.call(what, args=list(...), quote=FALSE, envir=envir);
 
   # 3. Memoize results
-  saveCache(res, pathname=pathnameC, sources=sources);
+  saveCache(res, pathname=pathnameC, sources=sources, onError=onError);
 
   # 4. Return results
   res;
