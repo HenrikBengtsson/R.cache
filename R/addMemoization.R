@@ -39,7 +39,11 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...) {
+setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...,
+                                                  onError=c("warning", "print", "quiet", "error")) {
+
+  onError <- match.arg(onError);
+
   # Argument 'fcn':
   if (is.character(fcn)) {
     if (!exists(fcn, mode="function", envir=envir, inherits=TRUE)) {
@@ -58,7 +62,7 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
   }
 
   # Record the argument specific to memoizedCall().
-  memArgs <- list(...);
+  memArgs <- list(..., onError=onError);
 
   res <- function(..., envir=parent.frame()) {
     args <- list(fcn, ..., envir=envir);

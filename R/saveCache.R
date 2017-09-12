@@ -54,7 +54,13 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...) {
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ..., onError=c("warning", "print", "quiet", "error")) {
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # Validate arguments
+  # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  # Argument 'onError':
+  onError <- match.arg(onError);
+
   # Argument 'compress':
   if (!isTRUE(compress)) compress <- FALSE
 
@@ -71,12 +77,21 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Save to file connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  tryCatch({
   if (compress) {
     pathname <- sprintf("%s.gz", pathname);
     fh <- gzfile(pathname, open="wb");
   } else {
     fh <- file(pathname, open="wb");
-  }
+  }}, error = function(ex) {
+    if (onError == "print") {
+      print(ex);
+    } else if (onError == "warning") {
+      warning(ex);
+    } else if (onError == "error") {
+      stop(ex);
+    }
+  })
   on.exit(close(fh));
 
   # Save 'identifier'
