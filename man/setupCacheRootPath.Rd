@@ -17,7 +17,7 @@
 }
 
 \usage{
-\method{setupCacheRootPath}{default}(defaultPath="~/.Rcache/", ...)
+\method{setupCacheRootPath}{default}(defaultPath="~/.Rcache", ...)
 }
 
 \arguments{
