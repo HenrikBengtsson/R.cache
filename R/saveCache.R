@@ -55,10 +55,13 @@
 # @keyword "IO"
 #*/#########################################################################
 setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...) {
+  # Look up base::save() once; '::' adds overhead
+  base_save <- base::save;
+
   # Argument 'compress':
   if (!isTRUE(compress)) compress <- FALSE
 
-
+  
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Cache file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,36 +82,44 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   }
   on.exit(close(fh));
 
-  # Save 'identifier'
+  ## Prepare to save
   identifier <- "Rcache v0.1.7 (R package R.cache by Henrik Bengtsson)";
   if (nchar(identifier) > 64L)
     throw("Internal error. Identifier is too long: ", identifier);
   tail <- paste(rep(" ", times=64L-nchar(identifier)), collapse="");
   identifier <- paste(identifier, tail, sep="");
-  writeChar(con=fh, identifier, nchars=64L);
 
-  # Save 'comment'
   if (is.null(comment))
     comment <- "";
-  writeBin(con=fh, nchar(comment), size=4L);
-  writeChar(comment, con=fh, nchars=nchar(comment));
-
-  # Save 'sources'
-
-  # Look up base::save() once; '::' is expensive
-  base_save <- base::save;
 
   # If 'sources' is not evaluated, it is a so called promise, which will
   # make all of its calling environments to be save too.
   dummy <- is.null(sources);
-  base_save(file=fh, sources, compress=compress, ...);
 
-  # Save 'timestamp'
   timestamp <- Sys.time();
-  base_save(file=fh, timestamp, compress=compress, ...);
 
-  # Save 'object'
-  base_save(file=fh, object, compress=compress, ...);
+  tryCatch({
+    # Save 'identifier'
+    writeChar(con=fh, identifier, nchars=64L);
+  
+    # Save 'comment'
+    writeBin(con=fh, nchar(comment), size=4L);
+    writeChar(comment, con=fh, nchars=nchar(comment));
+  
+    # Save 'sources'
+    base_save(file=fh, sources, compress=compress, ...);
+  
+    # Save 'timestamp'
+    base_save(file=fh, timestamp, compress=compress, ...);
+  
+    # Save 'object'
+    base_save(file=fh, object, compress=compress, ...);
+  }, error = function(ex) {
+    msg <- conditionMessage(ex)
+    throw(sprintf("Failed to save to cache (%s). The reason was: %s",
+                  sQuote(pathname), ex));
+
+  })
 
   invisible(pathname);
 })
