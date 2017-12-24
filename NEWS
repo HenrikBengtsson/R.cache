@@ -7,6 +7,8 @@ NEW FEATURES:
  
  o Now package gives a more informative error message in the rare cases it
    fails to create the cache root directory or fails to save a cache file.
+
+ o Updated loadCache() to recognize new file-format version 3 coming to R.
  
  
 Version: 0.12.0 [2015-11-12]
