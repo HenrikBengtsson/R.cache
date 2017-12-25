@@ -54,13 +54,15 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error")) {
+setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "error", "message", "quiet", "print")) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'onError':
   onError <- match.arg(onError);
-
+  if (onError == "print") {
+    .Deprecated(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
+  }
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find cached file
@@ -130,12 +132,14 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     # 6. Return cached object
     return(object);
   }, error = function(ex) {
-     if (onError == "print") {
-       print(ex);
-     } else if (onError == "warning") {
+     if (onError == "warning") {
        warning(ex);
      } else if (onError == "error") {
        stop(ex);
+     } else if (onError == "message") {
+       message(conditionMessage(ex));
+     } else if (onError == "print") {
+       print(ex);
      }
   })
 

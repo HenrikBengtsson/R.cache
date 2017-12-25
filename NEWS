@@ -1,7 +1,7 @@
 Package: R.cache
 ================
 
-Version: 0.12.0-9000 [2017-12-23]
+Version: 0.12.0-9000 [2017-12-25]
  
 NEW FEATURES:
  
@@ -9,7 +9,12 @@ NEW FEATURES:
    fails to create the cache root directory or fails to save a cache file.
 
  o Updated loadCache() to recognize new file-format version 3 coming to R.
+
+DEPRECATED & DEFUNCT:
  
+ o Using onError = "print" for loadCache() is deprecated and replaced by
+   new onError = "message".
+
  
 Version: 0.12.0 [2015-11-12]
  
