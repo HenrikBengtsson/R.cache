@@ -1,5 +1,4 @@
 ## covr: skip=all
-
 .onLoad <- function(libname, pkgname) {
   ns <- getNamespace(pkgname);
   pkg <- Package(pkgname);
@@ -13,12 +12,3 @@
   pkg <- get(pkgname, envir=getNamespace(pkgname));
   startupMessage(pkg);
 }
-
-
-############################################################################
-# HISTORY:
-# 2013-10-17
-# o CLEANUP: autoload("print.Object", package="R.oo") is no longer needed.
-# 2005-12-09
-# o Created.
-############################################################################

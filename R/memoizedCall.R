@@ -62,15 +62,3 @@ setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(),
   # 4. Return results
   res;
 }) # memoizedCall()
-
-
-
-#######################################################################
-# HISTORY:
-# 2015-02-27
-# o SPEEDUP: Now memoizedCall() generates cache pathname only once.
-# 2011-02-14
-# o Added argument 'sources' to memoizedCall().
-# 2011-02-13
-# o Created.
-#######################################################################

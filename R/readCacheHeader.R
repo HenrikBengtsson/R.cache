@@ -95,26 +95,3 @@ setMethodS3("readCacheHeader", "default", function(file, ...) {
 
   header;
 })
-
-
-############################################################################
-# HISTORY:
-# 2012-09-10
-# o Updated readCacheHeader() to utilize updated .baseLoad().
-# 2011-08-16
-# o Added support for reading gzip compressed cache files.
-# 2009-10-16
-# o Now calling an internal .baseLoad() function of the package.
-# 2009-08-11
-# o Now readCacheHeader() reports the "pathname" in error/warnings messages,
-#   if argument 'file' refers to a file and the "description" if it refers
-#   to a connection.
-# 2009-07-29
-# o ROBUSTNESS: Added sanity check to readCacheHeader() testing that the
-#   read header identifier is non-empty.
-# 2008-02-14
-# o BUG FIX: The throw() for invalid identifiers was trying to put the
-#   connection object is the out and not the identifier.
-# 2006-04-04
-# o Created.
-############################################################################

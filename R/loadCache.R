@@ -150,38 +150,3 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
 
   NULL;
 })
-
-
-############################################################################
-# HISTORY:
-# 2012-09-10
-# o Updated readCacheHeader() to utilize updated .baseLoad().
-# 2011-08-16
-# o Added support for loading gzip compressed cache files.
-# 2009-10-16
-# o Now calling an internal .baseLoad() function of the package.
-# 2009-09-11
-# o Added argument 'onError' to loadCache(), to specify the action when
-#   an error occurs.  The default used to be to print the error message
-#   (onError="print"), but now the default is to generate a warning
-#   ("warning").  The other alternatives are do silently ignore it, or
-#   to throw the error ("error").  Except for onError="error", loadCache()
-#   always returns NULL if an error occurs.
-# 2008-02-27
-# o Added option to updated the "last-modified" timestamp of cache files
-#   whenever they are loaded via loadCache().
-# 2008-02-14
-# o Now errors reports the pathname, if available.
-# 2006-08-09
-# o Added link to cache() in Biobase.
-# 2006-05-25
-# o Added argument 'pathname' to make it possible to load a cache file
-#   explicitly.
-# 2006-04-04
-# o Added header comment for file format > v0.1.
-# o Added detection of file format version.
-# 2005-12-09
-# o Added support for internal 'cache' and 'timestamp' objects.
-# 2005-12-06
-# o Created.
-############################################################################

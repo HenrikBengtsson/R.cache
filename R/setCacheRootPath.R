@@ -40,21 +40,3 @@ setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
 
   invisible(ovalue);
 }) # setCacheRootPath()
-
-
-############################################################################
-# HISTORY:
-# 2012-09-10
-# o Renamed the installed .Rcache/ directory to _Rcache/ to avoid
-#   R CMD check NOTEs.
-# 2011-12-29
-# o Now setCacheRootPath() adds a README.txt file to the root path, iff
-#   missing. It explains why the directory structure exists and what
-#   created it.
-# 2007-03-07
-# o Changed the default root path to ~/.Rcache/
-# 2007-01-24
-# o Renamed from setCachePath().
-# 2005-12-07
-# o Created.
-############################################################################

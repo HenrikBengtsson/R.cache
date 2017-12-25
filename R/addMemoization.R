@@ -69,13 +69,3 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
 
   res
 }) # addMemoization()
-
-
-#######################################################################
-# HISTORY:
-# 2014-09-10
-# o ROBUSTNESS: addMemoization() will no longer memoize an already
-#   memoized function.
-# 2011-02-14
-# o Added addMemoization().
-#######################################################################

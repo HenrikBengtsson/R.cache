@@ -71,10 +71,3 @@ evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force
 
   res;
 } # evalWithMemoization()
-
-
-#######################################################################
-# HISTORY:
-# 2011-04-01
-# o Added evalWithMemoization().
-#######################################################################

@@ -127,28 +127,3 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
 
   invisible(pathname);
 })
-
-
-############################################################################
-# HISTORY:
-# 2013-12-21
-# o Added argument 'pathname' to saveCache().
-# 2011-08-16
-# o Added support for gzip compressed cache files.
-# 2007-01-24
-# o Now saveCache() returns the pathname to the cache file.
-# 2006-05-25
-# o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
-#   in base::save(), which otherwise includes all of the surrounding
-#   environment if 'sources' is not evaluated/missing.  For more details
-#   see code and my email to r-devel on 2006-05-25.  Thanks to Brian Ripley
-#   for explaining what was going on.
-# 2006-04-04
-# o Added header comment.
-# 2005-12-09
-# o Object save to file is now a structure containing the object to be
-#   cached, a timestamp specifying the it was cached, and a source object.
-# o Replaced argument 'file' with 'source'.
-# 2005-12-06
-# o Created.
-############################################################################

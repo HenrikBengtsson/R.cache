@@ -48,19 +48,3 @@ setMethodS3("findCache", "default", function(key=NULL, ...) {
 
   return(NULL);
 })
-
-
-############################################################################
-# HISTORY:
-# 2011-08-16
-# o ROBUSTNESS: Now findCache() asserts that any identified cache 
-#   file is really a file.
-# o Now findCache() detects also *.gz files.
-# 2007-01-24
-# o Added Rdoc comments.
-# o Removed non-used argument 'commentPattern'.
-# 2005-12-09
-# o Removed 'file' argument.
-# 2005-12-06
-# o Created.
-############################################################################

@@ -73,10 +73,3 @@ setMethodS3("setupCacheRootPath", "default", function(defaultPath="~/.Rcache", .
 
   invisible(rootPath);
 }) # setupCacheRootPath()
-
-
-############################################################################
-# HISTORY:
-# 2011-12-29
-# o Added setupCacheRootPath().
-############################################################################

@@ -63,17 +63,3 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
 
   path;
 })
-
-
-############################################################################
-# HISTORY:
-# 2011-12-30
-# o Add example(getCacheRootPath).
-# 2007-03-07
-# o Made the root path settings internal.  Use setCacheRootPath() instead.
-# 2007-01-24
-# o Renamed argument 'create' to 'mkdirs'.
-# o Added Rdoc comments.
-# 2005-12-06
-# o Created.
-############################################################################
