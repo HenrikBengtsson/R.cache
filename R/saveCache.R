@@ -62,6 +62,10 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   if (!isTRUE(compress)) compress <- FALSE
 
   
+  ## Skip cache?
+  if (!getOption("R.cache.enabled", TRUE)) return(NULL)
+
+  
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Cache file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

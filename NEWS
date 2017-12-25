@@ -10,6 +10,10 @@ NEW FEATURES:
 
  o Updated loadCache() to recognize new file-format version 3 coming to R.
 
+ o Added options 'R.cache.enabled', which defaults to TRUE, for controlling
+   whether loadCache() and saveCache() should read/write from cache or not.
+   This provides an easy mechanism for temporarily disabling R.cache.
+
 DEPRECATED & DEFUNCT:
  
  o Using onError = "print" for loadCache() is deprecated and replaced by

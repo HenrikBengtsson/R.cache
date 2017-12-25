@@ -64,6 +64,11 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     .Deprecated(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
   }
 
+
+  ## Skip cache?
+  if (!getOption("R.cache.enabled", TRUE)) return(NULL)
+
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find cached file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
