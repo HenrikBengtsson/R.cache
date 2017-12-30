@@ -1,7 +1,7 @@
 Package: R.cache
 ================
 
-Version: 0.12.0-9000 [2017-12-25]
+Version: 0.12.0-9000 [2017-12-29]
  
 NEW FEATURES:
  
@@ -14,10 +14,16 @@ NEW FEATURES:
    whether loadCache() and saveCache() should read/write from cache or not.
    This provides an easy mechanism for temporarily disabling R.cache.
 
+ o Harmonized R.cache options to all have names prefixed with 'R.cache.'.
+
 DEPRECATED & DEFUNCT:
  
  o Using onError = "print" for loadCache() is deprecated and replaced by
    new onError = "message".
+
+ o Deprecated R.cache options 'R.cache::rootPath', 'R.cache::touchOnLoad',
+   and 'R.cache::compress'.  Use 'R.cache.rootPath', 'R.cache.touchOnLoad',
+   and 'R.cache.compress' instead.
 
  
 Version: 0.12.0 [2015-11-12]

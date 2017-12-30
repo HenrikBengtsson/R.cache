@@ -1,5 +1,5 @@
 library("R.cache")
-oopts <- options("R.cache::compress")
+oopts <- options("R.cache.compress")
 
 simulate <- function(mean, sd) {
   # 1. Try to load cached data, if already generated
@@ -22,7 +22,7 @@ simulate <- function(mean, sd) {
 
 
 for (compress in c(FALSE, TRUE)) {
-  options("R.cache::compress"=compress)
+  options("R.cache.compress"=compress)
 
   data <- simulate(2.3, 3.0)
   data <- simulate(2.3, 3.5)

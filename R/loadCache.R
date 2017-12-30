@@ -128,7 +128,14 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     res <- NULL; # Not needed anymore
 
     # 5. Update the "last-modified" timestamp of the cache file?
-    touch <- getOption("R.cache::touchOnLoad");
+    touch <- getOption("R.cache.touchOnLoad");
+    
+    ## Backward compatibility
+    if (is.null(touch)) {
+      touch <- getOption("R.cache::touchOnLoad");
+      if (!is.null(touch)) .Deprecated(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
+    }
+    
     touch <- identical(touch, TRUE);
     if (touch) {
       touchFile(pathname);

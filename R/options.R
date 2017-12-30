@@ -11,9 +11,10 @@
 # 
 # \section{Options for controlling futures}{
 #  \describe{
-#   \item{\option{R.cache::rootPath}:}{
-#     A @character string specifying the default cache root path.   
-#     (Default: \code{"~/.Rcache"})
+#   \item{\option{R.cache.compress}:}{
+#     If @TRUE, @see saveCache will write compressed cache files,
+#     otherwise not.
+#     (Default: @FALSE)
 #   }
 #  
 #   \item{\option{R.cache.enabled}:}{
@@ -22,13 +23,12 @@
 #     (Default: @TRUE)
 #   }
 #  
-#   \item{\option{R.cache::compress}:}{
-#     If @TRUE, @see saveCache will write compressed cache files,
-#     otherwise not.
-#     (Default: @FALSE)
+#   \item{\option{R.cache.rootPath}:}{
+#     A @character string specifying the default cache root path.   
+#     (Default: \code{"~/.Rcache"})
 #   }
 #  
-#   \item{\option{R.cache::touchOnLoad}:}{
+#   \item{\option{R.cache.touchOnLoad}:}{
 #     If @TRUE, @see loadCache will update the "last-modified" timestamp of
 #     the cache file (to the current time), otherwise not.
 #     (Default: @FALSE)

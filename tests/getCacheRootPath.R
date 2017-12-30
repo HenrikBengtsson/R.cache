@@ -13,15 +13,22 @@ path <- getCacheRootPath(NULL)
 print(path)
 stopifnot(identical(path, tmpdir))
 
+options("R.cache.rootPath"=NULL)
+print(getCacheRootPath())
+
+## DEPRECATED / backward compatible
 options("R.cache::rootPath"=NULL)
 print(getCacheRootPath())
 
+## DEPRECATED / backward compatible
 options("R.cache.path"="foo")
 print(getCacheRootPath())
 
+## DEPRECATED / backward compatible
 options("R.cache.path"=NULL)
 print(getCacheRootPath())
 
+## DEPRECATED / backward compatible
 oenv <- Sys.getenv("R_CACHE_PATH")
 Sys.setenv("R_CACHE_PATH"="")
 print(getCacheRootPath())

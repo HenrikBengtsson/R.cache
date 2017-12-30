@@ -54,11 +54,18 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...) {
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=NULL, ...) {
   # Look up base::save() once; '::' adds overhead
   base_save <- base::save;
 
   # Argument 'compress':
+  if (is.null(compress)) {
+    compress <- getOption("R.cache.compress")
+    if (is.null(compress)) {
+      compress <- getOption("R.cache::compress")
+      if (!is.null(compress)) .Deprecated(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
+    }
+  }
   if (!isTRUE(compress)) compress <- FALSE
 
   
