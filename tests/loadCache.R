@@ -33,5 +33,10 @@ for (compress in c(FALSE, TRUE)) {
   file.remove(findCache(key=list(2.3,3.5)))
 }
 
+
+## Exceptions
+res <- try(findCache(key = NULL))
+stopifnot(inherits(res, "try-error"))
+
 ## Cleanup
 options(oopts)
