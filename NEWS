@@ -16,6 +16,9 @@ NEW FEATURES:
 
  o Harmonized R.cache options to all have names prefixed with 'R.cache.'.
 
+ o clearCache() now prompts the user via readline(), which is always visible,
+   i.e. it can neither be captured nor sinked.
+
 SOFTWARE QUALITY:
  
  o TESTS: Increased test coverage.

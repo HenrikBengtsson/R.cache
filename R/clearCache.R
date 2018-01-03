@@ -86,8 +86,8 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   if (prompt) {
     answer <- ".";
     while (!(answer %in% c("y", "n", ""))) {
-      message(sprintf("Are you really sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path));
-      answer <- tolower(readline());
+      msg <- sprintf("Are you sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path);
+      answer <- tolower(readline(msg));
     }
     if (answer != "y") {
       return(invisible(NULL));
