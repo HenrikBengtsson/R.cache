@@ -2,7 +2,11 @@ Package: R.cache
 ================
 
 Version: 0.12.0-9000 [2018-01-03]
- 
+
+SIGNIFICANT CHANGES:
+
+ o  o Package now formally requires R (>= 2.14.0) released October 2011.
+
 NEW FEATURES:
  
  o Now package gives a more informative error message in the rare cases it
