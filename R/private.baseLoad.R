@@ -49,8 +49,8 @@
   # Assert correctness of connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   magic <- readChar(con, nchars=5, useBytes=TRUE);
-  if (regexpr("RD[AX]2\n", magic) == -1L) {
-    if (regexpr("RD[ABX][12]\r", magic) == 1L) {
+  if (regexpr("RD[AX][2-9]\n", magic) == -1L) {
+    if (regexpr("RD[ABX][1-9]\r", magic) == 1L) {
       stop("input has been corrupted, with LF replaced by CR");
     } else {
       stop(gettextf("file '%s' has magic number '%s'\n   Use of save versions prior to 2 is deprecated", summary(file)$description, gsub("[\n\r]*", "", magic)));
@@ -62,41 +62,3 @@
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   res <- readRDS(con);
 } # .baseLoad()
-
-
-
-############################################################################
-# HISTORY:
-# 2012-09-10
-# o CRAN POLICY: Updated internal .baseLoad() to utilize readRDS() instead
-#   of .Internal(loadFromConn2(...)) such that it still reads the same
-#   file format.
-# 2012-03-20
-# o Added an Rdoc comment explaining the .baseLoad() function.
-# o CRAN POLICY: Previously .baseLoad() called .Internal(loadFromConn2(...))
-#   which is no longer allowed for CRAN packages.  However, there is
-#   still the problem of base::load(con) coercing a file connection via
-#   gzcon() and while doing that it also resets the file position, which
-#   we do not want.  The workaround is not to do dynamic code computation
-#   on base::load() code and create an adjusted just-in-time local version
-#   that avoids the gzcon() coercion.
-# 2011-10-05
-# o BUG FIX: Same bug fix as on 2011-08-31 but now also for R v2.13.0.
-# 2011-08-31
-# o BUG FIX (for R v2.12.2 and before): After adding support for 
-#   compressed files in R.cache v0.5.0, we would get the 'Error in
-#   seek.connection(con, origin = "current", where = -5) : whence = "end"
-#   is not implemented for gzfile connections' in readCacheHeader()
-#   iff running R v2.12.2 or before.
-# 2009-10-16
-# o BUG FIX: In R v2.10.0 and newer, we would get an error reporting that
-#   internal function loadFromConn() does not exists.  That function was
-#   used because it would read the stream from the position after the magic
-#   string in the connection.  We now use loadFromConn2() which tries to
-#   read and validate the magic string.  So, we have to make sure that the
-#   connection is positioned where the magic string is.  We do this using
-#   seek().  We also note that we could have used loadFromConn2() already
-#   since R v2.3.0.  Since this package requires R v2.3.0, we simply drop
-#   the old implementation and use this new one.
-# o Created.
-############################################################################

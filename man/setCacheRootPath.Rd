@@ -14,7 +14,7 @@
 
 \description{
  Sets the root path to the file cache directory.
- By default, this function will set it to \code{~/.Rcache/}.
+ By default, this function will set it to \code{~/.Rcache}.
 }
 
 \usage{

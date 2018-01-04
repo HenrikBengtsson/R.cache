@@ -54,20 +54,3 @@ setMethodS3("generateCache", "default", function(key, suffix=".Rcache", ...) {
 
   cacheName;
 }, export=FALSE)
-
-
-############################################################################
-# HISTORY:
-# 2014-01-13
-# o BUG FIX: generateCache(key=NULL) would generate "Error in
-#   file.path(path, cacheName) : object 'cacheName' not found".
-# 2011-04-01
-# o Now generateCache() utilizes a generic function getChecksum()
-#   to obtain the checksum.
-# 2007-07-02
-# o Added support for argument 'key' is an environment.
-# 2005-12-09
-# o Removed 'file' argument.
-# 2005-12-06
-# o Created.
-############################################################################

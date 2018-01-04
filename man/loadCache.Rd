@@ -18,7 +18,7 @@
 
 \usage{
 \method{loadCache}{default}(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL,
-  dirs=NULL, ..., onError=c("warning", "print", "quiet", "error"))
+  dirs=NULL, ..., onError=c("warning", "error", "message", "quiet", "print"))
 }
 
 \arguments{

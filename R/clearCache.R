@@ -86,8 +86,8 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   if (prompt) {
     answer <- ".";
     while (!(answer %in% c("y", "n", ""))) {
-      message(sprintf("Are you really sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path));
-      answer <- tolower(readline());
+      msg <- sprintf("Are you sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path);
+      answer <- tolower(readline(msg));
     }
     if (answer != "y") {
       return(invisible(NULL));
@@ -139,22 +139,3 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
 
   invisible(c(dirs, files));
 })
-
-
-############################################################################
-# HISTORY:
-# 2012-11-28
-# o GENERALIZATION: Now clearCache(..., recursive=TRUE) removes all
-#   cache files in subdirectories too.  The actual subdirectories are
-#   not removed.
-# 2012-11-27
-# o BUG FIX: clearCache() would give error "object 'dirs' not found".
-# 2011-05-19
-# o Added Rdoc comments.
-# 2011-04-02
-# o BUG FIX: clearCache() would also report on subdirectories.
-# 2005-12-09
-# o BUG FIX: 'prompt=FALSE' would not clear cache.
-# 2005-12-07
-# o Created.
-############################################################################

@@ -54,11 +54,25 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=getOption("R.cache::compress", FALSE), ...) {
+setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=NULL, ...) {
+  # Look up base::save() once; '::' adds overhead
+  base_save <- base::save;
+
   # Argument 'compress':
+  if (is.null(compress)) {
+    compress <- getOption("R.cache.compress")
+    if (is.null(compress)) {
+      compress <- getOption("R.cache::compress")
+      if (!is.null(compress)) .Deprecated(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
+    }
+  }
   if (!isTRUE(compress)) compress <- FALSE
 
+  
+  ## Skip cache?
+  if (!getOption("R.cache.enabled", TRUE)) return(NULL)
 
+  
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Cache file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -79,61 +93,44 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   }
   on.exit(close(fh));
 
-  # Save 'identifier'
+  ## Prepare to save
   identifier <- "Rcache v0.1.7 (R package R.cache by Henrik Bengtsson)";
   if (nchar(identifier) > 64L)
     throw("Internal error. Identifier is too long: ", identifier);
   tail <- paste(rep(" ", times=64L-nchar(identifier)), collapse="");
   identifier <- paste(identifier, tail, sep="");
-  writeChar(con=fh, identifier, nchars=64L);
 
-  # Save 'comment'
   if (is.null(comment))
     comment <- "";
-  writeBin(con=fh, nchar(comment), size=4L);
-  writeChar(comment, con=fh, nchars=nchar(comment));
-
-  # Save 'sources'
-
-  # Look up base::save() once; '::' is expensive
-  base_save <- base::save;
 
   # If 'sources' is not evaluated, it is a so called promise, which will
   # make all of its calling environments to be save too.
   dummy <- is.null(sources);
-  base_save(file=fh, sources, compress=compress, ...);
 
-  # Save 'timestamp'
   timestamp <- Sys.time();
-  base_save(file=fh, timestamp, compress=compress, ...);
 
-  # Save 'object'
-  base_save(file=fh, object, compress=compress, ...);
+  tryCatch({
+    # Save 'identifier'
+    writeChar(con=fh, identifier, nchars=64L);
+  
+    # Save 'comment'
+    writeBin(con=fh, nchar(comment), size=4L);
+    writeChar(comment, con=fh, nchars=nchar(comment));
+  
+    # Save 'sources'
+    base_save(file=fh, sources, compress=compress, ...);
+  
+    # Save 'timestamp'
+    base_save(file=fh, timestamp, compress=compress, ...);
+  
+    # Save 'object'
+    base_save(file=fh, object, compress=compress, ...);
+  }, error = function(ex) {
+    msg <- conditionMessage(ex)
+    throw(sprintf("Failed to save to cache (%s). The reason was: %s",
+                  sQuote(pathname), ex));
+
+  })
 
   invisible(pathname);
 })
-
-
-############################################################################
-# HISTORY:
-# 2013-12-21
-# o Added argument 'pathname' to saveCache().
-# 2011-08-16
-# o Added support for gzip compressed cache files.
-# 2007-01-24
-# o Now saveCache() returns the pathname to the cache file.
-# 2006-05-25
-# o BUG FIX: Work around for not saving "promises" (non-evaluated arguments)
-#   in base::save(), which otherwise includes all of the surrounding
-#   environment if 'sources' is not evaluated/missing.  For more details
-#   see code and my email to r-devel on 2006-05-25.  Thanks to Brian Ripley
-#   for explaining what was going on.
-# 2006-04-04
-# o Added header comment.
-# 2005-12-09
-# o Object save to file is now a structure containing the object to be
-#   cached, a timestamp specifying the it was cached, and a source object.
-# o Replaced argument 'file' with 'source'.
-# 2005-12-06
-# o Created.
-############################################################################

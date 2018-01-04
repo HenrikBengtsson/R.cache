@@ -63,19 +63,9 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
   res <- function(..., envir=parent.frame()) {
     args <- list(fcn, ..., envir=envir);
     args <- c(args, memArgs);
-    do.call("memoizedCall", args=args);
+    do.call(memoizedCall, args=args);
   }
   class(res) <- c("MemoizedFunction", class(res))
 
   res
 }) # addMemoization()
-
-
-#######################################################################
-# HISTORY:
-# 2014-09-10
-# o ROBUSTNESS: addMemoization() will no longer memoize an already
-#   memoized function.
-# 2011-02-14
-# o Added addMemoization().
-#######################################################################

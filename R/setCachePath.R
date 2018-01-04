@@ -39,10 +39,3 @@ setMethodS3("setCachePath", "default", function(dirs=NULL, path=NULL, ...) {
   ovalue <- options(opts);
   invisible(ovalue);
 }, export=FALSE)
-
-
-############################################################################
-# HISTORY:
-# 2007-01-24
-# o Created.
-############################################################################

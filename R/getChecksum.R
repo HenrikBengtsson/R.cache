@@ -49,15 +49,3 @@
 setMethodS3("getChecksum", "default", function(object, ...) {
   digest(object, ...);
 })
-
-
-############################################################################
-# HISTORY:
-# 2013-07-03
-# o Now getChecksum() passes '...' to digest(), e.g. argument 'algo'.
-# 2012-11-17
-# o CLEANUP: Removed a require("digest") to avoid loaded the package,
-#   and instead call digest::digest().
-# 2011-04-01
-# o Created.
-############################################################################

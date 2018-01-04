@@ -54,12 +54,19 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "print", "quiet", "error")) {
+setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rcache", removeOldCache=TRUE, pathname=NULL, dirs=NULL, ..., onError=c("warning", "error", "message", "quiet", "print")) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'onError':
   onError <- match.arg(onError);
+  if (onError == "print") {
+    .Deprecated(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
+  }
+
+
+  ## Skip cache?
+  if (!getOption("R.cache.enabled", TRUE)) return(NULL)
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -121,7 +128,14 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     res <- NULL; # Not needed anymore
 
     # 5. Update the "last-modified" timestamp of the cache file?
-    touch <- getOption("R.cache::touchOnLoad");
+    touch <- getOption("R.cache.touchOnLoad");
+    
+    ## Backward compatibility
+    if (is.null(touch)) {
+      touch <- getOption("R.cache::touchOnLoad");
+      if (!is.null(touch)) .Deprecated(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
+    }
+    
     touch <- identical(touch, TRUE);
     if (touch) {
       touchFile(pathname);
@@ -130,49 +144,16 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     # 6. Return cached object
     return(object);
   }, error = function(ex) {
-     if (onError == "print") {
-       print(ex);
-     } else if (onError == "warning") {
+     if (onError == "warning") {
        warning(ex);
      } else if (onError == "error") {
        stop(ex);
+     } else if (onError == "message") {
+       message(conditionMessage(ex));
+     } else if (onError == "print") {
+       print(ex);
      }
   })
 
   NULL;
 })
-
-
-############################################################################
-# HISTORY:
-# 2012-09-10
-# o Updated readCacheHeader() to utilize updated .baseLoad().
-# 2011-08-16
-# o Added support for loading gzip compressed cache files.
-# 2009-10-16
-# o Now calling an internal .baseLoad() function of the package.
-# 2009-09-11
-# o Added argument 'onError' to loadCache(), to specify the action when
-#   an error occurs.  The default used to be to print the error message
-#   (onError="print"), but now the default is to generate a warning
-#   ("warning").  The other alternatives are do silently ignore it, or
-#   to throw the error ("error").  Except for onError="error", loadCache()
-#   always returns NULL if an error occurs.
-# 2008-02-27
-# o Added option to updated the "last-modified" timestamp of cache files
-#   whenever they are loaded via loadCache().
-# 2008-02-14
-# o Now errors reports the pathname, if available.
-# 2006-08-09
-# o Added link to cache() in Biobase.
-# 2006-05-25
-# o Added argument 'pathname' to make it possible to load a cache file
-#   explicitly.
-# 2006-04-04
-# o Added header comment for file format > v0.1.
-# o Added detection of file format version.
-# 2005-12-09
-# o Added support for internal 'cache' and 'timestamp' objects.
-# 2005-12-06
-# o Created.
-############################################################################
