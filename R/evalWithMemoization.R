@@ -56,7 +56,7 @@ evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force
   # Evaluate the expression in a temporary environment, so that
   # we memoize all objects created along with the results.
   env <- new.env(parent=envir);
-  res <- eval(expr, envir=env);
+  res <- eval(expr, envir = env, enclos = baseenv());
 
   # NOTE: For some unknown reason does attachLocally() set 
   # the fields inside 'env' to NULL.  /HB 2011-04-02
