@@ -35,7 +35,7 @@
 #*/#########################################################################
 setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...) {
   # Check for option settings
-  path <- getOption("R.cache.rootPath");
+  path <- getOption("R.cache.rootPath")
   
   # Backward compatibility
   if (is.null(path)) {
@@ -45,29 +45,29 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
     }
 
     if (is.null(path)) {
-      path <- getOption("R.cache.path");
+      path <- getOption("R.cache.path")
       if (!is.null(path)) .Deprecated(msg = "R.cache option 'R.cache::path' has been renamed to 'R.cache.rootPath'")
     }
 
     # Check for system environment settings
     if (is.null(path)) {
-      path <- Sys.getenv("R_CACHE_PATH");
+      path <- Sys.getenv("R_CACHE_PATH")
       if (nzchar(path)) .Deprecated(msg = "R.cache environment variable 'R_CACHE_PATH' is deprecated. Use option 'R.cache.rootPath' instead")
     }
 
     if (nchar(path) == 0L) {
-      path <- NULL;
+      path <- NULL
     }
 
     if (!is.null(path)) {
-      warning("Use setCacheRootPath() to set the cache path in R.cache.");
+      warning("Use setCacheRootPath() to set the cache path in R.cache.")
     }
   }
 
   # Otherwise, use argument 'path'.
   if (is.null(path)) {
-    path <- defaultPath;
+    path <- defaultPath
   }
 
-  path;
+  path
 })

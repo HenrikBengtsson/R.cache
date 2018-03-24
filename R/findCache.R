@@ -35,16 +35,16 @@ setMethodS3("findCache", "default", function(key=NULL, ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Generate cache name from basename and hash object.
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  pathname <- generateCache(key=key, ...);
+  pathname <- generateCache(key=key, ...)
 
   if (file.exists(pathname) && !file.info(pathname)$isdir) {
-    return(pathname);
+    return(pathname)
   }
 
-  pathnameT <- sprintf("%s.gz", pathname);
+  pathnameT <- sprintf("%s.gz", pathname)
   if (file.exists(pathnameT) && !file.info(pathnameT)$isdir) {
-    return(pathnameT);
+    return(pathnameT)
   }
 
-  return(NULL);
+  return(NULL)
 })

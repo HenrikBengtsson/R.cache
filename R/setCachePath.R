@@ -32,10 +32,10 @@
 # @keyword "internal"
 #*/######################################################################### 
 setMethodS3("setCachePath", "default", function(dirs=NULL, path=NULL, ...) {
-  subname <- paste(dirs, collapse="/");
-  name <- paste("R.cache:cachePath", subname, sep=":");
-  opts <- list(path);
-  names(opts) <- name;
-  ovalue <- options(opts);
-  invisible(ovalue);
+  subname <- paste(dirs, collapse="/")
+  name <- paste("R.cache:cachePath", subname, sep=":")
+  opts <- list(path)
+  names(opts) <- name
+  ovalue <- options(opts)
+  invisible(ovalue)
 }, export=FALSE)

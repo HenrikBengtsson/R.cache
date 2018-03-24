@@ -29,14 +29,14 @@
 # @keyword "IO"
 #*/#########################################################################
 setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
-  path <- as.character(path);
+  path <- as.character(path)
 
   if (!isDirectory(path)) mkdirs(path, mustWork=TRUE)
 
   # Add a README.txt file, if missing.
-  .addREADME(to=path);
+  .addREADME(to=path)
 
-  ovalue <- options("R.cache.rootPath"=path);
+  ovalue <- options("R.cache.rootPath"=path)
 
-  invisible(ovalue);
+  invisible(ovalue)
 }) # setCacheRootPath()

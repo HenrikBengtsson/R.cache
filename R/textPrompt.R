@@ -1,65 +1,65 @@
 .textPrompt <- function(prompt, options=c("Y"="yes", "n"="no"), caseSensitive=FALSE, maxTries=Inf, type=c("message", "output"), onSink=c("error", "ignore"), ...) {
   # Argument 'maxTries':
-  maxTries <- Arguments$getNumeric(maxTries, range=c(1,Inf));
+  maxTries <- Arguments$getNumeric(maxTries, range=c(1,Inf))
 
   # Argument 'onSink':
-  onSink <- match.arg(onSink);
+  onSink <- match.arg(onSink)
 
   # Argument 'type':
-  type <- match.arg(type);
+  type <- match.arg(type)
 
   # Check if standard output is redirected.
   # NOTE: There always *2* sinks for type="message", cf. help("sink").
-  minSink <- switch(type, message=2L, 0L);
-  hasSink <- (sink.number(type=type) > minSink);
+  minSink <- switch(type, message=2L, 0L)
+  hasSink <- (sink.number(type=type) > minSink)
   if (hasSink) {
     if (onSink == "error") {
-      throw("Cannot prompt user via the standard ", type, ", because it is currently redirected and (most likely) not visible to the user.");
+      throw("Cannot prompt user via the standard ", type, ", because it is currently redirected and (most likely) not visible to the user.")
     }
   }
 
   # How to present the options to the user
-  keys <- names(options);
+  keys <- names(options)
   if (is.null(keys)) {
-    keys <- options;
+    keys <- options
   }
-  promptF <- sprintf("%s [%s]: ", prompt, paste(keys, collapse="/"));
-  promptR <- gettext("Unknown reply.\n");
+  promptF <- sprintf("%s [%s]: ", prompt, paste(keys, collapse="/"))
+  promptR <- gettext("Unknown reply.\n")
 
   # Where to prompt
   if (type == "output") {
-    con <- stdout();
+    con <- stdout()
   } else {
-    con <- stderr();
+    con <- stderr()
   }
 
-  count <- 0L;
+  count <- 0L
   while (count < maxTries) {
-    cat(file=con, promptF);
-    ans <- readline();
+    cat(file=con, promptF)
+    ans <- readline()
 
-    count <- count + 1L;
+    count <- count + 1L
 
-    ans <- trim(ans);
+    ans <- trim(ans)
     if (ans == "") {
-      idx <- 1L;
+      idx <- 1L
     } else {
       if (caseSensitive) {
-        idx <- pmatch(ans, options);
+        idx <- pmatch(ans, options)
       } else {
-        idx <- pmatch(tolower(ans), tolower(options));
+        idx <- pmatch(tolower(ans), tolower(options))
       }
     }
 
     if (is.finite(idx)) {
-      ans <- options[idx];
-      break;
+      ans <- options[idx]
+      break
     }
 
-    cat(file=con, promptR);
+    cat(file=con, promptR)
   } # while(...)
 
-  attributes(ans) <- NULL;
+  attributes(ans) <- NULL
 
-  ans;
+  ans
 } # .textPrompt()
