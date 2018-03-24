@@ -43,13 +43,13 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
   # Argument 'fcn':
   if (is.character(fcn)) {
     if (!exists(fcn, mode="function", envir=envir, inherits=TRUE)) {
-      throw("Argument 'fcn' is not an existing function: ", fcn);
+      throw("Argument 'fcn' is not an existing function: ", fcn)
     }
-    fcn <- get(fcn, mode="function", envir=envir, inherits=TRUE);
+    fcn <- get(fcn, mode="function", envir=envir, inherits=TRUE)
   }
 
   if (!is.function(fcn)) {
-    throw("Argument 'fcn' is not a function: ", mode(fcn));
+    throw("Argument 'fcn' is not a function: ", mode(fcn))
   }
 
   # Already memoized?
@@ -58,12 +58,12 @@ setMethodS3("addMemoization", "default", function(fcn, envir=parent.frame(), ...
   }
 
   # Record the argument specific to memoizedCall().
-  memArgs <- list(...);
+  memArgs <- list(...) 
 
   res <- function(..., envir=parent.frame()) {
-    args <- list(fcn, ..., envir=envir);
-    args <- c(args, memArgs);
-    do.call(memoizedCall, args=args);
+    args <- list(fcn, ..., envir=envir)
+    args <- c(args, memArgs)
+    do.call(memoizedCall, args=args)
   }
   class(res) <- c("MemoizedFunction", class(res))
 

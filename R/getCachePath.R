@@ -39,15 +39,15 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=g
   if (is.null(path)) {
     # (1) Get/make default path
     # (a) Get path from options
-    subname <- paste(dirs, collapse="/");
-    name <- paste("R.cache:cachePath", subname, sep=":");
-    path <- getOption(name);
+    subname <- paste(dirs, collapse="/")
+    name <- paste("R.cache:cachePath", subname, sep=":")
+    path <- getOption(name)
 
     # (b) If not availble, make on
-    path <- paste(c(rootPath, dirs), collapse=.Platform$file.sep);
+    path <- paste(c(rootPath, dirs), collapse=.Platform$file.sep)
   } else if (!isAbsolutePath(path)) {
     # (2) Get/make default path
-    path <- file.path(rootPath, path);
+    path <- file.path(rootPath, path)
   }
 
   # Create missing directory?
@@ -55,8 +55,8 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=g
     mkdirs(path, mustWork=TRUE)
 
     # Add a README.txt file, if missing.
-    .addREADME(to=rootPath);
+    .addREADME(to=rootPath)
   }
 
-  path;
+  path
 }) # getCachePath()
