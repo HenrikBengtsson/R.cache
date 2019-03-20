@@ -32,8 +32,8 @@
 #  connection to @see "base::load" it gets coerced via @see "base::gzcon",
 #  which is the function that resets the file position.
 # 
-#  The workaround is to creat a local copy of \code{base::load()} and
-#  modify it by dropping the \code{gzcon()} coersion.  This is possible
+#  The workaround is to create a local copy of \code{base::load()} and
+#  modify it by dropping the \code{gzcon()} coercion.  This is possible
 #  because this function, that is \code{.baseLoad()}, is always called
 #  with a \code{gzfile()} @connection.
 # }

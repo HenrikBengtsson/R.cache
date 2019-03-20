@@ -50,13 +50,7 @@
 # @author
 #
 # \section{License}{
-#   The releases of this package is licensed under
-#   LGPL version 2.1 or newer.
-#
-#   The development code of the packages is under a private licence
-#   (where applicable) and patches sent to the author fall under the
-#   latter license, but will be, if incorporated, released under the
-#   "release" license above.
+#   The releases of this package is licensed under LGPL version 2.1 or newer.
 # }
 #
 # \section{References}{
