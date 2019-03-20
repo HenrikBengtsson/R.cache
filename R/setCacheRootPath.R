@@ -5,7 +5,6 @@
 #
 # \description{
 #  @get "title".
-#  By default, this function will set it to \code{~/.Rcache}.
 # }
 #
 # @synopsis
@@ -28,7 +27,8 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
+setMethodS3("setCacheRootPath", "default", function(path=NULL, ...) {
+  if (is.null(path)) path <- getDefaultCacheRootPath(path)
   path <- as.character(path)
 
   if (!isDirectory(path)) mkdirs(path, mustWork=TRUE)

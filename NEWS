@@ -1,9 +1,24 @@
 Package: R.cache
 ================
 
-Version: 0.13.0-9000 [2018-01-04]
+Version: 0.13.0-9000 [2019-03-19]
 
- o ...
+SIGNIFICANT CHANGES:
+
+ o Now R.cache uses a default cache path that adheres to the standard cache
+   location on the current operating system, whereas in previous versions it
+   defaulted to ~/.Rcache.  On Unix, the 'XDG Base Directory Specification'
+   is followed, which means that the R.cache folder will typically be
+   ~/.cache/R/R.cache/.  On macOS, it will be ~/Library/Caches/R/R.cache/.
+   On modern versions of Microsoft Windows, environment variables such
+   as 'LOCALAPPDATA' will be used, which typically resolves to
+   '%USERPROFILE%/AppData/Local, e.g. 'C:/Users/alice/AppData/Local'.
+   If R.cache fails find a proper OS-specific cache folder, it will fall back
+   to using ~/.Rcache as the previously done.
+   Importantly, if ~/.Rcache already exists, then that will be used by default.
+   This is done in order to not loose previously cached files.  Users with
+   an existing  folder who wish to move to the new standard need to~/.Rcache
+   remove the `~/.Rcache` folder manually.
 
 
 Version: 0.13.0 [2018-01-03]

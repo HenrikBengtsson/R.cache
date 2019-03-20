@@ -33,7 +33,7 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...) {
+setMethodS3("getCacheRootPath", "default", function(defaultPath=NULL, ...) {
   # Check for option settings
   path <- getOption("R.cache.rootPath")
   
@@ -64,10 +64,24 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath="~/.Rcache", ...
     }
   }
 
-  # Otherwise, use argument 'path'.
+  # Otherwise, use argument 'defaultPath'.
   if (is.null(path)) {
-    path <- defaultPath
+    if (!is.null(defaultPath)) path <- getDefaultCacheRootPath(defaultPath)
   }
-
+  
   path
 })
+
+
+getDefaultCacheRootPath <- function(defaultPath = NULL) {
+  if (is.null(defaultPath)) {
+    ## BACKWARD COMPATIBILITY: For users that already has a ~/.Rcache folder,
+    ## we will use that as the default in order for them not to loose their
+    ## existing cache
+    defaultPath <- "~/.Rcache"
+    if (isDirectory(defaultPath)) return(defaultPath)
+    
+    defaultPath <- getOSCacheRootPath()
+  }
+  defaultPath
+}
