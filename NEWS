@@ -1,7 +1,7 @@
 Package: R.cache
 ================
 
-Version: 0.13.0-9000 [2019-03-19]
+Version: 0.13.0-9000 [2019-03-26]
 
 SIGNIFICANT CHANGES:
 
@@ -19,6 +19,12 @@ SIGNIFICANT CHANGES:
    This is done in order to not loose previously cached files.  Users with
    an existing  folder who wish to move to the new standard need to~/.Rcache
    remove the `~/.Rcache` folder manually.
+
+DEPRECATED & DEFUNCT:
+ 
+ o Previously deprecated options 'R.cache::rootPath', 'R.cache::touchOnLoad',
+   and 'R.cache::compress' are now defunct.  Likewise, environment variable
+   'R_CACHE_PATH' and argument onError="print" for loadCache() are now defunct.
 
 
 Version: 0.13.0 [2018-01-03]

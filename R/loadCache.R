@@ -61,7 +61,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
   # Argument 'onError':
   onError <- match.arg(onError)
   if (onError == "print") {
-    .Deprecated(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
+    .Defunct(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
   }
 
 
@@ -133,7 +133,7 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
     ## Backward compatibility
     if (is.null(touch)) {
       touch <- getOption("R.cache::touchOnLoad")
-      if (!is.null(touch)) .Deprecated(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
+      if (!is.null(touch)) .Defunct(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
     }
     
     touch <- identical(touch, TRUE)

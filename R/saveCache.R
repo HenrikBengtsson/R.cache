@@ -63,7 +63,7 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
     compress <- getOption("R.cache.compress")
     if (is.null(compress)) {
       compress <- getOption("R.cache::compress")
-      if (!is.null(compress)) .Deprecated(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
+      if (!is.null(compress)) .Defunct(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
     }
   }
   if (!isTRUE(compress)) compress <- FALSE
