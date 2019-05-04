@@ -18,7 +18,7 @@ SIGNIFICANT CHANGES:
    Importantly, if ~/.Rcache already exists, then that will be used by
    default.  This is done in order to not loose previously cached files.
    Users with an existing folder who wish to move to the new standard need to
-   remove the `~/.Rcache` folder manually.
+   move or remove the `~/.Rcache` folder manually.
 
 DEPRECATED & DEFUNCT:
  
