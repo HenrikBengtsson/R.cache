@@ -42,6 +42,6 @@
 |[ragtop](problems.md#ragtop)                    |1.0.0   |      |        |1    |
 |[repmis](problems.md#repmis)                    |0.5     |      |        |1    |
 |[scholar](problems.md#scholar)                  |0.1.7   |      |        |1    |
-|[stepR](problems.md#stepr)                      |2.0-3   |1     |        |2    |
+|[stepR](problems.md#stepr)                      |2.0-3   |      |        |2    |
 |[TreeSearch](problems.md#treesearch)            |0.3.0   |      |        |1    |
 

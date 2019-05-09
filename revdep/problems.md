@@ -404,28 +404,6 @@ Run `revdep_details(,"stepR")` for more info
 
 ## In both
 
-*   checking tests ...
-    ```
-     ERROR
-    Running the tests in ‘tests/testthat.R’ failed.
-    Last 13 lines of output:
-      
-      ── 4. Failure: argument q is computed correctly (@test-computeBounds.R#638)  ───
-      length(list.files(file.path(R.cache::getCacheRootPath(), "testStepR"))) not identical to 5.
-      1/1 mismatches
-      [1] 10 - 5 == 5
-      
-      ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 18678 SKIPPED: 0 WARNINGS: 0 FAILED: 4
-      1. Failure: argument q is computed correctly (@test-computeBounds.R#505) 
-      2. Failure: argument q is computed correctly (@test-computeBounds.R#506) 
-      3. Failure: argument q is computed correctly (@test-computeBounds.R#510) 
-      4. Failure: argument q is computed correctly (@test-computeBounds.R#638) 
-      
-      Error: testthat unit tests failed
-      Execution halted
-    ```
-
 *   checking whether package ‘stepR’ can be installed ... NOTE
     ```
     Found the following notes/warnings:
