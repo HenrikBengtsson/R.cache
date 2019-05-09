@@ -382,29 +382,6 @@ Run `revdep_details(,"scholar")` for more info
 
 ## In both
 
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘scholar-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: compare_scholar_careers
-    > ### Title: Compare the careers of multiple scholars
-    > ### Aliases: compare_scholar_careers
-    > 
-    > ### ** Examples
-    > 
-    > {
-    +     ## How do Richard Feynmann and Stephen Hawking compare?
-    +     # Compare Feynman and Stephen Hawking
-    +     ids <- c("B7vSqZsAAAAJ", "qj74uXkAAAAJ")
-    +     df <- compare_scholar_careers(ids)
-    + }
-    Error in is.null(arg) || !nzchar(arg) : 
-      'length(x) = 3 > 1' in coercion to 'logical(1)'
-    Calls: compare_scholar_careers ... <Anonymous> -> read_html -> read_html.response -> parse_options
-    Execution halted
-    ```
-
 *   checking whether package ‘scholar’ can be installed ... NOTE
     ```
     Found the following notes/warnings:
@@ -432,18 +409,18 @@ Run `revdep_details(,"stepR")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
+      
+      ── 4. Failure: argument q is computed correctly (@test-computeBounds.R#638)  ───
+      length(list.files(file.path(R.cache::getCacheRootPath(), "testStepR"))) not identical to 5.
+      1/1 mismatches
+      [1] 10 - 5 == 5
+      
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 18661 SKIPPED: 0 WARNINGS: 0 FAILED: 21
-      1. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2089) 
-      2. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2098) 
-      3. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2099) 
-      4. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2100) 
-      5. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2101) 
-      6. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2102) 
-      7. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2103) 
-      8. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2104) 
-      9. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2105) 
-      1. ...
+      OK: 18678 SKIPPED: 0 WARNINGS: 0 FAILED: 4
+      1. Failure: argument q is computed correctly (@test-computeBounds.R#505) 
+      2. Failure: argument q is computed correctly (@test-computeBounds.R#506) 
+      3. Failure: argument q is computed correctly (@test-computeBounds.R#510) 
+      4. Failure: argument q is computed correctly (@test-computeBounds.R#638) 
       
       Error: testthat unit tests failed
       Execution halted
