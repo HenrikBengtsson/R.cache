@@ -219,11 +219,11 @@ Run `revdep_details(,"MSnID")` for more info
 
 <details>
 
-* Version: 0.64.0
+* Version: 0.65.0
 * Source code: https://github.com/cran/PSCBS
 * URL: https://github.com/HenrikBengtsson/PSCBS
 * BugReports: https://github.com/HenrikBengtsson/PSCBS/issues
-* Date/Publication: 2018-08-12 20:50:03 UTC
+* Date/Publication: 2019-05-05 22:40:09 UTC
 * Number of recursive dependencies: 73
 
 Run `revdep_details(,"PSCBS")` for more info
@@ -231,26 +231,6 @@ Run `revdep_details(,"PSCBS")` for more info
 </details>
 
 ## In both
-
-*   checking running R code from vignettes ...
-    ```
-       ‘CBS.tex.rsp’ ... OK
-       ‘PairedPSCBS.tex.rsp’ ... failed
-     ERROR
-    Errors in running code in vignettes:
-    when running code in ‘PairedPSCBS.tex.rsp’
-      ...
-      4    37253  37320
-      5    37332  37449
-      Rows:
-      [1] 1 1 1 1 1
-     Total CN segment #1 ([    554484,1.20993e+08]) of 7...done
-    Segmenting paired tumor-normal signals using Paired PSCBS...done
-    
-      When sourcing ‘PairedPSCBS.R’:
-    Error: 'length(x) = 5 > 1' in coercion to 'logical(1)'
-    Execution halted
-    ```
 
 *   checking whether package ‘PSCBS’ can be installed ... NOTE
     ```
@@ -452,18 +432,18 @@ Run `revdep_details(,"stepR")` for more info
      ERROR
     Running the tests in ‘tests/testthat.R’ failed.
     Last 13 lines of output:
-      R.cache::loadCache(attr(teststat1, "keyList"), dirs = "testStepR") not identical to `teststat1`.
-      target is NULL, current is MCSimulationMaximum
-      
       ══ testthat results  ═══════════════════════════════════════════════════════════
-      OK: 18675 SKIPPED: 0 WARNINGS: 0 FAILED: 7
-      1. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2150) 
-      2. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2208) 
-      3. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2210) 
-      4. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2211) 
-      5. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2212) 
-      6. Failure: stat can be saved in and loaded from multiple options (@test-critVal.R#2377) 
-      7. Failure: stat can be saved in and loaded from multiple options (@test-critVal.R#2378) 
+      OK: 18661 SKIPPED: 0 WARNINGS: 0 FAILED: 21
+      1. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2089) 
+      2. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2098) 
+      3. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2099) 
+      4. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2100) 
+      5. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2101) 
+      6. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2102) 
+      7. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2103) 
+      8. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2104) 
+      9. Failure: stat can be saved in and loaded from the file system (@test-critVal.R#2105) 
+      1. ...
       
       Error: testthat unit tests failed
       Execution halted

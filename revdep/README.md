@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Los_Angeles          |
-|date     |2019-05-04                   |
+|date     |2019-05-08                   |
 
 # Dependencies
 
@@ -35,7 +35,7 @@
 |[CoRegFlux](problems.md#coregflux)              |1.0.0   |      |        |1    |
 |[jointseg](problems.md#jointseg)                |1.0.2   |      |        |1    |
 |[MSnID](problems.md#msnid)                      |1.18.0  |      |1       |2    |
-|[PSCBS](problems.md#pscbs)                      |0.64.0  |1     |        |1    |
+|[PSCBS](problems.md#pscbs)                      |0.65.0  |      |        |1    |
 |[QDNAseq](problems.md#qdnaseq)                  |1.20.0  |      |1       |1    |
 |[R.filesets](problems.md#rfilesets)             |2.13.0  |      |        |1    |
 |[R.rsp](problems.md#rrsp)                       |0.43.1  |      |        |1    |
