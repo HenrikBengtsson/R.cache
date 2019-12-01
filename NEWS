@@ -25,6 +25,11 @@ NEW FEATURES:
  * Option 'R.cache.rootPath' now defaults to environment variable
    'R_CACHE_ROOTPATH' if it is set.
 
+SOFTWARE QUALITY:
+
+ * Now a temporary cache root path is always set when running 'R CMD check',
+   unless one is explicitly set via an option or an environment variable.
+  
 DEPRECATED & DEFUNCT:
  
  * Previously deprecated options 'R.cache::rootPath', 'R.cache::touchOnLoad',
