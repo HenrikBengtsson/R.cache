@@ -22,6 +22,9 @@ SIGNIFICANT CHANGES:
 
 NEW FEATURES:
 
+ * Add generateCache() to generate cache pathnames from a key without creating
+   the cache file.  This function was previously not exported.
+ 
  * Option 'R.cache.rootPath' now defaults to environment variable
    'R_CACHE_ROOTPATH' if it is set.
 

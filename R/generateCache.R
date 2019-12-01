@@ -25,6 +25,7 @@
 # @author
 #
 # \seealso{
+#   @see "findCache".
 #   Internally, the generic function @see "getChecksum" is used to
 #   calculate the checksum of argument \code{key}.
 # }
@@ -53,4 +54,4 @@ setMethodS3("generateCache", "default", function(key, suffix=".Rcache", ...) {
   cacheName <- paste(cacheName, suffix, sep="")
 
   cacheName
-}, export=FALSE)
+}, export=TRUE)
