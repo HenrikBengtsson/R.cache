@@ -35,7 +35,8 @@
 #*/#########################################################################
 setMethodS3("getCacheRootPath", "default", function(defaultPath=NULL, ...) {
   # Check for option settings
-  path <- getOption("R.cache.rootPath")
+  path <- getOption("R.cache.rootPath", Sys.getenv("R_CACHE_ROOTPATH", ""))
+  if (nchar(path) == 0L) path <- NULL
   
   # Backward compatibility
   if (is.null(path)) {
@@ -43,7 +44,7 @@ setMethodS3("getCacheRootPath", "default", function(defaultPath=NULL, ...) {
       path <- getOption("R.cache::rootPath")
       if (!is.null(path)) .Defunct(msg = "R.cache option 'R.cache::rootPath' has been renamed to 'R.cache.rootPath'")
     }
-
+    
     if (is.null(path)) {
       path <- getOption("R.cache.path")
       if (!is.null(path)) .Defunct(msg = "R.cache option 'R.cache::path' has been renamed to 'R.cache.rootPath'")

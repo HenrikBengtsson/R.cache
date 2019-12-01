@@ -1,7 +1,7 @@
 Package: R.cache
 ================
 
-Version: 0.13.0-9000 [2019-03-26]
+Version: 0.13.0-9000 [2019-12-01]
 
 SIGNIFICANT CHANGES:
 
@@ -19,6 +19,11 @@ SIGNIFICANT CHANGES:
    default.  This is done in order to not lose previously cached files.
    Users with an existing folder who wish to move to the new standard need
    to move or remove the ~/.Rcache folder manually.
+
+NEW FEATURES:
+
+ * Option 'R.cache.rootPath' now defaults to environment variable
+   'R_CACHE_ROOTPATH' if it is set.
 
 DEPRECATED & DEFUNCT:
  
