@@ -15,6 +15,11 @@ Run `revdep_details(,"aroma.affymetrix")` for more info
 
 ## In both
 
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘affxparser’
+    ```
+
 *   checking installed package size ... NOTE
     ```
       installed size is  5.8Mb
@@ -24,10 +29,31 @@ Run `revdep_details(,"aroma.affymetrix")` for more info
         testScripts   1.3Mb
     ```
 
-*   checking dependencies in R code ... NOTE
+*   checking Rd cross-references ... NOTE
     ```
-    Error in setGeneric("getX", function(object, type) standardGeneric("getX")) : 
-      could not find function "setGeneric"
+    Package unavailable to check Rd xrefs: ‘affxparser’
+    ```
+
+# aroma.cn
+
+<details>
+
+* Version: 1.6.1
+* Source code: https://github.com/cran/aroma.cn
+* URL: http://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.cn
+* BugReports: https://github.com/HenrikBengtsson/aroma.cn/issues
+* Date/Publication: 2015-10-28 00:08:16
+* Number of recursive dependencies: 23
+
+Run `revdep_details(,"aroma.cn")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘GLAD’
     ```
 
 # aroma.core
