@@ -18,7 +18,8 @@
 }
 
 \usage{
-evalWithMemoization(expr, key=NULL, ..., envir=parent.frame(), force=FALSE)
+evalWithMemoization(expr, key=NULL, ..., envir=parent.frame(),
+  drop=c("srcref", "srcfile", "wholeSrcref"), force=FALSE)
 }
 
 \arguments{
@@ -28,6 +29,8 @@ evalWithMemoization(expr, key=NULL, ..., envir=parent.frame(), force=FALSE)
     and \code{\link{saveCache}}().}
   \item{envir}{The \code{\link[base]{environment}} in which the expression should
     be evaluated.}
+  \item{drop}{\code{\link[base]{character}} vector of \code{expr} attributes to drop.
+    The default is to drop all source-reference information.}
   \item{force}{If \code{\link[base:logical]{TRUE}}, existing cached results are ignored.}
 }
 

@@ -17,6 +17,8 @@
 #     and @see "saveCache".}
 #   \item{envir}{The @environment in which the expression should
 #     be evaluated.}
+#   \item{drop}{@character vector of \code{expr} attributes to drop.
+#     The default is to drop all source-reference information.}
 #   \item{force}{If @TRUE, existing cached results are ignored.}
 # }
 #
@@ -35,8 +37,9 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################  
-evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force=FALSE) {
+evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), drop=c("srcref", "srcfile", "wholeSrcref"), force=FALSE) {
   expr <- substitute(expr)
+  for (name in drop) attr(expr, name) <- NULL
 
   # Setup a unique list of keys
   key <- c(list(expr=expr), key)
@@ -47,7 +50,7 @@ evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force
     # Attach all objects memoized during the evaluation
     attachLocally(resList$envir, envir=envir)
     # Return the results of the memoized evaluation
-    return(resList$result)
+    return(resList$results)
   }
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -28,17 +28,29 @@ NEW FEATURES:
  * Option 'R.cache.rootPath' now defaults to environment variable
    'R_CACHE_ROOTPATH' if it is set.
 
-SOFTWARE QUALITY:
+ * evalWithMemoization() gained argument 'drop' to specify which attributes
+   to drop from the expression object.  The default is to now drop any
+   source-reference attributes.
 
- * Now a temporary cache root path is always set when running 'R CMD check',
-   unless one is explicitly set via an option or an environment variable.
-  
+BUG FIXES:
+
+ * evalWithMemoization(expr) failed to memoize in knitr documents because
+   although the same 'expr' was specified they differed internally due to
+   source-reference attributes.
+
+ * evalWithMemoization() used partial dollar name matching in one place.
+
 DEPRECATED & DEFUNCT:
  
  * Previously deprecated options 'R.cache::rootPath', 'R.cache::touchOnLoad',
    and 'R.cache::compress' are now defunct.  Likewise, environment variable
    'R_CACHE_PATH' and argument onError="print" for loadCache() are now defunct.
 
+SOFTWARE QUALITY:
+
+ * Now a temporary cache root path is always set when running 'R CMD check',
+   unless one is explicitly set via an option or an environment variable.
+ 
 
 Version: 0.13.0 [2018-01-03]
 
