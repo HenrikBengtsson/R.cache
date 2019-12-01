@@ -28,8 +28,8 @@
 
 |package                                         |version |error |warning |note |
 |:-----------------------------------------------|:-------|:-----|:-------|:----|
-|[aroma.affymetrix](problems.md#aromaaffymetrix) |3.2.0   |      |        |3    |
-|[aroma.cn](problems.md#aromacn)                 |1.6.1   |      |        |1    |
+|[aroma.affymetrix](problems.md#aromaaffymetrix) |3.2.0   |      |        |2    |
+|aroma.cn                                        |1.6.1   |      |        |     |
 |[aroma.core](problems.md#aromacore)             |3.2.0   |      |        |2    |
 |clampSeg                                        |1.0-5   |      |        |     |
 |CoRegFlux                                       |1.2.0   |      |        |     |
