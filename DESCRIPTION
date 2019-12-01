@@ -5,10 +5,9 @@ Depends:
 Imports:
   utils,
   R.methodsS3 (>= 1.7.1),
-  R.oo (>= 1.22.0),
+  R.oo (>= 1.23.0),
   R.utils (>= 2.8.0),
   digest (>= 0.6.13)
-Date: 2018-01-03
 Title: Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
                                           email = "henrikb@braju.com"))

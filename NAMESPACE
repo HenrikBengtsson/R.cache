@@ -2,7 +2,7 @@
 # IMPORTS
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 importFrom("R.methodsS3", "setMethodS3")
-importFrom("R.methodsS3", "throw")
+importFrom("R.oo", "throw")
 
 ## Importing Class:es
 importFrom("R.oo", "Package")
