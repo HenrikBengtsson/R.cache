@@ -2,25 +2,18 @@
 
 <details>
 
-* Version: 3.1.1
+* Version: 3.2.0
 * Source code: https://github.com/cran/aroma.affymetrix
-* URL: http://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.affymetrix
+* URL: https://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.affymetrix
 * BugReports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
-* Date/Publication: 2018-04-16 18:53:05 UTC
-* Number of recursive dependencies: 74
+* Date/Publication: 2019-06-23 06:00:14 UTC
+* Number of recursive dependencies: 80
 
 Run `revdep_details(,"aroma.affymetrix")` for more info
 
 </details>
 
 ## In both
-
-*   checking whether package ‘aroma.affymetrix’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/aroma.affymetrix/new/aroma.affymetrix.Rcheck/00install.out’ for details.
-    ```
 
 *   checking installed package size ... NOTE
     ```
@@ -37,40 +30,16 @@ Run `revdep_details(,"aroma.affymetrix")` for more info
       could not find function "setGeneric"
     ```
 
-# aroma.cn
-
-<details>
-
-* Version: 1.6.1
-* Source code: https://github.com/cran/aroma.cn
-* URL: http://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.cn
-* BugReports: https://github.com/HenrikBengtsson/aroma.cn/issues
-* Date/Publication: 2015-10-28 00:08:16
-* Number of recursive dependencies: 23
-
-Run `revdep_details(,"aroma.cn")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘aroma.cn’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/aroma.cn/new/aroma.cn.Rcheck/00install.out’ for details.
-    ```
-
 # aroma.core
 
 <details>
 
-* Version: 3.1.3
+* Version: 3.2.0
 * Source code: https://github.com/cran/aroma.core
-* URL: https://github.com/HenrikBengtsson/aroma.core, http://www.aroma-project.org/
+* URL: https://github.com/HenrikBengtsson/aroma.core, https://www.aroma-project.org/
 * BugReports: https://github.com/HenrikBengtsson/aroma.core/issues
-* Date/Publication: 2018-05-03 13:41:54 UTC
-* Number of recursive dependencies: 45
+* Date/Publication: 2019-06-17 18:20:03 UTC
+* Number of recursive dependencies: 46
 
 Run `revdep_details(,"aroma.core")` for more info
 
@@ -84,89 +53,20 @@ Run `revdep_details(,"aroma.core")` for more info
       'sfit', 'expectile', 'HaarSeg', 'mpcbs'
     ```
 
-*   checking whether package ‘aroma.core’ can be installed ... NOTE
+*   checking dependencies in R code ... NOTE
     ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/aroma.core/new/aroma.core.Rcheck/00install.out’ for details.
-    ```
-
-# clampSeg
-
-<details>
-
-* Version: 1.0-4
-* Source code: https://github.com/cran/clampSeg
-* Date/Publication: 2018-05-25 15:58:41 UTC
-* Number of recursive dependencies: 16
-
-Run `revdep_details(,"clampSeg")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘clampSeg’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/clampSeg/new/clampSeg.Rcheck/00install.out’ for details.
-    ```
-
-# CoRegFlux
-
-<details>
-
-* Version: 1.0.0
-* Source code: https://github.com/cran/CoRegFlux
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 71
-
-Run `revdep_details(,"CoRegFlux")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘CoRegFlux’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/CoRegFlux/new/CoRegFlux.Rcheck/00install.out’ for details.
-    ```
-
-# jointseg
-
-<details>
-
-* Version: 1.0.2
-* Source code: https://github.com/cran/jointseg
-* URL: https://github.com/mpierrejean/jointseg
-* BugReports: https://github.com/mpierrejean/jointseg/issues
-* Date/Publication: 2019-01-11 12:30:03 UTC
-* Number of recursive dependencies: 42
-
-Run `revdep_details(,"jointseg")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘jointseg’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/jointseg/new/jointseg.Rcheck/00install.out’ for details.
+    Error in setGeneric("image", function(x, ...) standardGeneric("image")) : 
+      could not find function "setGeneric"
     ```
 
 # MSnID
 
 <details>
 
-* Version: 1.18.0
+* Version: 1.20.0
 * Source code: https://github.com/cran/MSnID
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 100
+* Date/Publication: 2019-10-29
+* Number of recursive dependencies: 106
 
 Run `revdep_details(,"MSnID")` for more info
 
@@ -180,13 +80,6 @@ Run `revdep_details(,"MSnID")` for more info
       ‘[mzR]{mzR-package}’
     
     See section 'Cross-references' in the 'Writing R Extensions' manual.
-    ```
-
-*   checking whether package ‘MSnID’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/MSnID/new/MSnID.Rcheck/00install.out’ for details.
     ```
 
 *   checking R code for possible problems ... NOTE
@@ -215,40 +108,16 @@ Run `revdep_details(,"MSnID")` for more info
     to your NAMESPACE file.
     ```
 
-# PSCBS
-
-<details>
-
-* Version: 0.65.0
-* Source code: https://github.com/cran/PSCBS
-* URL: https://github.com/HenrikBengtsson/PSCBS
-* BugReports: https://github.com/HenrikBengtsson/PSCBS/issues
-* Date/Publication: 2019-05-05 22:40:09 UTC
-* Number of recursive dependencies: 73
-
-Run `revdep_details(,"PSCBS")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘PSCBS’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/PSCBS/new/PSCBS.Rcheck/00install.out’ for details.
-    ```
-
 # QDNAseq
 
 <details>
 
-* Version: 1.20.0
+* Version: 1.22.0
 * Source code: https://github.com/cran/QDNAseq
 * URL: https://github.com/ccagc/QDNAseq
 * BugReports: https://github.com/ccagc/QDNAseq/issues
-* Date/Publication: 2019-05-02
-* Number of recursive dependencies: 66
+* Date/Publication: 2019-10-29
+* Number of recursive dependencies: 70
 
 Run `revdep_details(,"QDNAseq")` for more info
 
@@ -256,147 +125,20 @@ Run `revdep_details(,"QDNAseq")` for more info
 
 ## In both
 
-*   checking for missing documentation entries ... WARNING
+*   checking dependencies in R code ... NOTE
     ```
-    Undocumented code objects:
-      ‘exportVCF’
-    All user-level objects in a package should have documentation entries.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking whether package ‘QDNAseq’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/QDNAseq/new/QDNAseq.Rcheck/00install.out’ for details.
-    ```
-
-# R.filesets
-
-<details>
-
-* Version: 2.13.0
-* Source code: https://github.com/cran/R.filesets
-* URL: https://github.com/HenrikBengtsson/R.filesets, http://www.aroma-project.org/
-* BugReports: https://github.com/HenrikBengtsson/R.filesets/issues
-* Date/Publication: 2019-04-18 05:10:04 UTC
-* Number of recursive dependencies: 6
-
-Run `revdep_details(,"R.filesets")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘R.filesets’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/R.filesets/new/R.filesets.Rcheck/00install.out’ for details.
-    ```
-
-# R.rsp
-
-<details>
-
-* Version: 0.43.1
-* Source code: https://github.com/cran/R.rsp
-* URL: https://github.com/HenrikBengtsson/R.rsp
-* BugReports: https://github.com/HenrikBengtsson/R.rsp/issues
-* Date/Publication: 2019-02-05 23:11:50 UTC
-* Number of recursive dependencies: 18
-
-Run `revdep_details(,"R.rsp")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘R.rsp’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/R.rsp/new/R.rsp.Rcheck/00install.out’ for details.
-    ```
-
-# ragtop
-
-<details>
-
-* Version: 1.0.0
-* Source code: https://github.com/cran/ragtop
-* Date/Publication: 2018-12-15 15:10:03 UTC
-* Number of recursive dependencies: 81
-
-Run `revdep_details(,"ragtop")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘ragtop’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/ragtop/new/ragtop.Rcheck/00install.out’ for details.
-    ```
-
-# repmis
-
-<details>
-
-* Version: 0.5
-* Source code: https://github.com/cran/repmis
-* URL: http://cran.r-project.org/package=repmis
-* BugReports: https://github.com/christophergandrud/repmis/issues
-* Date/Publication: 2016-02-07 09:16:30
-* Number of recursive dependencies: 19
-
-Run `revdep_details(,"repmis")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘repmis’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/repmis/new/repmis.Rcheck/00install.out’ for details.
-    ```
-
-# scholar
-
-<details>
-
-* Version: 0.1.7
-* Source code: https://github.com/cran/scholar
-* BugReports: https://github.com/jkeirstead/scholar/issues
-* Date/Publication: 2018-07-03 08:40:02 UTC
-* Number of recursive dependencies: 88
-
-Run `revdep_details(,"scholar")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘scholar’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/scholar/new/scholar.Rcheck/00install.out’ for details.
+    Namespace in Imports field not imported from: ‘future’
+      All declared Imports should be used.
     ```
 
 # stepR
 
 <details>
 
-* Version: 2.0-3
+* Version: 2.0-4
 * Source code: https://github.com/cran/stepR
-* Date/Publication: 2019-01-27 18:30:03 UTC
-* Number of recursive dependencies: 25
+* Date/Publication: 2019-11-03 21:10:02 UTC
+* Number of recursive dependencies: 36
 
 Run `revdep_details(,"stepR")` for more info
 
@@ -404,41 +146,10 @@ Run `revdep_details(,"stepR")` for more info
 
 ## In both
 
-*   checking whether package ‘stepR’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/stepR/new/stepR.Rcheck/00install.out’ for details.
-    ```
-
 *   checking installed package size ... NOTE
     ```
       installed size is  6.9Mb
       sub-directories of 1Mb or more:
         libs   5.8Mb
-    ```
-
-# TreeSearch
-
-<details>
-
-* Version: 0.3.0
-* Source code: https://github.com/cran/TreeSearch
-* URL: https://github.com/ms609/TreeSearch
-* BugReports: https://github.com/ms609/TreeSearch/issues
-* Date/Publication: 2019-03-21 09:03:34 UTC
-* Number of recursive dependencies: 56
-
-Run `revdep_details(,"TreeSearch")` for more info
-
-</details>
-
-## In both
-
-*   checking whether package ‘TreeSearch’ can be installed ... NOTE
-    ```
-    Found the following notes/warnings:
-      Non-staged installation was used
-    See ‘/home/hb/repositories/R.cache/revdep/checks/TreeSearch/new/TreeSearch.Rcheck/00install.out’ for details.
     ```
 
