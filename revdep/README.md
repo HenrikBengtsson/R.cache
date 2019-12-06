@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Los_Angeles          |
-|date     |2019-12-01                   |
+|date     |2019-12-05                   |
 
 # Dependencies
 
@@ -20,7 +20,7 @@
 |digest      |0.6.23 |0.6.23      |   |
 |R.methodsS3 |1.7.1  |1.7.1       |   |
 |R.oo        |1.23.0 |1.23.0      |   |
-|R.utils     |2.9.0  |2.9.0       |   |
+|R.utils     |2.9.1  |2.9.1       |   |
 
 # Revdeps
 
