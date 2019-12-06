@@ -44,21 +44,21 @@
 #*/#########################################################################
 setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL) {
   # 1. Generate cache file
-  key <- list(what=what, ...);
-  pathnameC <- generateCache(key=key, dirs=dirs);
+  key <- list(what=what, ...)
+  pathnameC <- generateCache(key=key, dirs=dirs)
 
   # 1. Look for memoized results
   if (!force) {
-    res <- loadCache(pathname=pathnameC, sources=sources);
+    res <- loadCache(pathname=pathnameC, sources=sources)
     if (!is.null(res)) return(res)
   }
 
   # 2. Otherwise, call method with arguments
-  res <- do.call(what, args=list(...), quote=FALSE, envir=envir);
+  res <- do.call(what, args=list(...), quote=FALSE, envir=envir)
 
   # 3. Memoize results
-  saveCache(res, pathname=pathnameC, sources=sources);
+  saveCache(res, pathname=pathnameC, sources=sources)
 
   # 4. Return results
-  res;
+  res
 }) # memoizedCall()

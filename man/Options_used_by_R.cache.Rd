@@ -34,8 +34,8 @@
    }
 
    \item{\option{R.cache.rootPath}:}{
-     A \code{\link[base]{character}} string specifying the default cache root path. 
-     (Default: \code{"~/.Rcache"})
+     A \code{\link[base]{character}} string specifying the default cache root path.
+     If not set, environment variable \env{R_CACHE_ROOTPATH} is considered.
    }
 
    \item{\option{R.cache.touchOnLoad}:}{

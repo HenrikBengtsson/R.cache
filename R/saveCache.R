@@ -56,14 +56,14 @@
 #*/#########################################################################
 setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suffix=".Rcache", comment=NULL, pathname=NULL, dirs=NULL, compress=NULL, ...) {
   # Look up base::save() once; '::' adds overhead
-  base_save <- base::save;
+  base_save <- base::save
 
   # Argument 'compress':
   if (is.null(compress)) {
     compress <- getOption("R.cache.compress")
     if (is.null(compress)) {
       compress <- getOption("R.cache::compress")
-      if (!is.null(compress)) .Deprecated(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
+      if (!is.null(compress)) .Defunct(msg = "R.cache option 'R.cache::compress' has been renamed to 'R.cache.compress'")
     }
   }
   if (!isTRUE(compress)) compress <- FALSE
@@ -78,7 +78,7 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (is.null(pathname)) {
     # Generate cache name from basename and hash object.
-    pathname <- generateCache(key=key, suffix=suffix, dirs=dirs);
+    pathname <- generateCache(key=key, suffix=suffix, dirs=dirs)
   }
 
 
@@ -86,51 +86,51 @@ setMethodS3("saveCache", "default", function(object, key=NULL, sources=NULL, suf
   # Save to file connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (compress) {
-    pathname <- sprintf("%s.gz", pathname);
-    fh <- gzfile(pathname, open="wb");
+    pathname <- sprintf("%s.gz", pathname)
+    fh <- gzfile(pathname, open="wb")
   } else {
-    fh <- file(pathname, open="wb");
+    fh <- file(pathname, open="wb")
   }
-  on.exit(close(fh));
+  on.exit(close(fh))
 
   ## Prepare to save
-  identifier <- "Rcache v0.1.7 (R package R.cache by Henrik Bengtsson)";
+  identifier <- "Rcache v0.1.7 (R package R.cache by Henrik Bengtsson)"
   if (nchar(identifier) > 64L)
-    throw("Internal error. Identifier is too long: ", identifier);
-  tail <- paste(rep(" ", times=64L-nchar(identifier)), collapse="");
-  identifier <- paste(identifier, tail, sep="");
+    throw("Internal error. Identifier is too long: ", identifier)
+  tail <- paste(rep(" ", times=64L-nchar(identifier)), collapse="")
+  identifier <- paste(identifier, tail, sep="")
 
   if (is.null(comment))
-    comment <- "";
+    comment <- ""
 
   # If 'sources' is not evaluated, it is a so called promise, which will
   # make all of its calling environments to be save too.
-  dummy <- is.null(sources);
+  dummy <- is.null(sources)
 
-  timestamp <- Sys.time();
+  timestamp <- Sys.time()
 
   tryCatch({
     # Save 'identifier'
-    writeChar(con=fh, identifier, nchars=64L);
+    writeChar(con=fh, identifier, nchars=64L)
   
     # Save 'comment'
-    writeBin(con=fh, nchar(comment), size=4L);
-    writeChar(comment, con=fh, nchars=nchar(comment));
+    writeBin(con=fh, nchar(comment), size=4L)
+    writeChar(comment, con=fh, nchars=nchar(comment))
   
     # Save 'sources'
-    base_save(file=fh, sources, compress=compress, ...);
+    base_save(file=fh, sources, compress=compress, ...)
   
     # Save 'timestamp'
-    base_save(file=fh, timestamp, compress=compress, ...);
+    base_save(file=fh, timestamp, compress=compress, ...)
   
     # Save 'object'
-    base_save(file=fh, object, compress=compress, ...);
+    base_save(file=fh, object, compress=compress, ...)
   }, error = function(ex) {
     msg <- conditionMessage(ex)
     throw(sprintf("Failed to save to cache (%s). The reason was: %s",
-                  sQuote(pathname), ex));
+                  sQuote(pathname), ex))
 
   })
 
-  invisible(pathname);
+  invisible(pathname)
 })

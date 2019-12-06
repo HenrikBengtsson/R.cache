@@ -17,7 +17,7 @@
 }
 
 \usage{
-\method{getCacheRootPath}{default}(defaultPath="~/.Rcache", ...)
+\method{getCacheRootPath}{default}(defaultPath=NULL, ...)
 }
 
 \arguments{

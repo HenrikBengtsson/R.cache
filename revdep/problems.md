@@ -1,308 +1,155 @@
 # aroma.affymetrix
 
-Version: 3.1.0
+<details>
+
+* Version: 3.2.0
+* Source code: https://github.com/cran/aroma.affymetrix
+* URL: https://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.affymetrix
+* BugReports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
+* Date/Publication: 2019-06-23 06:00:14 UTC
+* Number of recursive dependencies: 80
+
+Run `revdep_details(,"aroma.affymetrix")` for more info
+
+</details>
 
 ## In both
 
-*   checking CRAN incoming feasibility ... WARNING
+*   checking installed package size ... NOTE
     ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 3.1.0, existing: 3.1.0)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
+      installed size is  5.8Mb
+      sub-directories of 1Mb or more:
+        R             2.3Mb
+        help          1.1Mb
+        testScripts   1.3Mb
     ```
 
-# aroma.cn
-
-Version: 1.6.1
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
+*   checking dependencies in R code ... NOTE
     ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 1.6.1, existing: 1.6.1)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
+    Error in setGeneric("getX", function(object, type) standardGeneric("getX")) : 
+      could not find function "setGeneric"
     ```
 
 # aroma.core
 
-Version: 3.1.1
+<details>
+
+* Version: 3.2.0
+* Source code: https://github.com/cran/aroma.core
+* URL: https://github.com/HenrikBengtsson/aroma.core, https://www.aroma-project.org/
+* BugReports: https://github.com/HenrikBengtsson/aroma.core/issues
+* Date/Publication: 2019-06-17 18:20:03 UTC
+* Number of recursive dependencies: 46
+
+Run `revdep_details(,"aroma.core")` for more info
+
+</details>
 
 ## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 3.1.1, existing: 3.1.1)
-    
-    Suggests or Enhances not in mainstream repositories:
-      sfit, expectile, HaarSeg, mpcbs
-    Availability using Additional_repositories specification:
-      sfit        yes   https://henrikbengtsson.github.io/drat
-      expectile   yes   http://r-forge.r-project.org          
-      HaarSeg     yes   http://r-forge.r-project.org          
-      mpcbs       yes   http://r-forge.r-project.org          
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
-    ```
 
 *   checking package dependencies ... NOTE
     ```
     Packages suggested but not available for checking:
-      ‘sfit’ ‘expectile’ ‘HaarSeg’ ‘mpcbs’
+      'sfit', 'expectile', 'HaarSeg', 'mpcbs'
     ```
 
-# fulltext
-
-Version: 0.1.8
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
+*   checking dependencies in R code ... NOTE
     ```
-    ...
-        From: inst/doc/formats.html
-        Status: 404
-        Message: Not Found
-      URL: http://elifesciences.org/content/elife/2/e00471.full.pdf (moved to https://elifesciences.org/content/elife/2/e00471.full.pdf)
-        From: inst/doc/formats.html
-        Status: 404
-        Message: Not Found
-      URL: http://gph.sagepub.com/content/1/2333794X14548199.full.pdf
-        From: inst/doc/formats.html
-        Status: 404
-        Message: Not Found
-      URL: http://www.gigasciencejournal.com/content/download/xml/2047-217X-3-27.xml
-        From: inst/doc/formats.html
-        Status: 404
-        Message: Not Found
-      URL: http://www.gigasciencejournal.com/content/pdf/2047-217X-3-27.pdf
-        From: inst/doc/formats.html
-        Status: 404
-        Message: Not Found
-    
-    This build time stamp is over a month old.
-    ```
-
-*   checking top-level files ... WARNING
-    ```
-    Conversion of ‘README.md’ failed:
-    pandoc: Could not fetch http://ropensci.org/public_images/github_footer.png
-    TlsExceptionHostPort (HandshakeFailed Error_EOF) "ropensci.org" 80
-    ```
-
-# jointseg
-
-Version: 1.0.1
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Morgane Pierre-Jean <mpierrejean.pro@gmail.com>’
-    
-    Insufficient package version (submitted: 1.0.1, existing: 1.0.1)
-    
-    This build time stamp is over a month old.
+    Error in setGeneric("image", function(x, ...) standardGeneric("image")) : 
+      could not find function "setGeneric"
     ```
 
 # MSnID
 
-Version: 1.12.1
+<details>
+
+* Version: 1.20.0
+* Source code: https://github.com/cran/MSnID
+* Date/Publication: 2019-10-29
+* Number of recursive dependencies: 106
+
+Run `revdep_details(,"MSnID")` for more info
+
+</details>
 
 ## In both
 
-*   checking CRAN incoming feasibility ... NOTE
+*   checking Rd cross-references ... WARNING
     ```
-    Maintainer: ‘Vlad Petyuk <petyuk@gmail.com>’
+    Missing link or links in documentation object 'read_mzIDs.Rd':
+      ‘[mzR]{mzR-package}’
     
-    Package duplicated from https://bioconductor.org/packages/3.6/bioc
-    
-    This build time stamp is over a month old.
+    See section 'Cross-references' in the 'Writing R Extensions' manual.
     ```
 
-# PSCBS
-
-Version: 0.63.0
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
+*   checking R code for possible problems ... NOTE
     ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 0.63.0, existing: 0.63.0)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
+    ...
+    .read_mzIDs.mzR.engine.single.file: no visible binding for global
+      variable ‘DatabaseAccess’
+    .read_mzIDs.mzR.engine.single.file: no visible binding for global
+      variable ‘DatabaseDescription’
+    .read_mzIDs.mzR.engine.single.file: no visible binding for global
+      variable ‘DBseqLength’
+    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
+      global variable ‘accession’
+    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
+      global variable ‘N’
+    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
+      global variable ‘pepSeq’
+    recalibrate,MSnID: no visible global function definition for ‘median’
+    recalibrate,MSnID: no visible global function definition for ‘density’
+    Undefined global functions or variables:
+      DBseqLength DatabaseAccess DatabaseDescription N accession density i
+      location mass median modification name optim pepSeq quantile rnorm
+      spectrumID
+    Consider adding
+      importFrom("stats", "density", "median", "optim", "quantile", "rnorm")
+    to your NAMESPACE file.
     ```
 
 # QDNAseq
 
-Version: 1.14.0
+<details>
+
+* Version: 1.22.0
+* Source code: https://github.com/cran/QDNAseq
+* URL: https://github.com/ccagc/QDNAseq
+* BugReports: https://github.com/ccagc/QDNAseq/issues
+* Date/Publication: 2019-10-29
+* Number of recursive dependencies: 70
+
+Run `revdep_details(,"QDNAseq")` for more info
+
+</details>
 
 ## In both
 
-*   checking for missing documentation entries ... WARNING
+*   checking dependencies in R code ... NOTE
     ```
-    Undocumented code objects:
-      ‘exportVCF’
-    All user-level objects in a package should have documentation entries.
-    See chapter ‘Writing R documentation files’ in the ‘Writing R
-    Extensions’ manual.
-    ```
-
-*   checking sizes of PDF files under ‘inst/doc’ ... WARNING
-    ```
-      ‘gs+qpdf’ made some significant size reductions:
-         compacted ‘QDNAseq.pdf’ from 465Kb to 209Kb
-      consider running tools::compactPDF(gs_quality = "ebook") on these files
-    ```
-
-*   checking CRAN incoming feasibility ... NOTE
-    ```
-    Maintainer: ‘Daoud Sie <d.sie@vumc.nl>’
-    
-    Package duplicated from https://bioconductor.org/packages/3.6/bioc
-    
-    Package has a FOSS license but eventually depends on the following
-    package which may restrict use:
-      CGHcall
-    
-    The Title field should be in title case, current version then in title case:
-    ‘Quantitative DNA sequencing for chromosomal aberrations’
-    ‘Quantitative DNA Sequencing for Chromosomal Aberrations’
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
-    ```
-
-# R.filesets
-
-Version: 2.11.0
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 2.11.0, existing: 2.11.0)
-    
-    This build time stamp is over a month old.
-    ```
-
-# R.rsp
-
-Version: 0.41.0
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Henrik Bengtsson <henrikb@braju.com>’
-    
-    Insufficient package version (submitted: 0.41.0, existing: 0.41.0)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
-    ```
-
-# ragtop
-
-Version: 0.5
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Brian K. Boonstra <ragtop@boonstra.org>’
-    
-    Insufficient package version (submitted: 0.5, existing: 0.5)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
-    ```
-
-# repmis
-
-Version: 0.5
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Christopher Gandrud <christopher.gandrud@gmail.com>’
-    
-    Insufficient package version (submitted: 0.5, existing: 0.5)
-    
-    Found the following (possibly) invalid URLs:
-      URL: http://CRAN.R-project.org/package=knitr
-        From: man/LoadandCite.Rd
-        Status: 200
-        Message: OK
-        CRAN URL not in canonical form
-      URL: http://cran.r-project.org/package=repmis
-        From: DESCRIPTION
-        CRAN URL not in canonical form
-      Canonical CRAN.R-project.org URLs use https.
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
-    ```
-
-# scholar
-
-Version: 0.1.4
-
-## In both
-
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘James Keirstead <james.keirstead@gmail.com>’
-    
-    Insufficient package version (submitted: 0.1.4, existing: 0.1.4)
-    
-    The Date field is over a month old.
-    
-    This build time stamp is over a month old.
+    Namespace in Imports field not imported from: ‘future’
+      All declared Imports should be used.
     ```
 
 # stepR
 
-Version: 2.0-1
+<details>
+
+* Version: 2.0-4
+* Source code: https://github.com/cran/stepR
+* Date/Publication: 2019-11-03 21:10:02 UTC
+* Number of recursive dependencies: 36
+
+Run `revdep_details(,"stepR")` for more info
+
+</details>
 
 ## In both
 
-*   checking CRAN incoming feasibility ... WARNING
-    ```
-    Maintainer: ‘Timo Aspelmeier <timo.aspelmeier@mathematik.uni-goettingen.de>’
-    
-    Insufficient package version (submitted: 2.0.1, existing: 2.0.1)
-    
-    This build time stamp is over a month old.
-    ```
-
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.5Mb
+      installed size is  6.9Mb
       sub-directories of 1Mb or more:
-        libs   5.5Mb
+        libs   5.8Mb
     ```
 

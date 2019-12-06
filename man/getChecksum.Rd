@@ -37,7 +37,7 @@
   Because \code{getChecksum()} is a generic function,
   it is possible to provide custom methods for specific
   classes of objects.  This means that, if a certain class
-  specifies fields that carry auxillary data, then these
+  specifies fields that carry auxiliary data, then these
   can be excluded from the checksum calculation.
   For instance, assume that all objects of class 'TimestampedObject'
   contain timestamps specifying when each object was created.

@@ -41,56 +41,56 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'recursive':
-  recursive <- Arguments$getLogical(recursive);
+  recursive <- Arguments$getLogical(recursive)
 
   # Argument 'path':
-  path <- Arguments$getReadablePath(path, mustExist=TRUE);
+  path <- Arguments$getReadablePath(path, mustExist=TRUE)
 
   # Argument 'prompt':
-  prompt <- Arguments$getLogical(prompt);
+  prompt <- Arguments$getLogical(prompt)
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Find files to be removed
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  allFiles <- listDirectory(path, allNames=TRUE, fullNames=TRUE, recursive=recursive);
+  allFiles <- listDirectory(path, allNames=TRUE, fullNames=TRUE, recursive=recursive)
 
   # Exclude '.' and '..' (just in case; listDirectory() shouldn't return them)
-  excl <- grep("[.][.]*$", allFiles);
-  if (length(excl) > 0L) allFiles <- allFiles[-excl];
+  excl <- grep("[.][.]*$", allFiles)
+  if (length(excl) > 0L) allFiles <- allFiles[-excl]
 
   # Exclude 'README.txt'
-  excl <- grep("README.txt$", allFiles);
-  if (length(excl) > 0L) allFiles <- allFiles[-excl];
+  excl <- grep("README.txt$", allFiles)
+  if (length(excl) > 0L) allFiles <- allFiles[-excl]
 
-  nbrOfFiles <- length(allFiles);
+  nbrOfFiles <- length(allFiles)
   if (nbrOfFiles == 0L) {
     if (prompt) {
-      message("Nothing to clear. Cache directory is empty: ", path, "\n", sep="");
+      message("Nothing to clear. Cache directory is empty: ", path, "\n", sep="")
     }
-    return(invisible(NULL));
+    return(invisible(NULL))
   }
 
   # Identify files and directories
-  isdir <- file.info(allFiles)$isdir;
-  dirs <- allFiles[isdir];
-  files <- allFiles[!isdir];
+  isdir <- file.info(allFiles)$isdir
+  dirs <- allFiles[isdir]
+  files <- allFiles[!isdir]
 
   # Remove subdirectories before parent ones.
-  o <- order(nchar(dirs), decreasing=TRUE);
-  dirs <- dirs[o];
+  o <- order(nchar(dirs), decreasing=TRUE)
+  dirs <- dirs[o]
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Prompt user?
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (prompt) {
-    answer <- ".";
+    answer <- "."
     while (!(answer %in% c("y", "n", ""))) {
-      msg <- sprintf("Are you sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path);
-      answer <- tolower(readline(msg));
+      msg <- sprintf("Are you sure you want to delete the %d files and %d directories in '%s'? [y/N]: ", length(files), length(dirs), path)
+      answer <- tolower(readline(msg))
     }
     if (answer != "y") {
-      return(invisible(NULL));
+      return(invisible(NULL))
     }
   }
 
@@ -99,8 +99,8 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   # Remove files and directories
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # (a) Remove files
-  removed <- file.remove(files);
-  filesR <- files[!removed];
+  removed <- file.remove(files)
+  filesR <- files[!removed]
 
   # (b) Remove subdirectories
   # Here we could use unlink(..., recursive=TRUE), but it is
@@ -109,33 +109,33 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   # bug or an inconsistency in list.files() etc), but also if we
   # forget to drop '.' and '..' from list.files(). /HB 2012-11-28
   removed <- sapply(dirs, FUN=function(dir) {
-    filesT <- list.files(path=dir, all.files=TRUE);
-    filesT <- setdiff(filesT, c(".", ".."));
+    filesT <- list.files(path=dir, all.files=TRUE)
+    filesT <- setdiff(filesT, c(".", ".."))
     # Remove only empty directories
-    if (length(filesT) > 0L) return(FALSE);
-    removeDirectory(dir);
-  });
-  dirsR <- dirs[!removed];
+    if (length(filesT) > 0L) return(FALSE)
+    removeDirectory(dir)
+  })
+  dirsR <- dirs[!removed]
 
 
   # Files and directories removed
-  files <- sort(setdiff(files, filesR));
-  dirs <- sort(setdiff(dirs, dirsR));
+  files <- sort(setdiff(files, filesR))
+  dirs <- sort(setdiff(dirs, dirsR))
 
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Report results?
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (prompt) {
-    msg <- sprintf("Cache cleared. Removed %d files and %d directories", length(files), length(dirs));
+    msg <- sprintf("Cache cleared. Removed %d files and %d directories", length(files), length(dirs))
     if (length(filesR) + length(dirsR) > 0L) {
-      msg <- sprintf("%s, but failed to remove another %d files and another %d directories", msg, length(filesR), length(dirsR));
+      msg <- sprintf("%s, but failed to remove another %d files and another %d directories", msg, length(filesR), length(dirsR))
     }
-    message(sprintf("%s.\n", msg));
+    message(sprintf("%s.\n", msg))
   }
 
   # Add a README.txt file, if missing.
-  .addREADME();
+  .addREADME()
 
-  invisible(c(dirs, files));
+  invisible(c(dirs, files))
 })

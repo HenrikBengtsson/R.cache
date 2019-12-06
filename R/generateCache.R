@@ -25,6 +25,7 @@
 # @author
 #
 # \seealso{
+#   @see "findCache".
 #   Internally, the generic function @see "getChecksum" is used to
 #   calculate the checksum of argument \code{key}.
 # }
@@ -39,18 +40,18 @@ setMethodS3("generateCache", "default", function(key, suffix=".Rcache", ...) {
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'key':
   if (!is.list(key) && !is.environment(key)) {
-    throw("Argument 'key' must be a list, an environment: ", class(key)[1L]);
+    throw("Argument 'key' must be a list, an environment: ", class(key)[1L])
   }
 
   # Generate cache name from hash code of key object
-  cacheName <- getChecksum(key);
+  cacheName <- getChecksum(key)
 
   # Add cache directory or pathname
-  path <- getCachePath(...);
-  cacheName <- file.path(path, cacheName);
+  path <- getCachePath(...)
+  cacheName <- file.path(path, cacheName)
 
   # Add suffix
-  cacheName <- paste(cacheName, suffix, sep="");
+  cacheName <- paste(cacheName, suffix, sep="")
 
-  cacheName;
-}, export=FALSE)
+  cacheName
+}, export=TRUE)

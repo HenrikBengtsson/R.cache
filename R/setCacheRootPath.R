@@ -5,7 +5,6 @@
 #
 # \description{
 #  @get "title".
-#  By default, this function will set it to \code{~/.Rcache}.
 # }
 #
 # @synopsis
@@ -28,15 +27,16 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################
-setMethodS3("setCacheRootPath", "default", function(path="~/.Rcache", ...) {
-  path <- as.character(path);
+setMethodS3("setCacheRootPath", "default", function(path=NULL, ...) {
+  if (is.null(path)) path <- getDefaultCacheRootPath(path)
+  path <- as.character(path)
 
   if (!isDirectory(path)) mkdirs(path, mustWork=TRUE)
 
   # Add a README.txt file, if missing.
-  .addREADME(to=path);
+  .addREADME(to=path)
 
-  ovalue <- options("R.cache.rootPath"=path);
+  ovalue <- options("R.cache.rootPath"=path)
 
-  invisible(ovalue);
+  invisible(ovalue)
 }) # setCacheRootPath()

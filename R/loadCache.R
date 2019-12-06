@@ -59,9 +59,9 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
   # Validate arguments
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Argument 'onError':
-  onError <- match.arg(onError);
+  onError <- match.arg(onError)
   if (onError == "print") {
-    .Deprecated(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
+    .Defunct(msg = "loadCache(..., onError = \"print\") is deprecated and replaced by onError = \"message\"")
   }
 
 
@@ -73,87 +73,87 @@ setMethodS3("loadCache", "default", function(key=NULL, sources=NULL, suffix=".Rc
   # Find cached file
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (is.null(pathname))
-    pathname <- findCache(key=key, suffix=suffix, dirs=dirs);
+    pathname <- findCache(key=key, suffix=suffix, dirs=dirs)
   if (is.null(pathname))
-    return(NULL);
+    return(NULL)
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Try to load cached object from file connection
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   if (!isFile(pathname))
-    return(NULL);
+    return(NULL)
 
-  fh <- gzfile(pathname, open="rb");
+  fh <- gzfile(pathname, open="rb")
   on.exit({
     if (!is.null(fh))
-      close(fh);
-  });
+      close(fh)
+  })
 
   tryCatch({
-    header <- readCacheHeader(fh);
+    header <- readCacheHeader(fh)
     if (!is.null(sources))
-      header$sources <- sources;
+      header$sources <- sources
 
-    timestamp <- NULL;
-    attachLocally(header);  # Attaches 'timestamp' (and 'sources')
+    timestamp <- NULL
+    attachLocally(header)  # Attaches 'timestamp' (and 'sources')
 
     if (!is.null(timestamp) && !is.null(sources)) {
       for (sourcePathname in sources) {
         if (!is.character(sources)) {
-          warning("No timestamp check of cache was performed. Unsupported type of cache source: ", class(sources)[1]);
-          break;
+          warning("No timestamp check of cache was performed. Unsupported type of cache source: ", class(sources)[1])
+          break
         }
 
         if (!file.exists(sourcePathname)) {
-          warning("No timestamp check of cache was performed. Source file not found: ", sourcePathname);
-          break;
+          warning("No timestamp check of cache was performed. Source file not found: ", sourcePathname)
+          break
         }
 
         # Is source file newer than cache?
-        lastModified <- file.info(sourcePathname)$mtime;
+        lastModified <- file.info(sourcePathname)$mtime
         if (lastModified > timestamp) {
           # Remove out-of-date cache file?
           if (removeOldCache) {
-            close(fh); fh <- NULL;
-            file.remove(pathname);
+            close(fh); fh <- NULL
+            file.remove(pathname)
           }
-          return(NULL);
+          return(NULL)
         }
       } # for (sourcePathname in sources)
     }
 
     # 4. Load cached object:
-    res <- .baseLoad(con=fh, ...);
-    object <- res$object;
-    res <- NULL; # Not needed anymore
+    res <- .baseLoad(con=fh, ...)
+    object <- res$object
+    res <- NULL # Not needed anymore
 
     # 5. Update the "last-modified" timestamp of the cache file?
-    touch <- getOption("R.cache.touchOnLoad");
+    touch <- getOption("R.cache.touchOnLoad")
     
     ## Backward compatibility
     if (is.null(touch)) {
-      touch <- getOption("R.cache::touchOnLoad");
-      if (!is.null(touch)) .Deprecated(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
+      touch <- getOption("R.cache::touchOnLoad")
+      if (!is.null(touch)) .Defunct(msg = "R.cache option 'R.cache::touchOnLoad' has been renamed to 'R.cache.touchOnLoad'")
     }
     
-    touch <- identical(touch, TRUE);
+    touch <- identical(touch, TRUE)
     if (touch) {
-      touchFile(pathname);
+      touchFile(pathname)
     }
 
     # 6. Return cached object
-    return(object);
+    return(object)
   }, error = function(ex) {
      if (onError == "warning") {
-       warning(ex);
+       warning(ex)
      } else if (onError == "error") {
-       stop(ex);
+       stop(ex)
      } else if (onError == "message") {
-       message(conditionMessage(ex));
+       message(conditionMessage(ex))
      } else if (onError == "print") {
-       print(ex);
+       print(ex)
      }
   })
 
-  NULL;
+  NULL
 })

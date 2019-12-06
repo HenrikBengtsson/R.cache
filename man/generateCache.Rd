@@ -36,6 +36,7 @@
 \author{Henrik Bengtsson}
 
 \seealso{
+  \code{\link{findCache}}().
   Internally, the generic function \code{\link{getChecksum}}() is used to
   calculate the checksum of argument \code{key}.
 }

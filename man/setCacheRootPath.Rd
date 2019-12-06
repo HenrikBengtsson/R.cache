@@ -14,11 +14,10 @@
 
 \description{
  Sets the root path to the file cache directory.
- By default, this function will set it to \code{~/.Rcache}.
 }
 
 \usage{
-\method{setCacheRootPath}{default}(path="~/.Rcache", ...)
+\method{setCacheRootPath}{default}(path=NULL, ...)
 }
 
 \arguments{

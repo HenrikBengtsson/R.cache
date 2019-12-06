@@ -17,6 +17,8 @@
 #     and @see "saveCache".}
 #   \item{envir}{The @environment in which the expression should
 #     be evaluated.}
+#   \item{drop}{@character vector of \code{expr} attributes to drop.
+#     The default is to drop all source-reference information.}
 #   \item{force}{If @TRUE, existing cached results are ignored.}
 # }
 #
@@ -35,19 +37,20 @@
 # @keyword "programming"
 # @keyword "IO"
 #*/#########################################################################  
-evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force=FALSE) {
-  expr <- substitute(expr);
+evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), drop=c("srcref", "srcfile", "wholeSrcref"), force=FALSE) {
+  expr <- substitute(expr)
+  for (name in drop) attr(expr, name) <- NULL
 
   # Setup a unique list of keys
-  key <- c(list(expr=expr), key);
+  key <- c(list(expr=expr), key)
 
   # Look for cached results
-  resList <- loadCache(key=key, ...);
+  resList <- loadCache(key=key, ...)
   if (!force && !is.null(resList)) {
     # Attach all objects memoized during the evaluation
-    attachLocally(resList$envir, envir=envir);
+    attachLocally(resList$envir, envir=envir)
     # Return the results of the memoized evaluation
-    return(resList$result);
+    return(resList$results)
   }
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -55,19 +58,19 @@ evalWithMemoization <- function(expr, key=NULL, ..., envir=parent.frame(), force
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   # Evaluate the expression in a temporary environment, so that
   # we memoize all objects created along with the results.
-  env <- new.env(parent=envir);
-  res <- eval(expr, envir=env);
+  env <- new.env(parent=envir)
+  res <- eval(expr, envir = env, enclos = baseenv())
 
   # NOTE: For some unknown reason does attachLocally() set 
   # the fields inside 'env' to NULL.  /HB 2011-04-02
-  fields <- ls(envir=env, all.names=TRUE);
+  fields <- ls(envir=env, all.names=TRUE)
   for (field in fields) {
-    assign(field, get(field, envir=env), envir=envir);
+    assign(field, get(field, envir=env), envir=envir)
   }
 
   # Cache results
-  resList <- list(envir=env, results=res);
-  saveCache(resList, key=key, ...);
+  resList <- list(envir=env, results=res)
+  saveCache(resList, key=key, ...)
 
-  res;
+  res
 } # evalWithMemoization()
