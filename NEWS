@@ -18,7 +18,7 @@ SIGNIFICANT CHANGES:
    On modern versions of Microsoft Windows, environment variables such
    as 'LOCALAPPDATA' will be used, which typically resolves to
    '%USERPROFILE%/AppData/Local, e.g. 'C:/Users/alice/AppData/Local'.
-   If R.cache fails find a proper OS-specific cache folder, it will fall
+   If R.cache fails to find a proper OS-specific cache folder, it will fall
    back to using ~/.Rcache as previously done.
    Importantly, if ~/.Rcache already exists, then that will be used by
    default.  This is done in order to not lose previously cached files.
