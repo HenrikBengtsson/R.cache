@@ -56,7 +56,7 @@ setMethodS3("setupCacheRootPath", "default", function(defaultPath=NULL, ...) {
   defaultPath <- getDefaultCacheRootPath(defaultPath)
   if (isDirectory(defaultPath)) {
     rootPath <- defaultPath
-  } else if (interactive()) {
+  } else if (interactive() & !isFALSE(as.logical(getOption("R.cache.rootPath.ask", Sys.getenv("R_CACHE_ROOTPATH_ASK"))))) {
     # or we cn ask the user to confirm the default path...
     prompt <- "The R.cache package needs to create a directory that will hold cache files."
     if (identical(defaultPath, osDefaultPath)) {
