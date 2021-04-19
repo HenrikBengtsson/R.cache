@@ -34,7 +34,7 @@ findOSCachePath <- function() {
   os <- getOS()
 
   root <- switch(os,
-    windows = getWindowsLocalAppData(),
+    windows = file.path(getWindowsLocalAppData(), "cache", "R"),
     macos = "~/Library/Caches",
     unix = Sys.getenv("XDG_CACHE_HOME", "~/.cache"),
     NA_character_
