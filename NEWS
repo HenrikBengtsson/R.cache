@@ -1,9 +1,18 @@
 Package: R.cache
 ================
 
-Version: 0.14.0-9000 [2019-12-06]
+Version: 0.14.0-9000 [2021-04-20]
 
- * ...
+SIGNIFICANT CHANGES:
+
+ * The location of the root cache folder as introduced in R.cache 0.14.0 has
+   been updated to match that of tools::R_user_dir(), which was introduced
+   in R 4.0.0.  On Linux, this was already the case in R.cache 0.14.0,
+   whereas on macOS and MS Windows, the folder locations have changed
+   slightly.  If an old cache folder location is detected, then the user will
+   be queried what action to take, i.e. abort, ignore the old folder, remove
+   the old folder, or move the old folder to the new location.  In
+   non-interactive mode, the default action is always to ignore.
  
 
 Version: 0.14.0 [2019-12-05]

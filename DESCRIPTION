@@ -18,3 +18,4 @@ License: LGPL (>= 2.1)
 LazyLoad: TRUE
 URL: https://github.com/HenrikBengtsson/R.cache
 BugReports: https://github.com/HenrikBengtsson/R.cache/issues
+RoxygenNote: 7.1.1
