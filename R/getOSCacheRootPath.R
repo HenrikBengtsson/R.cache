@@ -98,7 +98,9 @@ findOSCachePath <- function(os = getOS(), action = c("query", "error", "warn", "
   
   if (action == "query") {
     ## Cannot query user?
-    if (!interactive()) action <- "ignore"
+    if (!interactive() || isTRUE(getOption("R.cache.onLoad", FALSE))) {
+      action <- "ignore"
+    }
   }
 
   path <- findOSCachePath_0.15.0(os = os)

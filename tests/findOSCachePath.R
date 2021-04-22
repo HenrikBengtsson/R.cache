@@ -4,7 +4,12 @@ findOSCachePath <- R.cache:::findOSCachePath
 getOS <- R.cache:::getOS
 message("findOSCachePath() ...")
 
-for (os in c("unix", "windows", "macos")) {
+oses <- getOS()
+if (isTRUE(as.logical(Sys.getenv("R_CHECK_FULL", "TRUE")))) {
+  oses <- c("unix", "windows", "macos")
+}
+
+for (os in oses) {
   message("Operating system: ", sQuote(os))
   message("- getOS(): ", sQuote(getOS()))
 
@@ -47,4 +52,3 @@ for (os in c("unix", "windows", "macos")) {
 } ## for (os ...)
 
 message("findOSCachePath() ... done")
-
