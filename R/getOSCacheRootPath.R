@@ -52,7 +52,9 @@ findOSCachePath_0.14.0 <- function(os = getOS()) {
 
 findOSCachePath_0.15.0 <- if (getRversion() >= "4.0.0") {
   function(os = getOS()) {
-    R_user_dir <- tools::R_user_dir
+    message("findOSCachePath_0.15.0() ...")
+    on.exit(message("findOSCachePath_0.15.0() ... done"))
+    
 #    message("os=", os)
 #    message("getOS()=", getOS())
     if (os != getOS()) {
@@ -61,11 +63,12 @@ findOSCachePath_0.15.0 <- if (getRversion() >= "4.0.0") {
       } else {
         tracer <- quote(.Platform <- list(OS.type = os))
       }
-      message("trace!")
-      trace(R_user_dir, tracer = tracer)
-      on.exit(untrace(R_user_dir))
+      message("- trace(tools::R_user_dir, tracer = tracer) ...")
+      trace(tools::R_user_dir, tracer = tracer)
+      message("- trace(tools::R_user_dir, tracer = tracer) ... done")
+      on.exit(untrace(tools::R_user_dir))
     }
-    R_user_dir(.packageName, which = "cache")
+    tools::R_user_dir(.packageName, which = "cache")
   }
 } else function(os = getOS()) {
   path <- Sys.getenv("R_USER_CACHE_DIR", NA_character_)
@@ -93,7 +96,10 @@ findOSCachePath <- function(os = getOS(), action = c("query", "error", "warn", "
     unlink(path, recursive = has_README)
     file_test("-d", path)
   }
-  
+
+  message("findOSCachePath() ...")
+  on.exit(message("findOSCachePath() ... done"))
+
   action <- match.arg(action)
   
   if (action == "query") {

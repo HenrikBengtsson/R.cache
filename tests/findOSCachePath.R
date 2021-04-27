@@ -5,7 +5,7 @@ getOS <- R.cache:::getOS
 message("findOSCachePath() ...")
 
 oses <- getOS()
-if (isTRUE(as.logical(Sys.getenv("R_CHECK_FULL", "TRUE")))) {
+if (isTRUE(as.logical(Sys.getenv("R_CHECK_FULL", "FALSE")))) {
   oses <- c("unix", "windows", "macos")
 }
 
