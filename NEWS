@@ -15,7 +15,7 @@ SIGNIFICANT CHANGES:
    non-interactive mode, the default action is always to ignore.
 
  * The package will no longer ask for permission to create the cache folder
-   as long as the cache folder is one compatible with tools::R_user_dir().
+   as long as the cache folder is compatible with tools::R_user_dir().
  
 
 Version: 0.14.0 [2019-12-05]
