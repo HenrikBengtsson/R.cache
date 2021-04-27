@@ -54,14 +54,11 @@ setMethodS3("setupCacheRootPath", "default", function(defaultPath=NULL, ...) {
   # unless the default directory exists, ...
   osDefaultPath <- getDefaultCacheRootPath(NULL)
   defaultPath <- getDefaultCacheRootPath(defaultPath)
-  if (isDirectory(defaultPath)) {
+  if (isDirectory(defaultPath) || identical(defaultPath, osDefaultPath)) {
     rootPath <- defaultPath
   } else if (interactive()) {
     # or we cn ask the user to confirm the default path...
-    prompt <- "The R.cache package needs to create a directory that will hold cache files."
-    if (identical(defaultPath, osDefaultPath)) {
-      prompt <- c(prompt, "It is convenient to use ", sQuote(osDefaultPath), "because it follows the standard on your operating system and it remains also after restarting R.")
-    }
+    prompt <- "The R.cache package needs to create a non-standard directory that will hold cache files."
     prompt <- c(prompt, sprintf("Do you wish to create the '%s' directory? If not, a temporary directory (%s) that is specific to this R session will be used.", defaultPath, rootPath))
     prompt <- paste(prompt, collapse=" ")
     tryCatch({

@@ -1,7 +1,7 @@
 Package: R.cache
 ================
 
-Version: 0.14.0-9000 [2021-04-20]
+Version: 0.14.0-9000 [2021-04-26]
 
 SIGNIFICANT CHANGES:
 
@@ -13,6 +13,9 @@ SIGNIFICANT CHANGES:
    be queried what action to take, i.e. abort, ignore the old folder, remove
    the old folder, or move the old folder to the new location.  In
    non-interactive mode, the default action is always to ignore.
+
+ * The package will no longer ask for permission to create the cache folder
+   as long as the cache folder is one compatible with tools::R_user_dir().
  
 
 Version: 0.14.0 [2019-12-05]

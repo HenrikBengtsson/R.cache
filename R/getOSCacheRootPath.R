@@ -52,8 +52,8 @@ findOSCachePath_0.14.0 <- function(os = getOS()) {
 
 findOSCachePath_0.15.0 <- if (getRversion() >= "4.0.0") {
   function(os = getOS()) {
-    message("findOSCachePath_0.15.0() ...")
-    on.exit(message("findOSCachePath_0.15.0() ... done"))
+#    message("findOSCachePath_0.15.0() ...")
+#    on.exit(message("findOSCachePath_0.15.0() ... done"))
     
 #    message("os=", os)
 #    message("getOS()=", getOS())
@@ -97,8 +97,8 @@ findOSCachePath <- function(os = getOS(), action = c("query", "error", "warn", "
     file_test("-d", path)
   }
 
-  message("findOSCachePath() ...")
-  on.exit(message("findOSCachePath() ... done"))
+#  message("findOSCachePath() ...")
+#  on.exit(message("findOSCachePath() ... done"))
 
   action <- match.arg(action)
   
