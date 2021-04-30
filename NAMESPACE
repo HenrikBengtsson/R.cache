@@ -24,6 +24,8 @@ importFrom("R.utils", "removeDirectory")
 importFrom("R.utils", "touchFile")
 importFrom("utils", "compareVersion")
 importFrom("utils", "packageVersion")
+importFrom("utils", "file_test")
+importFrom("utils", "menu")
 importFrom("digest", "digest")
 
 ## Manually adjusted

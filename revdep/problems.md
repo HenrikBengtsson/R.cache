@@ -1,47 +1,14 @@
-# aroma.affymetrix
-
-<details>
-
-* Version: 3.2.0
-* Source code: https://github.com/cran/aroma.affymetrix
-* URL: https://www.aroma-project.org/, https://github.com/HenrikBengtsson/aroma.affymetrix
-* BugReports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
-* Date/Publication: 2019-06-23 06:00:14 UTC
-* Number of recursive dependencies: 80
-
-Run `revdep_details(,"aroma.affymetrix")` for more info
-
-</details>
-
-## In both
-
-*   checking installed package size ... NOTE
-    ```
-      installed size is  5.8Mb
-      sub-directories of 1Mb or more:
-        R             2.3Mb
-        help          1.1Mb
-        testScripts   1.3Mb
-    ```
-
-*   checking dependencies in R code ... NOTE
-    ```
-    Error in setGeneric("getX", function(object, type) standardGeneric("getX")) : 
-      could not find function "setGeneric"
-    ```
-
 # aroma.core
 
 <details>
 
-* Version: 3.2.0
+* Version: 3.2.2
+* GitHub: https://github.com/HenrikBengtsson/aroma.core
 * Source code: https://github.com/cran/aroma.core
-* URL: https://github.com/HenrikBengtsson/aroma.core, https://www.aroma-project.org/
-* BugReports: https://github.com/HenrikBengtsson/aroma.core/issues
-* Date/Publication: 2019-06-17 18:20:03 UTC
-* Number of recursive dependencies: 46
+* Date/Publication: 2021-01-05 05:10:12 UTC
+* Number of recursive dependencies: 51
 
-Run `revdep_details(,"aroma.core")` for more info
+Run `revdep_details(, "aroma.core")` for more info
 
 </details>
 
@@ -53,73 +20,163 @@ Run `revdep_details(,"aroma.core")` for more info
       'sfit', 'expectile', 'HaarSeg', 'mpcbs'
     ```
 
-*   checking dependencies in R code ... NOTE
+# CoRegFlux
+
+<details>
+
+* Version: 1.6.0
+* GitHub: NA
+* Source code: https://github.com/cran/CoRegFlux
+* Date/Publication: 2020-10-27
+* Number of recursive dependencies: 91
+
+Run `revdep_details(, "CoRegFlux")` for more info
+
+</details>
+
+## In both
+
+*   checking examples ... ERROR
     ```
-    Error in setGeneric("image", function(x, ...) standardGeneric("image")) : 
-      could not find function "setGeneric"
+    Running examples in ‘CoRegFlux-Ex.R’ failed
+    The error most likely occurred in:
+    
+    > ### Name: ODCurveToFluxCurves
+    > ### Title: ODCurveToFluxCurves
+    > ### Aliases: ODCurveToFluxCurves
+    > 
+    > ### ** Examples
+    > 
+    > data(iMM904)
+    ...
+    > ODtoflux<-ODCurveToFluxCurves(model = iMM904,
+    + ODs = ODs,times = times, metabolites_rates = metabolites_rates)
+    Joining by: metabolites_id
+    Loading required package: glpkAPI
+    Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+      there is no package called ‘glpkAPI’
+    Error in checkDefaultMethod(solver, method, pType) : 
+      package ‘glpkAPI’ not found
+    Calls: ODCurveToFluxCurves ... get_fba_fluxes_from_observations -> <Anonymous> -> <Anonymous> -> .local -> sysBiolAlg
+    Execution halted
+    ```
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/Test.R’ failed.
+    Last 50 lines of output:
+      
+      Error (test_DFBAsimulationFunctions.R:19:5): Simulation without CoRegNet finishes 
+      Error: package 'glpkAPI' not found
+      Backtrace:
+        1. testthat::expect_type(...) test_DFBAsimulationFunctions.R:19:4
+        4. CoRegFlux::Simulation(...)
+        5. CoRegFlux:::Simulation_Step(...)
+    ...
+       1. testthat::expect_true(...) test_MetabolicModelFunctions.R:13:5
+       4. base::is.data.frame(...)
+      ────────────────────────────────────────────────────────────────────────────────
+      
+      ══ Results ═════════════════════════════════════════════════════════════════════
+      Duration: 134.9 s
+      
+      [ FAIL 6 | WARN 2 | SKIP 0 | PASS 25 ]
+      Error: Test failures
+      Execution halted
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘glpkAPI’
+    ```
+
+# DiceView
+
+<details>
+
+* Version: 2.0-1
+* GitHub: https://github.com/IRSN/DiceView
+* Source code: https://github.com/cran/DiceView
+* Date/Publication: 2020-11-27 16:30:02 UTC
+* Number of recursive dependencies: 16
+
+Run `revdep_details(, "DiceView")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... NOTE
+    ```
+    Package which this enhances but not available for checking: ‘rgl’
     ```
 
 # MSnID
 
 <details>
 
-* Version: 1.20.0
+* Version: 1.24.0
+* GitHub: NA
 * Source code: https://github.com/cran/MSnID
-* Date/Publication: 2019-10-29
-* Number of recursive dependencies: 106
+* Date/Publication: 2020-10-27
+* Number of recursive dependencies: 141
 
-Run `revdep_details(,"MSnID")` for more info
+Run `revdep_details(, "MSnID")` for more info
 
 </details>
 
 ## In both
 
-*   checking Rd cross-references ... WARNING
+*   checking dependencies in R code ... NOTE
     ```
-    Missing link or links in documentation object 'read_mzIDs.Rd':
-      ‘[mzR]{mzR-package}’
-    
-    See section 'Cross-references' in the 'Writing R Extensions' manual.
+    Namespaces in Imports field not imported from:
+      ‘BiocGenerics’ ‘BiocStyle’ ‘RUnit’ ‘ggplot2’ ‘msmsTests’ ‘xtable’
+      All declared Imports should be used.
     ```
 
 *   checking R code for possible problems ... NOTE
     ```
-    ...
     .read_mzIDs.mzR.engine.single.file: no visible binding for global
-      variable ‘DatabaseAccess’
-    .read_mzIDs.mzR.engine.single.file: no visible binding for global
-      variable ‘DatabaseDescription’
-    .read_mzIDs.mzR.engine.single.file: no visible binding for global
-      variable ‘DBseqLength’
-    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
-      global variable ‘accession’
-    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
-      global variable ‘N’
-    infer_parsimonious_accessions,MSnID : infer_acc: no visible binding for
-      global variable ‘pepSeq’
-    recalibrate,MSnID: no visible global function definition for ‘median’
-    recalibrate,MSnID: no visible global function definition for ‘density’
+      variable ‘peptideRef’
     Undefined global functions or variables:
-      DBseqLength DatabaseAccess DatabaseDescription N accession density i
-      location mass median modification name optim pepSeq quantile rnorm
-      spectrumID
-    Consider adding
-      importFrom("stats", "density", "median", "optim", "quantile", "rnorm")
-    to your NAMESPACE file.
+      peptideRef
+    ```
+
+# precommit
+
+<details>
+
+* Version: 0.1.3
+* GitHub: https://github.com/lorenzwalthert/precommit
+* Source code: https://github.com/cran/precommit
+* Date/Publication: 2020-10-10 19:40:02 UTC
+* Number of recursive dependencies: 88
+
+Run `revdep_details(, "precommit")` for more info
+
+</details>
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespaces in Imports field not imported from:
+      ‘R.cache’ ‘docopt’ ‘here’
+      All declared Imports should be used.
     ```
 
 # QDNAseq
 
 <details>
 
-* Version: 1.22.0
+* Version: 1.26.0
+* GitHub: https://github.com/ccagc/QDNAseq
 * Source code: https://github.com/cran/QDNAseq
-* URL: https://github.com/ccagc/QDNAseq
-* BugReports: https://github.com/ccagc/QDNAseq/issues
-* Date/Publication: 2019-10-29
-* Number of recursive dependencies: 70
+* Date/Publication: 2020-10-27
+* Number of recursive dependencies: 72
 
-Run `revdep_details(,"QDNAseq")` for more info
+Run `revdep_details(, "QDNAseq")` for more info
 
 </details>
 
@@ -131,16 +188,38 @@ Run `revdep_details(,"QDNAseq")` for more info
       All declared Imports should be used.
     ```
 
+# repmis
+
+<details>
+
+* Version: 0.5
+* GitHub: https://github.com/christophergandrud/repmis
+* Source code: https://github.com/cran/repmis
+* Date/Publication: 2016-02-07 09:16:30
+* Number of recursive dependencies: 19
+
+Run `revdep_details(, "repmis")` for more info
+
+</details>
+
+## In both
+
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘xlsx’
+    ```
+
 # stepR
 
 <details>
 
-* Version: 2.0-4
+* Version: 2.1-1
+* GitHub: NA
 * Source code: https://github.com/cran/stepR
-* Date/Publication: 2019-11-03 21:10:02 UTC
-* Number of recursive dependencies: 36
+* Date/Publication: 2020-08-26 16:10:06 UTC
+* Number of recursive dependencies: 45
 
-Run `revdep_details(,"stepR")` for more info
+Run `revdep_details(, "stepR")` for more info
 
 </details>
 
@@ -148,8 +227,8 @@ Run `revdep_details(,"stepR")` for more info
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.9Mb
+      installed size is 11.1Mb
       sub-directories of 1Mb or more:
-        libs   5.8Mb
+        libs  10.1Mb
     ```
 

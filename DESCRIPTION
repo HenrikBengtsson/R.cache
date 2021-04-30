@@ -1,12 +1,12 @@
 Package: R.cache
-Version: 0.14.0
+Version: 0.15.0
 Depends:
   R (>= 2.14.0)
 Imports:
   utils,
-  R.methodsS3 (>= 1.7.1),
-  R.oo (>= 1.23.0),
-  R.utils (>= 2.8.0),
+  R.methodsS3 (>= 1.8.1),
+  R.oo (>= 1.24.0),
+  R.utils (>= 2.10.1),
   digest (>= 0.6.13)
 Title: Fast and Light-Weight Caching (Memoization) of Objects and Results to Speed Up Computations
 Authors@R: c(person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"),
