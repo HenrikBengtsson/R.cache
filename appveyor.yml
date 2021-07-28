@@ -12,7 +12,7 @@ environment:
   _R_CHECK_FORCE_SUGGESTS_: false
   USE_RTOOLS: false
   
-#  matrix:
+  matrix:
 #  - R_VERSION: devel
 #    R_ARCH: x64
 
