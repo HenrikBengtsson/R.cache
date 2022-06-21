@@ -1,6 +1,12 @@
 # Version (development version)
 
- * ...
+## New Features
+
+ * Now `getCachePath()` asserts that the user has write permissions to
+   the cache path. If not, an error is produced. Previously, this
+   check was only done when the cache folder did not exist and had to
+   be created. Now it also checked pre-existing folders. For
+   performance reasons, this check is only done once per R session.
  
 
 # Version 0.15.0 [2021-04-27]
