@@ -7,6 +7,14 @@
    check was only done when the cache folder did not exist and had to
    be created. Now it also checked pre-existing folders. For
    performance reasons, this check is only done once per R session.
+
+## Bug Fixes
+
+ * `memoizeCall()` would not always find previously cached results,
+   because R's just-in-time (JIT) compiler could cause the internal
+   state of the memomized function to change.  Thanks to Tomas
+   Kalibera for reporting on this and proposing the fix (already back
+   in 2017).
  
 
 # Version 0.15.0 [2021-04-27]
@@ -61,7 +69,7 @@
    attributes to drop from the expression object.  The default is to
    now drop any source-reference attributes.
 
-Bug Fixes
+## Bug Fixes
 
  * `evalWithMemoization(expr)` failed to memoize in **knitr**
    documents because although the same `expr` was specified they
@@ -155,7 +163,7 @@ Bug Fixes
  * TESTS: Added package system tests for `memoizeCall()` and
    `addMemoization()`.
  
-Bug Fixes
+## Bug Fixes
  
  * `addMemoization()` will no longer memoize an already memoized
    function.
@@ -219,7 +227,7 @@ Bug Fixes
  
 # Version 0.9.0 [2013-10-17]
  
-Bug Fixes
+## Bug Fixes
  
  * If the package was only loaded but not attached, the cache root
    path would default to `~/.Rcache/`, which in turn could cause that
@@ -230,7 +238,7 @@ Bug Fixes
  
 # Version 0.8.4 [2013-10-14]
 
-Bug Fixes
+## Bug Fixes
 
  * Adjusted package dependencies and NAMESPACE to work with the package
    versions available on CRAN.
@@ -296,7 +304,7 @@ Bug Fixes
  
  * Bumped package dependencies.
  
-Bug Fixes
+## Bug Fixes
  
  * `R.cache:::.assertDigest()` called from within another package
    would give an error that `packageVersion()` of **utils** was not
@@ -356,7 +364,7 @@ Bug Fixes
  
 # Version 0.6.6 [2012-11-27]
  
-Bug Fixes
+## Bug Fixes
  
  * `clearCache()` would give error "object 'dirs' not found".
  
@@ -384,7 +392,7 @@ Bug Fixes
  
  * Package now imports **R.methodsS3** and **R.oo**.
  
-Bug Fixes
+## Bug Fixes
  
  * ROBUSTNESS: No longer passing `...` to `NextMethod()`, cf. R-devel
    thread 'Do *not* pass '...' to NextMethod() - it'll do it for you;
@@ -442,7 +450,7 @@ Bug Fixes
  
 # Version 0.5.2 [2011-10-05]
  
-Bug Fixes
+## Bug Fixes
  
  * For R v2.13.0 only: Applying the same fix that was done for R
    v2.12.2 and before in **R.cache** v0.5.1.
@@ -450,7 +458,7 @@ Bug Fixes
  
 # Version 0.5.1 [2011-08-31]
  
-Bug Fixes
+## Bug Fixes
  
  * For R v2.12.2 and before: After adding support for compressed files
  in **R.cache** v0.5.0, we would get the 'Error in
@@ -509,7 +517,7 @@ Bug Fixes
  
  * Added trial version of `evalWithMemoization()`.
  
-Bug Fixes
+## Bug Fixes
  
  * `clearCache()` would also report on subdirectories.
  
@@ -530,7 +538,7 @@ Bug Fixes
  
 # Version 0.2.0 [2009-10-16]
  
-Bug Fixes
+## Bug Fixes
  
  * In R v2.10.0 and newer, we would get an error reporting that
    internal function `loadFromConn()` does not exists.
@@ -576,7 +584,7 @@ Bug Fixes
  
  * Now error messages specifies the pathname, if available.
  
-Bug Fixes
+## Bug Fixes
  
  * The `throw()` for invalid identifiers was trying to put the
    connection object in the output and not the identifier.
@@ -630,7 +638,7 @@ Bug Fixes
  * Added argument `pathname` to `loadCache()` in order to load
    "unknown" cache files for which the key is unknown.
  
-Bug Fixes
+## Bug Fixes
  
  * Work around for not saving "promises" (non-evaluated arguments) in
    `base::save()`, which otherwise includes all of the surrounding

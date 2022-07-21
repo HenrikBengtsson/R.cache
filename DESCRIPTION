@@ -1,5 +1,5 @@
 Package: R.cache
-Version: 0.15.0-9003
+Version: 0.15.0-9004
 Depends:
   R (>= 2.14.0)
 Imports:
@@ -18,3 +18,4 @@ License: LGPL (>= 2.1)
 LazyLoad: TRUE
 URL: https://github.com/HenrikBengtsson/R.cache
 BugReports: https://github.com/HenrikBengtsson/R.cache/issues
+RoxygenNote: 7.2.1

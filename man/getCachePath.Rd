@@ -40,7 +40,7 @@
 \author{Henrik Bengtsson}
 
 \seealso{
-  \code{\link{setCachePath}}.
+  \code{\link{setCachePath}}().
 }
 
 
