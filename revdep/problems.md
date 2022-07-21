@@ -61,6 +61,40 @@ Run `revdep_details(, "clampSeg")` for more info
     Execution halted
     ```
 
+# csodata
+
+<details>
+
+* Version: 1.2.3
+* GitHub: NA
+* Source code: https://github.com/cran/csodata
+* Date/Publication: 2022-06-10 15:40:02 UTC
+* Number of recursive dependencies: 109
+
+Run `revdep_details(, "csodata")` for more info
+
+</details>
+
+## In both
+
+*   checking re-building of vignette outputs ... ERROR
+    ```
+    Error(s) in re-building vignettes:
+      ...
+    --- re-building ‘quick_start_guide.Rmd’ using rmarkdown
+    trying URL 'https://opendata.arcgis.com/datasets/62e0cf326bab442897944e4dc4999c16_2.zip'
+    Quitting from lines 64-74 (quick_start_guide.Rmd) 
+    Error: processing vignette 'quick_start_guide.Rmd' failed with diagnostics:
+    Object shp is neither from class sf, stars, Spatial, Raster, nor SpatRaster.
+    --- failed re-building ‘quick_start_guide.Rmd’
+    
+    SUMMARY: processing the following file failed:
+      ‘quick_start_guide.Rmd’
+    
+    Error: Vignette re-building failed.
+    Execution halted
+    ```
+
 # DiceView
 
 <details>
@@ -168,33 +202,6 @@ Run `revdep_details(, "MSnID")` for more info
 
 </details>
 
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    Running examples in ‘MSnID-Ex.R’ failed
-    The error most likely occurred in:
-    
-    > ### Name: fetch_conversion_table
-    > ### Title: Fetches conversion table form one type of identifiers to another
-    > ### Aliases: fetch_conversion_table
-    > 
-    > ### ** Examples
-    > 
-    > conv_tbl <- fetch_conversion_table("Rattus norvegicus", "REFSEQ", "SYMBOL")
-    ...
-    loading from cache
-    Warning: Couldn't set cache size: database disk image is malformed
-    Use `cache_size` = NULL to turn off this warning.
-    Warning: Couldn't set synchronous mode: database disk image is malformed
-    Use `synchronous` = NULL to turn off this warning.
-    Error: failed to load resource
-      name: AH100411
-      title: org.Rn.eg.db.sqlite
-      reason: database disk image is malformed
-    Execution halted
-    ```
-
 ## In both
 
 *   checking dependencies in R code ... NOTE
@@ -241,11 +248,11 @@ Run `revdep_details(, "MSnID")` for more info
 
 <details>
 
-* Version: 0.3.1
+* Version: 0.3.2
 * GitHub: https://github.com/lorenzwalthert/precommit
 * Source code: https://github.com/cran/precommit
-* Date/Publication: 2022-06-15 07:20:02 UTC
-* Number of recursive dependencies: 93
+* Date/Publication: 2022-07-01 21:30:06 UTC
+* Number of recursive dependencies: 95
 
 Run `revdep_details(, "precommit")` for more info
 
@@ -267,7 +274,7 @@ Run `revdep_details(, "precommit")` for more info
 * GitHub: https://github.com/ccagc/QDNAseq
 * Source code: https://github.com/cran/QDNAseq
 * Date/Publication: 2022-04-26
-* Number of recursive dependencies: 80
+* Number of recursive dependencies: 82
 
 Run `revdep_details(, "QDNAseq")` for more info
 
@@ -306,6 +313,47 @@ Run `revdep_details(, "QDNAseq")` for more info
     Execution halted
     ```
 
+# R.rsp
+
+<details>
+
+* Version: 0.45.0
+* GitHub: https://github.com/HenrikBengtsson/R.rsp
+* Source code: https://github.com/cran/R.rsp
+* Date/Publication: 2022-06-27 18:30:09 UTC
+* Number of recursive dependencies: 23
+
+Run `revdep_details(, "R.rsp")` for more info
+
+</details>
+
+## In both
+
+*   checking re-building of vignette outputs ... WARNING
+    ```
+    Error(s) in re-building vignettes:
+    --- re-building ‘R_packages-Static_PDF_and_HTML_vignettes.pdf.asis’ using asis
+    --- finished re-building ‘R_packages-Static_PDF_and_HTML_vignettes.pdf.asis’
+    
+    --- re-building ‘R_packages-LaTeX_vignettes.ltx’ using tex
+    Error: processing vignette 'R_packages-LaTeX_vignettes.ltx' failed with diagnostics:
+    Running 'texi2dvi' on 'R_packages-LaTeX_vignettes.ltx' failed.
+    LaTeX errors:
+    ! Undefined control sequence.
+    l.21 \pdfsuppressptexinfo
+    ...
+     ...                                              
+    --- failed re-building ‘R_packages-Vignettes_prior_to_R300.tex.rsp’
+    
+    SUMMARY: processing the following files failed:
+      ‘R_packages-LaTeX_vignettes.ltx’
+      ‘Dynamic_document_creation_using_RSP.tex.rsp’ ‘RSP_refcard.tex.rsp’
+      ‘R_packages-Vignettes_prior_to_R300.tex.rsp’
+    
+    Error: Vignette re-building failed.
+    Execution halted
+    ```
+
 # RKorAPClient
 
 <details>
@@ -314,7 +362,7 @@ Run `revdep_details(, "QDNAseq")` for more info
 * GitHub: https://github.com/KorAP/RKorAPClient
 * Source code: https://github.com/cran/RKorAPClient
 * Date/Publication: 2022-03-01 18:30:08 UTC
-* Number of recursive dependencies: 116
+* Number of recursive dependencies: 118
 
 Run `revdep_details(, "RKorAPClient")` for more info
 
@@ -332,11 +380,11 @@ Run `revdep_details(, "RKorAPClient")` for more info
       > library("RKorAPClient")
       > 
       > test_check("RKorAPClient")
-      Testing for internet connectivity via https_proxy... success!
       <KorAPConnection> 
+      apiUrl:  https://korap.ids-mannheim.de/api/v1.0/ 
     ...
        11.       └─RKorAPClient::apiCall(...)
-       12.         └─RKorAPClient .local(kco, ...)
+       12.         └─RKorAPClient (local) .local(kco, ...)
        13.           └─jsonlite::fromJSON(content(resp, "text", encoding = "UTF-8"))
        14.             └─jsonlite:::parse_and_simplify(...)
        15.               └─jsonlite:::parseJSON(txt, bigint_as_char)
@@ -399,11 +447,11 @@ Run `revdep_details(, "stepR")` for more info
 
 <details>
 
-* Version: 1.7.2
+* Version: 1.7.3
 * GitHub: https://github.com/ms609/TreeTools
 * Source code: https://github.com/cran/TreeTools
-* Date/Publication: 2022-05-24 19:10:26 UTC
-* Number of recursive dependencies: 81
+* Date/Publication: 2022-07-20 14:30:15 UTC
+* Number of recursive dependencies: 73
 
 Run `revdep_details(, "TreeTools")` for more info
 
