@@ -33,6 +33,8 @@
 
 \value{
   Returns the path as a \code{\link[base]{character}} string.
+  If the user does not have write permissions to the path, then
+  an error is thrown.
 }
 
 \author{Henrik Bengtsson}

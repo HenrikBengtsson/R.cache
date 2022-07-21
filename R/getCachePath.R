@@ -22,6 +22,8 @@
 #
 # \value{
 #   Returns the path as a @character string.
+#   If the user does not have write permissions to the path, then
+#   an error is thrown.
 # }
 #
 # @author
@@ -34,7 +36,10 @@
 # @keyword "IO"
 # @keyword "internal"
 #*/#########################################################################
-setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=getCacheRootPath(), ...) {
+setMethodS3("getCachePath", "default", local({
+  writable <- list()
+  
+  function(dirs=NULL, path=NULL, rootPath=getCacheRootPath(), ...) {
   # Get path where to store cache file
   if (is.null(path)) {
     # (1) Get/make default path
@@ -56,7 +61,13 @@ setMethodS3("getCachePath", "default", function(dirs=NULL, path=NULL, rootPath=g
 
     # Add a README.txt file, if missing.
     .addREADME(to=rootPath)
+  } else {
+    ## Assert if 'path' is writable, unless already checked
+    if (!isTRUE(writable[[path]])) {
+      Arguments$getWritablePath(path) ## throws an error, if not
+      writable[[path]] <<- TRUE
+    }
   }
 
   path
-}) # getCachePath()
+}})) # getCachePath()

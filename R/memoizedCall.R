@@ -44,7 +44,17 @@
 #*/#########################################################################
 setMethodS3("memoizedCall", "default", function(what, ..., envir=parent.frame(), force=FALSE, sources=NULL, dirs=NULL) {
   # 1. Generate cache file
-  key <- list(what=what, ...)
+  if (typeof(what) == "closure") {
+    # do not compute the hash from the whole closure, because its internal
+    # state changes over time due to JIT activity (so the logically same
+    # function would get different hashes)
+    key <- list(body = body(what),
+                formals = formals(what),
+                attributes = attributes(what),
+                environment = environment(what), ...)
+  } else {
+    key <- list(what=what, ...)
+  }
   pathnameC <- generateCache(key=key, dirs=dirs)
 
   # 1. Look for memoized results
