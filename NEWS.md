@@ -1,6 +1,15 @@
 # Version (development version)
 
- * ...
+## New Features
+
+ * Now **R.cache** adds a `CACHEDIR.TAG` file to the cache root path.
+   This file starts with `Signature: 8a477f597d28d172789f06886806bc55`
+   and indicates that the folder holds "cached" data per 'Cache
+   Directory Tagging Specification' (2004,
+   <https://bford.info/cachedir/>).  Some software tools recognize
+   this signature file and may choose to skip the folder, e.g. such
+   folders will not be backed up when using `restic backup
+   --exclude-caches`.
 
 
 # Version 0.16.0 [2022-07-21]
