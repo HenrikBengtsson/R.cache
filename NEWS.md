@@ -8,7 +8,8 @@
    Directory Tagging Specification' (2004,
    <https://bford.info/cachedir/>).  Some software tools recognize
    this signature file and may choose to skip the folder, e.g. such
-   folders will not be backed up when using `restic backup
+   folders will not be backed up when using `borg --exclude-caches`,
+   `restic backup --exclude-caches`, and `tar --create
    --exclude-caches`.
 
 
