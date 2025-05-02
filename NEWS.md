@@ -1,5 +1,10 @@
 # Version (development version)
 
+ * ...
+ 
+
+# Version 0.17.0 [2025-05-02]
+
 ## New Features
 
  * Now **R.cache** adds a `CACHEDIR.TAG` file to the cache root path.
