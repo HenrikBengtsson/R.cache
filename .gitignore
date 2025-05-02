@@ -6,7 +6,6 @@
 .check
 .devel
 .test
-.future
 *.o
 *.dll
 *.Rout
@@ -14,9 +13,12 @@
 *.Rproj*
 *.swp
 .covr.rds
-.Rproj.user
-.make/
-revdep/checks/
+.future
+.ghi
+.issues
+.make
 revdep/data.sqlite
-revdep/library/
-docs/
+revdep/checks/*
+revdep/library/*
+.Rproj.user
+docs
