@@ -61,6 +61,9 @@ setMethodS3("getCachePath", "default", local({
 
     # Add a README.txt file, if missing.
     .addREADME(to=rootPath)
+    
+    # Add a CACHEDIR.TAG file, if missing.
+    .addCACHEDIR.TAG(to=rootPath)
   } else {
     ## Assert if 'path' is writable, unless already checked
     if (!isTRUE(writable[[path]])) {

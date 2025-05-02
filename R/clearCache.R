@@ -59,8 +59,8 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
   excl <- grep("[.][.]*$", allFiles)
   if (length(excl) > 0L) allFiles <- allFiles[-excl]
 
-  # Exclude 'README.txt'
-  excl <- grep("README.txt$", allFiles)
+  # Exclude 'README.txt' and 'CACHEDIR.TAG'
+  excl <- grep("(README.txt|CACHEDIR[.]TAG)$", allFiles)
   if (length(excl) > 0L) allFiles <- allFiles[-excl]
 
   nbrOfFiles <- length(allFiles)
@@ -136,6 +136,9 @@ setMethodS3("clearCache", "default", function(path=getCachePath(...), ..., recur
 
   # Add a README.txt file, if missing.
   .addREADME()
+
+  # Add a CACHEDIR.TAG file, if missing.
+  .addCACHEDIR.TAG()
 
   invisible(c(dirs, files))
 })

@@ -11,6 +11,12 @@ README[.]md
 CONDUCT[.]md
 
 #----------------------------
+# devtools
+#----------------------------
+^revdep
+^docs
+
+#----------------------------
 # Travis-CI et al.
 #----------------------------
 ^[.]travis[.]yml$
@@ -38,9 +44,7 @@ Rplots.pdf$
 ^[.]devel
 ^[.]test
 ^[.]check
-^revdep/*
 ^.*[.]tar[.]gz$
-^docs
 
 #----------------------------
 # Package specific
@@ -48,3 +52,7 @@ Rplots.pdf$
 ^[.]BatchJobs[.]R$
 [.]future
 
+
+^.*\.Rproj$
+^\.Rproj\.user$
+CONTRIBUTING.md

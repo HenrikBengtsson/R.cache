@@ -36,6 +36,9 @@ setMethodS3("setCacheRootPath", "default", function(path=NULL, ...) {
   # Add a README.txt file, if missing.
   .addREADME(to=path)
 
+  # Add a CACHEDIR.TAG file, if missing.
+  .addCACHEDIR.TAG(to=path)
+  
   ovalue <- options("R.cache.rootPath"=path)
 
   invisible(ovalue)

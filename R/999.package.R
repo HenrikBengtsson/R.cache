@@ -11,7 +11,7 @@
 # }
 #
 # \section{To get started}{
-#   \itemize{
+#   \describe{
 #    \item{\link{loadCache}, \link{saveCache}}{
 #      Methods for loading and saving objects from and to the cache.
 #    }

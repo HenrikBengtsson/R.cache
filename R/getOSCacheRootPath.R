@@ -52,11 +52,9 @@ findOSCachePath_0.14.0 <- function(os = getOS()) {
 
 findOSCachePath_0.15.0 <- if (getRversion() >= "4.0.0") {
   function(os = getOS()) {
-#    message("findOSCachePath_0.15.0() ...")
-#    on.exit(message("findOSCachePath_0.15.0() ... done"))
-    
-#    message("os=", os)
-#    message("getOS()=", getOS())
+    ## os != getOS() only happens during package testing, for the
+    ## purpose of emulating running on another operating system
+    ## than the host operating system (= getOS()).
     if (os != getOS()) {
       if (os == "macos") {
         tracer <- quote(Sys.info <- function() c(sysname = "Darwin"))
@@ -68,6 +66,7 @@ findOSCachePath_0.15.0 <- if (getRversion() >= "4.0.0") {
       message("- trace(tools::R_user_dir, tracer = tracer) ... done")
       on.exit(untrace(tools::R_user_dir))
     }
+    
     tools::R_user_dir(.packageName, which = "cache")
   }
 } else function(os = getOS()) {
